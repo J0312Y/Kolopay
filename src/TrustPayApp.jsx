@@ -86,25 +86,33 @@ return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignIte
 
 // ── Onboarding ──
 function Onb({go}){const[p,setP]=useState(0);const pg=[{ic:"🤝",t:"Tontine digitale",d:"Créez et gérez vos cercles de tontine. Cotisez et recevez via Kolo Money."},{ic:"🔒",t:"Sécurisé & fiable",d:"Transactions sécurisées via Mobile Money et Kolo Money. Tout est transparent."},{ic:"💎",t:"Kolo Money",d:"Votre portefeuille intégré. Recevez vos gains, cotisez, et transférez en un clic."}];
-return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.card,padding:"60px 28px 40px"}}><div style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}><div style={{width:120,height:120,borderRadius:40,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",fontSize:56,marginBottom:40}}>{pg[p].ic}</div><h2 style={{fontSize:24,fontWeight:800,color:C.t0,marginBottom:12,textAlign:"center"}}>{pg[p].t}</h2><p style={{fontSize:15,color:C.t2,textAlign:"center",lineHeight:1.6,maxWidth:280}}>{pg[p].d}</p></div><div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:32}}>{pg.map((_,i)=><div key={i} style={{width:p===i?24:8,height:8,borderRadius:4,background:p===i?C.blue:C.brd,transition:"all 0.3s"}}/>)}</div><Btn full onClick={()=>p<2?setP(p+1):go("login")}>{p<2?"Suivant":"Commencer"}</Btn>{p<2&&<button onClick={()=>go("login")} style={{background:"none",border:"none",color:C.t3,fontSize:14,cursor:"pointer",marginTop:16,padding:8}}>Passer</button>}</div>);}
+return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.card,padding:"0 28px 70px"}}>
+{p<2&&<div style={{display:"flex",justifyContent:"flex-end",paddingTop:16}}><button onClick={()=>go("login")} style={{background:"none",border:"none",color:C.t3,fontSize:14,fontWeight:500,cursor:"pointer",padding:4}}>Passer</button></div>}
+<div style={{display:"flex",flexDirection:"column",alignItems:"center",marginBottom:"auto",marginTop:p<2?"15%":"25%"}}><div style={{width:90,height:90,borderRadius:28,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",fontSize:42,marginBottom:20}}>{pg[p].ic}</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,marginBottom:8,textAlign:"center"}}>{pg[p].t}</h2><p style={{fontSize:14,color:C.t2,textAlign:"center",lineHeight:1.5,maxWidth:260}}>{pg[p].d}</p></div><div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:16}}>{pg.map((_,i)=><div key={i} style={{width:p===i?24:8,height:8,borderRadius:4,background:p===i?C.blue:C.brd,transition:"all 0.3s"}}/>)}</div><Btn full onClick={()=>p<2?setP(p+1):go("login")}>{p<2?"Suivant":"Commencer"}</Btn></div>);}
 
 // ── Login ──
-function Login({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"60px 24px 40px"}}><div style={{textAlign:"center",marginBottom:36}}><div style={{width:60,height:60,borderRadius:18,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,boxShadow:"0 12px 32px rgba(26,86,219,0.3)"}}><span style={{fontSize:24,fontWeight:900,color:"#fff"}}>LK</span></div><h2 style={{color:C.t0,fontSize:24,fontWeight:800,margin:0}}>Bon retour !</h2><p style={{color:C.t3,fontSize:13,marginTop:6}}>Connectez-vous à votre compte</p></div><div style={{flex:1}}><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><Inp label="Mot de passe" ph="Entrez votre mot de passe" type="password" icon={Z.lock}/><div style={{textAlign:"right",marginBottom:24}}><button onClick={()=>go("forgot")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer"}}>Mot de passe oublié ?</button></div><Btn full onClick={()=>go("pin")}>Se connecter</Btn><div style={{textAlign:"center",marginTop:24,fontSize:14,color:C.t2}}>Pas encore de compte ? <button onClick={()=>go("reg1")} style={{background:"none",border:"none",color:C.gold,fontWeight:700,cursor:"pointer",fontSize:14}}>S'inscrire</button></div></div></div>);}
+function Login({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"40px 24px",paddingBottom:40}}><div style={{textAlign:"center",marginBottom:36}}><div style={{width:60,height:60,borderRadius:18,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,boxShadow:"0 12px 32px rgba(26,86,219,0.3)"}}><span style={{fontSize:24,fontWeight:900,color:"#fff"}}>LK</span></div><h2 style={{color:C.t0,fontSize:24,fontWeight:800,margin:0}}>Bon retour !</h2><p style={{color:C.t3,fontSize:13,marginTop:6}}>Connectez-vous à votre compte</p></div><div style={{flex:1}}><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><Inp label="Mot de passe" ph="Entrez votre mot de passe" type="password" icon={Z.lock}/><div style={{textAlign:"right",marginBottom:24}}><button onClick={()=>go("forgot")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer"}}>Mot de passe oublié ?</button></div><Btn full onClick={()=>go("pin")}>Se connecter</Btn><div style={{textAlign:"center",marginTop:24,fontSize:14,color:C.t2}}>Pas encore de compte ? <button onClick={()=>go("reg1")} style={{background:"none",border:"none",color:C.gold,fontWeight:700,cursor:"pointer",fontSize:14}}>S'inscrire</button></div></div></div>);}
 
 // ── Register Step 1 ──
-function Reg1({go}){const[ok,setOk]=useState(false);return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px 40px"}}><Hdr title="" onBack={()=>go("login")}/><div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>Étape 1/3</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 4px"}}>Créer un compte</h2><p style={{color:C.t3,fontSize:13,marginBottom:24}}>Entrez votre numéro de téléphone</p><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><div style={{display:"flex",alignItems:"flex-start",gap:10,marginBottom:28}}><button onClick={()=>setOk(!ok)} style={{width:22,height:22,borderRadius:6,border:`2px solid ${ok?C.blue:C.brd}`,background:ok?C.blue:"transparent",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",marginTop:1}}>{ok&&Z.okW}</button><span style={{fontSize:13,color:C.t2,lineHeight:1.4}}>J'accepte les <span style={{color:C.blue,fontWeight:600}}>Conditions</span> et la <span style={{color:C.blue,fontWeight:600}}>Politique de confidentialité</span></span></div><Btn full onClick={()=>go("reg2")} dis={!ok}>Continuer</Btn></div>);}
+function Reg1({go}){const[ok,setOk]=useState(false);return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px",paddingBottom:40}}><Hdr title="" onBack={()=>go("login")}/><div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>Étape 1/3</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 4px"}}>Créer un compte</h2><p style={{color:C.t3,fontSize:13,marginBottom:24}}>Entrez votre numéro de téléphone</p><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><div style={{display:"flex",alignItems:"flex-start",gap:10,marginBottom:28}}><button onClick={()=>setOk(!ok)} style={{width:22,height:22,borderRadius:6,border:`2px solid ${ok?C.blue:C.brd}`,background:ok?C.blue:"transparent",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",marginTop:1}}>{ok&&Z.okW}</button><span style={{fontSize:13,color:C.t2,lineHeight:1.4}}>J'accepte les <span style={{color:C.blue,fontWeight:600}}>Conditions</span> et la <span style={{color:C.blue,fontWeight:600}}>Politique de confidentialité</span></span></div><Btn full onClick={()=>go("reg2")} dis={!ok}>Continuer</Btn></div>);}
 
 // ── Register Step 2 (OTP) ──
-function Reg2({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px 40px"}}><Hdr title="" onBack={()=>go("reg1")}/><div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>Étape 2/3</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 4px"}}>Vérification</h2><p style={{color:C.t3,fontSize:13,marginBottom:32}}>Entrez le code à 6 chiffres envoyé par SMS</p><div style={{display:"flex",gap:10,justifyContent:"center",marginBottom:28}}>{[...Array(6)].map((_,i)=><div key={i} style={{width:46,height:54,borderRadius:12,border:`2px solid ${C.brd}`,background:C.card,display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,fontWeight:700,color:C.t0}}/>)}</div><div style={{textAlign:"center",marginBottom:32}}><span style={{fontSize:13,color:C.t3}}>Pas reçu ? </span><button style={{background:"none",border:"none",color:C.blue,fontWeight:700,fontSize:13,cursor:"pointer"}}>Renvoyer (00:45)</button></div><Btn full onClick={()=>go("reg3")}>Vérifier</Btn></div>);}
+function Reg2({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px",paddingBottom:40}}><Hdr title="" onBack={()=>go("reg1")}/><div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>Étape 2/3</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 4px"}}>Vérification</h2><p style={{color:C.t3,fontSize:13,marginBottom:32}}>Entrez le code à 6 chiffres envoyé par SMS</p><div style={{display:"flex",gap:10,justifyContent:"center",marginBottom:28}}>{[...Array(6)].map((_,i)=><div key={i} style={{width:46,height:54,borderRadius:12,border:`2px solid ${C.brd}`,background:C.card,display:"flex",alignItems:"center",justifyContent:"center",fontSize:22,fontWeight:700,color:C.t0}}/>)}</div><div style={{textAlign:"center",marginBottom:32}}><span style={{fontSize:13,color:C.t3}}>Pas reçu ? </span><button style={{background:"none",border:"none",color:C.blue,fontWeight:700,fontSize:13,cursor:"pointer"}}>Renvoyer (00:45)</button></div><Btn full onClick={()=>go("reg3")}>Vérifier</Btn></div>);}
 
 // ── Register Step 3 (Profile) ──
-function Reg3({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px 40px",overflowY:"auto"}}><Hdr title="" onBack={()=>go("reg2")}/><div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>Étape 3/3</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 4px"}}>Votre profil</h2><p style={{color:C.t3,fontSize:13,marginBottom:24}}>Complétez vos informations</p><Inp label="Nom complet" ph="Ex: Joeldy Tsina" icon={Z.usr}/><Inp label="Email (optionnel)" ph="votre@email.com"/><Inp label="Mot de passe" ph="Minimum 8 caractères" type="password" icon={Z.lock}/><Inp label="Confirmer le mot de passe" ph="Retapez le mot de passe" type="password" icon={Z.lock}/><Btn full onClick={()=>go("pin")}>Créer mon compte</Btn></div>);}
+function Reg3({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px",paddingBottom:40,overflowY:"auto"}}><Hdr title="" onBack={()=>go("reg2")}/><div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>Étape 3/3</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 4px"}}>Votre profil</h2><p style={{color:C.t3,fontSize:13,marginBottom:24}}>Complétez vos informations</p><Inp label="Nom complet" ph="Ex: Joeldy Tsina" icon={Z.usr}/><Inp label="Email (optionnel)" ph="votre@email.com"/><Inp label="Mot de passe" ph="Minimum 8 caractères" type="password" icon={Z.lock}/><Inp label="Confirmer le mot de passe" ph="Retapez le mot de passe" type="password" icon={Z.lock}/><Btn full onClick={()=>go("pin")}>Créer mon compte</Btn></div>);}
 
 // ── Forgot Password ──
-function Forgot({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px 40px"}}><Hdr title="" onBack={()=>go("login")}/><div style={{textAlign:"center",marginBottom:32}}><div style={{width:60,height:60,borderRadius:20,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16}}>{Z.lock}</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 6px"}}>Mot de passe oublié ?</h2><p style={{color:C.t3,fontSize:13}}>Entrez votre numéro pour recevoir un code de réinitialisation</p></div><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><Btn full onClick={()=>go("login")}>Envoyer le code</Btn></div>);}
+function Forgot({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"20px 24px",paddingBottom:40}}><Hdr title="" onBack={()=>go("login")}/><div style={{textAlign:"center",marginBottom:32}}><div style={{width:60,height:60,borderRadius:20,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16}}>{Z.lock}</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 6px"}}>Mot de passe oublié ?</h2><p style={{color:C.t3,fontSize:13}}>Entrez votre numéro pour recevoir un code de réinitialisation</p></div><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><Btn full onClick={()=>go("login")}>Envoyer le code</Btn></div>);}
 
 // ── PIN Screen ──
-function Pin({go}){const[pin,setPin]=useState("");const dots=[0,1,2,3];return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",background:C.bg,padding:"40px 24px"}}><div style={{width:60,height:60,borderRadius:18,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,display:"flex",alignItems:"center",justifyContent:"center",marginBottom:24,boxShadow:"0 8px 24px rgba(26,86,219,0.25)"}}><span style={{fontSize:24,fontWeight:900,color:"#fff"}}>LK</span></div><h2 style={{fontSize:20,fontWeight:700,color:C.t0,marginBottom:8}}>Entrez votre PIN</h2><p style={{color:C.t3,fontSize:13,marginBottom:32}}>4 chiffres pour accéder à votre compte</p><div style={{display:"flex",gap:16,marginBottom:40}}>{dots.map((_,i)=><div key={i} style={{width:16,height:16,borderRadius:8,background:pin.length>i?C.blue:C.brd,transition:"all 0.2s"}}/>)}</div><div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12,width:240}}>{[1,2,3,4,5,6,7,8,9,"",0,"⌫"].map((n,i)=>(<button key={i} onClick={()=>{if(n==="⌫")setPin(p=>p.slice(0,-1));else if(n!==""&&pin.length<4){const np=pin+n;setPin(np);if(np.length===4)setTimeout(()=>go("home"),300);}}} style={{width:72,height:56,borderRadius:16,border:"none",background:n===""?"transparent":C.card,fontSize:n==="⌫"?18:22,fontWeight:600,color:C.t0,cursor:n===""?"default":"pointer",boxShadow:n===""?"none":C.sh,display:"flex",alignItems:"center",justifyContent:"center"}}>{n}</button>))}</div><button onClick={()=>go("home")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer",marginTop:24}}>Utiliser la biométrie</button></div>);}
+function Pin({go}){const[pin,setPin]=useState("");const dots=[0,1,2,3];return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",background:C.bg,padding:"20px 24px",paddingBottom:40}}>
+<div style={{width:60,height:60,borderRadius:18,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,display:"flex",alignItems:"center",justifyContent:"center",marginBottom:24,boxShadow:"0 8px 24px rgba(26,86,219,0.25)"}}><span style={{fontSize:24,fontWeight:900,color:"#fff"}}>LK</span></div>
+<h2 style={{fontSize:20,fontWeight:700,color:C.t0,marginBottom:8}}>Entrez votre PIN</h2>
+<p style={{color:C.t3,fontSize:13,marginBottom:24}}>4 chiffres pour accéder à votre compte</p>
+<div style={{display:"flex",gap:16,marginBottom:32}}>{dots.map((_,i)=><div key={i} style={{width:16,height:16,borderRadius:8,background:pin.length>i?C.blue:C.brd,transition:"all 0.2s"}}/>)}</div>
+<div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:10,width:220}}>{[1,2,3,4,5,6,7,8,9,"",0,"⌫"].map((n,i)=>(<button key={i} onClick={()=>{if(n==="⌫")setPin(p=>p.slice(0,-1));else if(n!==""&&pin.length<4){const np=pin+n;setPin(np);if(np.length===4)setTimeout(()=>go("home"),300);}}} style={{width:66,height:50,borderRadius:14,border:"none",background:n===""?"transparent":C.card,fontSize:n==="⌫"?18:20,fontWeight:600,color:C.t0,cursor:n===""?"default":"pointer",boxShadow:n===""?"none":C.sh,display:"flex",alignItems:"center",justifyContent:"center"}}>{n}</button>))}</div>
+<button onClick={()=>go("home")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer",marginTop:20}}>Utiliser la biométrie</button></div>);}
 
 // ── Home Tabs ──
 function HomeTab({go}){const[sb,setSb]=useState(true);const kolo=WALLETS[0];const tot=WALLETS.reduce((s,a)=>s+a.bal,0);
@@ -167,18 +175,18 @@ function ProfTab({go}){return(<div>
 // ── Home Container ──
 function Home({go}){const[tab,setTab]=useState(0);const tabs=[{ic:Z.home,l:"Accueil"},{ic:Z.grp,l:"Cercles"},{ic:Z.wal,l:"Historique"},{ic:Z.usr,l:"Profil"}];const tg=s=>{if(s==="_c")setTab(1);else if(s==="_h")setTab(2);else go(s);};
 return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg}}>
-<div style={{flex:1,overflowY:"auto",padding:"12px 18px 100px"}}>
+<div style={{flex:1,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}>
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}><div><div style={{fontSize:13,color:C.t3}}>Mbote 👋</div><div style={{fontSize:20,fontWeight:800,color:C.t0}}>Joeldy</div></div>
 <button onClick={()=>go("notif")} style={{width:42,height:42,borderRadius:14,background:C.card,border:`1px solid ${C.brd}`,cursor:"pointer",position:"relative",display:"flex",alignItems:"center",justifyContent:"center",color:C.t1}}>{Z.bell}<div style={{position:"absolute",top:10,right:10,width:8,height:8,borderRadius:4,background:C.red,border:"2px solid #fff"}}/></button></div>
 {tab===0&&<HomeTab go={tg}/>}{tab===1&&<CirclesTab go={tg}/>}{tab===2&&<HistTab go={tg}/>}{tab===3&&<ProfTab go={tg}/>}
 </div>
-<div style={{position:"absolute",bottom:0,left:0,right:0,padding:"0 16px 28px",background:`linear-gradient(transparent,${C.bg} 30%)`}}>
+<div style={{position:"absolute",bottom:0,left:0,right:0,padding:"0 16px",paddingBottom:16,background:`linear-gradient(transparent,${C.bg} 30%)`}}>
 <div style={{display:"flex",background:C.card,borderRadius:22,padding:"6px 4px",boxShadow:C.shM,border:`1px solid ${C.brdL}`}}>
 {tabs.map((t,i)=>(<button key={i} onClick={()=>setTab(i)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:2,background:"none",border:"none",cursor:"pointer",padding:"8px 0",color:tab===i?C.blue:C.t4}}>{t.ic}<span style={{fontSize:10,fontWeight:tab===i?700:500}}>{t.l}</span>{tab===i&&<div style={{width:4,height:4,borderRadius:2,background:C.blue,marginTop:1}}/>}</button>))}
 </div></div></div>);}
 
 // ── Transaction Detail ──
-function TxDetail({go,txId}){const tx=TXS.find(x=>x.id===txId)||TXS[0];return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Détail transaction" onBack={()=>go("home")}/>
+function TxDetail({go,txId}){const tx=TXS.find(x=>x.id===txId)||TXS[0];return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Détail transaction" onBack={()=>go("home")}/>
 <div style={{background:C.card,borderRadius:24,padding:24,textAlign:"center",border:`1px solid ${C.brd}`,marginBottom:16}}>
 <div style={{width:56,height:56,borderRadius:18,background:tx.t==="in"?C.greenL:C.redL,display:"inline-flex",alignItems:"center",justifyContent:"center",color:tx.t==="in"?C.green:C.red,marginBottom:12}}>{tx.t==="in"?Z.dn:Z.up}</div>
 <div style={{fontSize:28,fontWeight:800,color:tx.t==="in"?C.green:C.t0}}>{tx.t==="in"?"+":"-"}{fm(tx.a)} FCFA</div>
@@ -189,7 +197,7 @@ function TxDetail({go,txId}){const tx=TXS.find(x=>x.id===txId)||TXS[0];return(<d
 
 // ── Circle Detail ──
 function CircleDetail({go,cid}){const c=CIR.find(x=>x.id===cid)||CIR[0];const[tab,setTab]=useState("m");const paid=MEM.filter(m=>m.ok).length;
-return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}>
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}>
 <Hdr title={c.name} onBack={()=>go("home")} right={<button onClick={()=>go("gear")} style={{background:C.card,border:`1px solid ${C.brd}`,borderRadius:12,width:36,height:36,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",color:C.t1}}>{Z.gear}</button>}/>
 <div style={{background:C.card,borderRadius:24,padding:20,border:`1px solid ${C.brd}`,marginBottom:16,boxShadow:C.sh}}>
 <div style={{display:"flex",justifyContent:"space-between",marginBottom:16}}><div><div style={{fontSize:12,color:C.t3,marginBottom:4}}>Cagnotte totale</div><div style={{fontSize:26,fontWeight:800,color:C.t0}}>{fm(c.tot)} <span style={{fontSize:13,fontWeight:500,color:C.t3}}>FCFA</span></div></div><div style={{textAlign:"right"}}><div style={{fontSize:12,color:C.t3,marginBottom:4}}>Par tour</div><div style={{fontSize:18,fontWeight:700,color:C.gold}}>{fm(c.amt)} F</div></div></div>
@@ -202,15 +210,18 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 <button style={{background:"none",border:"none",cursor:"pointer",color:C.blue,display:"flex"}}>{Z.copy}</button>
 </div>
 {/* Actions */}
-<div style={{display:"flex",gap:8,marginBottom:16}}>
-{[{l:"Cotiser",ic:Z.up,s:"contribute"},{l:"Rappel",ic:Z.bell,s:"remind"},{l:"Chat",ic:Z.msg,s:"chat:"+c.id},{l:"Inviter",ic:Z.plus,s:"invite"}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:11,fontWeight:600,color:C.blue}}>{a.ic}<span>{a.l}</span></button>))}
+<div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"}}>
+{[{l:"Cotiser",ic:Z.up,s:"contribute"},{l:"Rappel",ic:Z.bell,s:"remind"},{l:"Chat",ic:Z.msg,s:"chat:"+c.id},{l:"Inviter",ic:Z.plus,s:"invite"}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:"1 1 22%",display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:11,fontWeight:600,color:C.blue}}>{a.ic}<span>{a.l}</span></button>))}
+</div>
+<div style={{display:"flex",gap:6,marginBottom:16}}>
+{[{l:"Calendrier",ic:Z.cal,s:"calendar"},{l:"Stats",ic:Z.tgt,s:"circleStats"},{l:"Modifier",ic:Z.gear,s:"editCircle"},{l:"Quitter",ic:Z.warn,s:"leaveCircle",c:C.red}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${a.c?a.c+"20":C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:10,fontWeight:600,color:a.c||C.t2}}>{a.ic}<span>{a.l}</span></button>))}
 </div>
 {/* Tabs */}
 <div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:16,border:`1px solid ${C.brd}`}}>
 {[{k:"m",l:"Membres"},{k:"r",l:"Rotation"},{k:"g",l:"Règles"}].map(t=>(<button key={t.k} onClick={()=>setTab(t.k)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t.k?`linear-gradient(135deg,${C.blue},${C.blueD})`:"transparent",color:tab===t.k?"#fff":C.t3,fontSize:12,fontWeight:600,cursor:"pointer",boxShadow:tab===t.k?"0 4px 12px rgba(26,86,219,0.2)":"none"}}>{t.l}</button>))}
 </div>
 {tab==="m"&&<><div style={{fontSize:12,color:C.t3,marginBottom:10}}><span style={{color:C.green,fontWeight:700}}>{paid}</span> payé(s) · <span style={{color:C.red,fontWeight:700}}>{MEM.length-paid}</span> en attente</div>
-{MEM.map(m=>(<div key={m.id} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:16,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+{MEM.map(m=>(<div key={m.id} onClick={()=>go("mem:"+m.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:16,marginBottom:6,border:`1px solid ${C.brdL}`,cursor:"pointer"}}>
 <Av ini={m.i} sz={40}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{m.n}</div><div style={{fontSize:12,color:C.t3}}>{m.p}{m.pen>0&&<span style={{color:C.red,fontWeight:600}}> · Pénalité: {fm(m.pen)} F</span>}</div></div>
 <div style={{textAlign:"center",marginRight:8}}><div style={{fontSize:9,color:C.t3,fontWeight:600,textTransform:"uppercase"}}>Tour</div><div style={{fontSize:16,fontWeight:800,color:C.gold}}>{m.t}</div></div><Bdg s={m.ok?"paid":"pending"}/></div>))}</>}
 {tab==="r"&&MEM.map((m,i)=>(<div key={m.id} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",background:i===0?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${i===0?C.blue+"40":C.brdL}`,position:"relative"}}>
@@ -223,7 +234,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 
 // ── Create Circle ──
 function CreateCircle({go}){const[name,setName]=useState("");const[amt,setAmt]=useState("");const[freq,setFreq]=useState("Mensuel");const[mem,setMem]=useState("");const[pen,setPen]=useState("5");
-return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Créer un cercle" onBack={()=>go("home")}/>
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Créer un cercle" onBack={()=>go("home")}/>
 <Inp label="Nom du cercle" ph="Ex: Cercle Famille" val={name} set={setName}/>
 <Inp label="Montant par tour (FCFA)" ph="Ex: 25000" val={amt} set={setAmt} type="number"/>
 <div style={{marginBottom:16}}><label style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:6,display:"block"}}>Fréquence</label><div style={{display:"flex",gap:8}}>{["Hebdo","Bi-mensuel","Mensuel"].map(f=>(<button key={f} onClick={()=>setFreq(f)} style={{flex:1,padding:"12px 0",borderRadius:12,border:"none",cursor:"pointer",background:freq===f?`linear-gradient(135deg,${C.blue},${C.blueD})`:C.card,color:freq===f?"#fff":C.t2,fontSize:13,fontWeight:600,boxShadow:freq===f?"0 4px 12px rgba(26,86,219,0.2)":`inset 0 0 0 1px ${C.brd}`}}>{f}</button>))}</div></div>
@@ -233,7 +244,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>);}
 
 // ── Join Circle ──
-function JoinCircle({go}){const[code,setCode]=useState("");return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Rejoindre un cercle" onBack={()=>go("home")}/>
+function JoinCircle({go}){const[code,setCode]=useState("");return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Rejoindre un cercle" onBack={()=>go("home")}/>
 <div style={{textAlign:"center",marginBottom:32}}><div style={{width:60,height:60,borderRadius:20,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,color:C.blue}}>{Z.link}</div><h3 style={{fontSize:18,fontWeight:700,color:C.t0,margin:"0 0 6px"}}>Code d'invitation</h3><p style={{color:C.t3,fontSize:13}}>Entrez le code partagé par l'admin du cercle</p></div>
 <Inp label="Code du cercle" ph="Ex: ELITE2026" val={code} set={setCode}/>
 <Btn full onClick={()=>go("ok")} dis={!code}>Rejoindre</Btn>
@@ -241,7 +252,7 @@ function JoinCircle({go}){const[code,setCode]=useState("");return(<div style={{h
 </div>);}
 
 // ── Invite ──
-function Invite({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Inviter des membres" onBack={()=>go("home")}/>
+function Invite({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Inviter des membres" onBack={()=>go("home")}/>
 <div style={{background:C.card,borderRadius:16,padding:20,border:`1px solid ${C.brd}`,textAlign:"center",marginBottom:20}}>
 <div style={{fontSize:13,color:C.t3,marginBottom:6}}>Code d'invitation</div>
 <div style={{fontSize:24,fontWeight:800,color:C.blue,letterSpacing:2,marginBottom:12}}>ELITE2026</div>
@@ -252,27 +263,28 @@ function Invite({go}){return(<div style={{height:"100%",background:C.bg,overflow
 </div>);}
 
 // ── Chat ──
-function Chat({go,cid}){const c=CIR.find(x=>x.id===cid)||CIR[0];const[msg,setMsg]=useState("");
+function Chat({go,cid}){const c=CIR.find(x=>x.id===cid)||CIR[0];const[msg,setMsg]=useState("");const[msgs,setMsgs]=useState(MSGS);const ref=useRef(null);
+const doSend=()=>{if(!msg.trim())return;setMsgs(prev=>[...prev,{id:Date.now(),from:"Joeldy T.",ini:"JT",msg:msg.trim(),time:new Date().toLocaleTimeString("fr",{hour:"2-digit",minute:"2-digit"}),me:true}]);setMsg("");setTimeout(()=>{if(ref.current)ref.current.scrollTop=ref.current.scrollHeight;},50);};
 return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg}}>
 <div style={{padding:"12px 18px"}}><Hdr title={c.name} onBack={()=>go("cd:"+c.id)} right={<span style={{fontSize:12,color:C.t3}}>{c.mem} membres</span>}/></div>
-<div style={{flex:1,overflowY:"auto",padding:"0 18px 12px"}}>
-{MSGS.map(m=>(<div key={m.id} style={{display:"flex",justifyContent:m.me?"flex-end":"flex-start",marginBottom:10}}>
+<div ref={ref} style={{flex:1,overflowY:"auto",padding:"0 18px 12px"}}>
+{msgs.map(m=>(<div key={m.id} style={{display:"flex",justifyContent:m.me?"flex-end":"flex-start",marginBottom:10}}>
 {!m.me&&<Av ini={m.ini} sz={28} col={undefined}/>}
-<div style={{marginLeft:m.me?0:8,marginRight:m.me?0:0,maxWidth:"75%"}}>
+<div style={{marginLeft:m.me?0:8,maxWidth:"75%"}}>
 {!m.me&&<div style={{fontSize:11,fontWeight:600,color:C.blue,marginBottom:2}}>{m.from}</div>}
 <div style={{padding:"10px 14px",borderRadius:16,borderTopLeftRadius:m.me?16:4,borderTopRightRadius:m.me?4:16,background:m.me?C.blue:C.card,color:m.me?"#fff":C.t1,fontSize:13,lineHeight:1.4,boxShadow:m.me?"none":C.sh}}>{m.msg}</div>
 <div style={{fontSize:10,color:C.t4,marginTop:2,textAlign:m.me?"right":"left"}}>{m.time}</div>
 </div></div>))}
 </div>
-<div style={{padding:"8px 18px 28px",background:C.card,borderTop:`1px solid ${C.brd}`}}>
+<div style={{padding:"8px 18px 60px",background:C.card,borderTop:`1px solid ${C.brd}`}}>
 <div style={{display:"flex",gap:8}}>
-<input value={msg} onChange={e=>setMsg(e.target.value)} placeholder="Écrire un message..." style={{flex:1,padding:"12px 16px",borderRadius:50,border:`1px solid ${C.brd}`,background:C.bg,outline:"none",fontSize:14,color:C.t0}}/>
-<button style={{width:44,height:44,borderRadius:22,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",boxShadow:"0 4px 12px rgba(26,86,219,0.25)"}}>{Z.send}</button>
+<input value={msg} onChange={e=>setMsg(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doSend()} placeholder="Écrire un message..." style={{flex:1,padding:"12px 16px",borderRadius:50,border:`1px solid ${C.brd}`,background:C.bg,outline:"none",fontSize:14,color:C.t0}}/>
+<button onClick={doSend} style={{width:44,height:44,borderRadius:22,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",flexShrink:0,boxShadow:"0 4px 12px rgba(26,86,219,0.25)"}}>{Z.send}</button>
 </div></div></div>);}
 
 // ── Contribute ──
 function Contribute({go}){const[sel,setSel]=useState(1);const[amt,setAmt]=useState("25000");const[wal,setWal]=useState(0);
-return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Cotiser" onBack={()=>go("home")}/>
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Cotiser" onBack={()=>go("home")}/>
 <div style={{fontSize:13,color:C.t2,marginBottom:10}}>Choisir le cercle</div>
 {CIR.map(c=>(<button key={c.id} onClick={()=>{setSel(c.id);setAmt(String(c.amt))}} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",width:"100%",background:sel===c.id?C.blueL:C.card,borderRadius:16,marginBottom:6,cursor:"pointer",border:`1.5px solid ${sel===c.id?C.blue:C.brdL}`,textAlign:"left"}}>
 <div style={{width:40,height:40,borderRadius:12,background:sel===c.id?C.blueM:C.bg,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue}}>{Z.grp}</div>
@@ -290,7 +302,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>);}
 
 // ── Confirm Payment ──
-function Confirm({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Confirmer le paiement" onBack={()=>go("contribute")}/>
+function Confirm({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Confirmer le paiement" onBack={()=>go("contribute")}/>
 <div style={{background:C.card,borderRadius:24,padding:24,border:`1px solid ${C.brd}`,marginBottom:20}}>
 <div style={{textAlign:"center",marginBottom:20}}><div style={{fontSize:13,color:C.t3,marginBottom:4}}>Vous allez cotiser</div><div style={{fontSize:32,fontWeight:800,color:C.gold}}>25 000 <span style={{fontSize:14,color:C.t3}}>FCFA</span></div></div>
 {[{l:"Cercle",v:"Cercle Élite"},{l:"Via",v:"💎 Kolo Money"},{l:"Solde après",v:"70 000 FCFA"},{l:"Frais",v:"Gratuit"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"12px 0",borderBottom:i<3?`1px solid ${C.brd}`:""}}><span style={{fontSize:13,color:C.t3}}>{r.l}</span><span style={{fontSize:13,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
@@ -302,14 +314,14 @@ function Confirm({go}){return(<div style={{height:"100%",background:C.bg,overflo
 </div>);}
 
 // ── Remind ──
-function Remind({go}){const up=MEM.filter(m=>!m.ok);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Rappel de cotisation" onBack={()=>go("home")}/>
+function Remind({go}){const up=MEM.filter(m=>!m.ok);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Rappel de cotisation" onBack={()=>go("home")}/>
 <div style={{background:C.orangeL,borderRadius:16,padding:"14px 18px",marginBottom:18,display:"flex",alignItems:"center",gap:12,border:`1px solid ${C.orange}20`}}><span style={{fontSize:24}}>⏰</span><div><div style={{fontSize:13,fontWeight:700,color:C.orange}}>Membres en attente</div><div style={{fontSize:12,color:C.t2}}>{up.length} membre(s) avec pénalité potentielle de 5%</div></div></div>
 {MEM.map(m=>(<div key={m.id} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:16,marginBottom:6,border:`1px solid ${C.brdL}`,opacity:m.ok?.5:1}}>
 <Av ini={m.i} sz={40}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{m.n}</div><div style={{fontSize:12,color:C.t3}}>{m.p}{m.pen>0&&<span style={{color:C.red}}> · Pénalité: {fm(m.pen)} F</span>}</div></div><Bdg s={m.ok?"paid":"pending"}/></div>))}
 <div style={{marginTop:16}}><Btn full onClick={()=>go("ok")}>Envoyer le rappel ({up.length})</Btn></div></div>);}
 
 // ── QR Code ──
-function QR({go}){const[tab,setTab]=useState("my");return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="QR Code" onBack={()=>go("home")}/>
+function QR({go}){const[tab,setTab]=useState("my");return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="QR Code" onBack={()=>go("home")}/>
 <div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:24,border:`1px solid ${C.brd}`}}>{["my","scan"].map(t=><button key={t} onClick={()=>setTab(t)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t?`linear-gradient(135deg,${C.blue},${C.blueD})`:"transparent",color:tab===t?"#fff":C.t3,fontSize:13,fontWeight:600,cursor:"pointer"}}>{t==="my"?"Mon QR":"Scanner"}</button>)}</div>
 {tab==="my"?<div style={{textAlign:"center"}}><div style={{background:C.card,borderRadius:24,padding:32,border:`1px solid ${C.brd}`,display:"inline-block"}}>
 <div style={{width:200,height:200,background:C.navy,borderRadius:16,display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 16px"}}><div style={{width:170,height:170,background:"#fff",borderRadius:12,display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gridTemplateRows:"1fr 1fr 1fr",gap:8,padding:16}}>{[1,2,3,4,5,6,7,8,9].map(n=><div key={n} style={{background:n===5?C.blue:n%2===0?C.brd:C.navy,borderRadius:n===5?8:3}}/>)}</div></div>
@@ -318,8 +330,12 @@ function QR({go}){const[tab,setTab]=useState("my");return(<div style={{height:"1
 </div>);}
 
 // ── Wallets ──
-function Wallets({go}){const tot=WALLETS.reduce((s,a)=>s+a.bal,0);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Portefeuilles" onBack={()=>go("home")}/>
-<div style={{background:C.card,borderRadius:16,padding:"14px 18px",display:"flex",justifyContent:"space-between",marginBottom:20,border:`1px solid ${C.brd}`}}><span style={{fontSize:13,color:C.t3}}>Solde total</span><span style={{fontSize:16,fontWeight:800,color:C.gold}}>{fm(tot)} FCFA</span></div>
+function Wallets({go}){const tot=WALLETS.reduce((s,a)=>s+a.bal,0);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Portefeuilles" onBack={()=>go("home")}/>
+<div style={{background:C.card,borderRadius:16,padding:"14px 18px",display:"flex",justifyContent:"space-between",marginBottom:12,border:`1px solid ${C.brd}`}}><span style={{fontSize:13,color:C.t3}}>Solde total</span><span style={{fontSize:16,fontWeight:800,color:C.gold}}>{fm(tot)} FCFA</span></div>
+<div style={{display:"flex",gap:8,marginBottom:16}}>
+<Btn full onClick={()=>go("topup")} sx={{flex:1}}>{Z.dn} Recharger</Btn>
+<Btn v="s" full onClick={()=>go("withdraw")} sx={{flex:1}}>{Z.up} Retirer</Btn>
+</div>
 {WALLETS.map(w=>(<div key={w.id} style={{background:C.card,borderRadius:16,padding:18,marginBottom:10,border:`1px solid ${C.brd}`}}>
 <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:10}}><span style={{fontSize:28}}>{w.logo}</span><div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num}</div></div>{w.id===0&&<span style={{fontSize:10,fontWeight:700,color:C.kolo,background:C.koloL,padding:"3px 8px",borderRadius:6}}>INTERNE</span>}</div>
 <div style={{fontSize:22,fontWeight:800,color:C.gold}}>{fm(w.bal)} <span style={{fontSize:13,fontWeight:500,color:C.t3}}>FCFA</span></div>
@@ -329,7 +345,7 @@ function Wallets({go}){const tot=WALLETS.reduce((s,a)=>s+a.bal,0);return(<div st
 </div>);}
 
 // ── Savings ──
-function Sav({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Objectifs d'épargne" onBack={()=>go("home")} right={<button style={{background:"none",border:"none",cursor:"pointer",color:C.blue}}>{Z.plus}</button>}/>
+function Sav({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Objectifs d'épargne" onBack={()=>go("home")} right={<button style={{background:"none",border:"none",cursor:"pointer",color:C.blue}}>{Z.plus}</button>}/>
 {SAV.map(s=>(<div key={s.id} style={{background:C.card,borderRadius:16,padding:"16px 18px",marginBottom:10,border:`1px solid ${C.brdL}`}}>
 <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}><span style={{fontSize:24}}>{s.ic}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{s.n}</div></div><span style={{fontSize:13,fontWeight:700,color:s.sv>=s.tg?C.green:C.gold}}>{fm(s.sv)} / {fm(s.tg)}</span></div>
 <div style={{background:C.bg,borderRadius:4,height:6,overflow:"hidden"}}><div style={{width:`${Math.min(s.sv/s.tg*100,100)}%`,height:"100%",background:s.sv>=s.tg?C.green:s.cl,borderRadius:4}}/></div>
@@ -337,7 +353,7 @@ function Sav({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"
 
 // ── Receipts ──
 function Rcpt({go}){const[f,setF]=useState("Tout");const mp={Tout:null,Payé:"paid","En attente":"pending"};const fl=mp[f]?RCPT.filter(r=>r.s===mp[f]):RCPT;
-return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Reçus de cotisation" onBack={()=>go("home")}/>
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Reçus de cotisation" onBack={()=>go("home")}/>
 <div style={{display:"flex",gap:6,marginBottom:18}}>{["Tout","Payé","En attente"].map(c=><button key={c} onClick={()=>setF(c)} style={{padding:"8px 14px",borderRadius:50,border:"none",cursor:"pointer",background:f===c?C.blue:C.card,color:f===c?"#fff":C.t3,fontSize:12,fontWeight:600}}>{c}</button>)}</div>
 {fl.map(r=>(<div key={r.id} style={{display:"flex",alignItems:"center",gap:12,padding:16,background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${C.brdL}`}}>
 <div style={{width:42,height:42,borderRadius:12,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue}}>{Z.doc}</div>
@@ -346,13 +362,13 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 
 // ── Notifications ──
 function Notif({go}){const im={warn:{i:Z.bell,bg:C.orangeL,c:C.orange},"in":{i:Z.dn,bg:C.greenL,c:C.green},gift:{i:Z.gift,bg:C.purpleL,c:C.purple},add:{i:Z.plus,bg:C.blueL,c:C.blue},pen:{i:Z.warn,bg:C.redL,c:C.red},msg:{i:Z.msg,bg:C.blueL,c:C.blue}};
-return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Notifications" onBack={()=>go("home")}/>
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Notifications" onBack={()=>go("home")}/>
 {NOTIFS.map(n=>{const ic=im[n.tp]||im.warn;return(<div key={n.id} style={{display:"flex",gap:12,padding:"14px 16px",background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${n.rd?C.brdL:C.blue+"20"}`,opacity:n.rd?.6:1}}>
 <div style={{width:42,height:42,borderRadius:12,background:ic.bg,display:"flex",alignItems:"center",justifyContent:"center",color:ic.c,flexShrink:0}}>{ic.i}</div>
 <div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{n.tt}</div><div style={{fontSize:12,color:C.t3,marginTop:2}}>{n.ds}</div><div style={{fontSize:11,color:C.t4,marginTop:4,display:"flex",alignItems:"center",gap:4}}>{Z.clk} {n.tm}</div></div></div>);})}</div>);}
 
 // ── Rewards ──
-function Rwd({go}){const pts=RWDS.filter(r=>r.ok).reduce((s,r)=>s+r.pt,0);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Récompenses" onBack={()=>go("home")}/>
+function Rwd({go}){const pts=RWDS.filter(r=>r.ok).reduce((s,r)=>s+r.pt,0);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Récompenses" onBack={()=>go("home")}/>
 <div style={{background:`linear-gradient(135deg,${C.navy},${C.navyM})`,borderRadius:24,padding:24,textAlign:"center",marginBottom:20,boxShadow:"0 8px 32px rgba(11,29,58,0.25)"}}>
 <div style={{fontSize:13,color:"rgba(255,255,255,0.6)",marginBottom:4}}>Points gagnés</div><div style={{fontSize:40,fontWeight:800,color:C.gold}}>{pts}</div><div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginTop:4}}>Cotisez pour débloquer plus !</div></div>
 {RWDS.map(r=>(<div key={r.id} style={{display:"flex",alignItems:"center",gap:14,padding:16,background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${C.brdL}`,opacity:r.ok?1:.45}}>
@@ -361,7 +377,7 @@ function Rwd({go}){const pts=RWDS.filter(r=>r.ok).reduce((s,r)=>s+r.pt,0);return
 <div style={{textAlign:"right"}}><div style={{fontSize:14,fontWeight:700,color:r.ok?C.gold:C.t4}}>+{r.pt}</div><Bdg s={r.ok?"completed":"pending"}/></div></div>))}</div>);}
 
 // ── Edit Profile ──
-function EditProfile({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Modifier le profil" onBack={()=>go("home")}/>
+function EditProfile({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Modifier le profil" onBack={()=>go("home")}/>
 <div style={{textAlign:"center",marginBottom:24}}><div style={{position:"relative",display:"inline-block"}}><Av ini="JT" sz={80} col={C.blue}/><button style={{position:"absolute",bottom:0,right:0,width:28,height:28,borderRadius:14,background:C.gold,border:"3px solid #fff",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer",padding:0}}>{Z.cam}</button></div></div>
 <Inp label="Nom complet" ph="Joeldy Tsina" val="Joeldy Tsina" set={()=>{}}/>
 <Inp label="Numéro de téléphone" ph="+242 06 466 3469" val="+242 06 466 3469" set={()=>{}}/>
@@ -369,7 +385,7 @@ function EditProfile({go}){return(<div style={{height:"100%",background:C.bg,ove
 <Btn full onClick={()=>go("home")}>Enregistrer</Btn></div>);}
 
 // ── Security ──
-function Sec({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Sécurité" onBack={()=>go("home")}/>
+function Sec({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Sécurité" onBack={()=>go("home")}/>
 <div style={{background:C.greenL,borderRadius:24,padding:20,textAlign:"center",marginBottom:20,border:`1px solid ${C.green}20`}}><div style={{fontSize:36,marginBottom:8}}>🛡️</div><div style={{fontSize:14,fontWeight:700,color:C.green}}>Score de sécurité : Excellent</div></div>
 <MenuRow icon={Z.lock} label="Changer le PIN" onClick={()=>go("changePin")}/>
 <MenuRow icon={Z.lock} label="Changer le mot de passe" onClick={()=>go("changePwd")}/>
@@ -379,28 +395,28 @@ function Sec({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"
 </div>);}
 
 // ── Change PIN ──
-function ChangePin({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Changer le PIN" onBack={()=>go("sec")}/>
+function ChangePin({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Changer le PIN" onBack={()=>go("sec")}/>
 <Inp label="PIN actuel" ph="••••" type="password" icon={Z.lock}/>
 <Inp label="Nouveau PIN" ph="••••" type="password" icon={Z.lock}/>
 <Inp label="Confirmer le nouveau PIN" ph="••••" type="password" icon={Z.lock}/>
 <Btn full onClick={()=>go("ok")}>Changer le PIN</Btn></div>);}
 
 // ── Change Password ──
-function ChangePwd({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Changer le mot de passe" onBack={()=>go("sec")}/>
+function ChangePwd({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Changer le mot de passe" onBack={()=>go("sec")}/>
 <Inp label="Mot de passe actuel" ph="••••••••" type="password" icon={Z.lock}/>
 <Inp label="Nouveau mot de passe" ph="Minimum 8 caractères" type="password" icon={Z.lock}/>
 <Inp label="Confirmer" ph="Retapez le nouveau" type="password" icon={Z.lock}/>
 <Btn full onClick={()=>go("ok")}>Changer le mot de passe</Btn></div>);}
 
 // ── Language ──
-function Lang({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Langue" onBack={()=>go("home")}/>
+function Lang({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Langue" onBack={()=>go("home")}/>
 {LANGS.map(l=>(<div key={l.code} style={{display:"flex",alignItems:"center",gap:14,padding:"16px",background:C.card,borderRadius:16,marginBottom:8,border:`1.5px solid ${l.active?C.blue:C.brdL}`,cursor:"pointer"}}>
 <span style={{fontSize:28}}>{l.flag}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{l.name}</div></div>
 {l.active&&<div style={{width:20,height:20,borderRadius:10,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
 </div>))}</div>);}
 
 // ── FAQ ──
-function FAQ({go}){const[open,setOpen]=useState(null);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="FAQ & Aide" onBack={()=>go("home")}/>
+function FAQ({go}){const[open,setOpen]=useState(null);return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="FAQ & Aide" onBack={()=>go("home")}/>
 {FAQS.map((f,i)=>(<div key={i} style={{background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${C.brdL}`,overflow:"hidden"}}>
 <button onClick={()=>setOpen(open===i?null:i)} style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"16px",width:"100%",background:"none",border:"none",cursor:"pointer",textAlign:"left"}}>
 <span style={{fontSize:14,fontWeight:600,color:C.t1,flex:1}}>{f.q}</span><span style={{color:C.t3,transform:open===i?"rotate(90deg)":"none",transition:"transform 0.2s"}}>{Z.fwd}</span></button>
@@ -410,7 +426,7 @@ function FAQ({go}){const[open,setOpen]=useState(null);return(<div style={{height
 </div>);}
 
 // ── Privacy ──
-function Privacy({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Politique de confidentialité" onBack={()=>go("home")}/>
+function Privacy({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Politique de confidentialité" onBack={()=>go("home")}/>
 {["Protection des données","Collecte d'informations","Utilisation des données","Sécurité","Partage avec des tiers","Vos droits"].map((s,i)=>(<div key={i} style={{background:C.card,borderRadius:16,padding:16,marginBottom:8,border:`1px solid ${C.brdL}`}}>
 <div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:6}}>{i+1}. {s}</div>
 <div style={{fontSize:12,color:C.t3,lineHeight:1.5}}>Likelemba (Lamuka Tech) s'engage à protéger vos données personnelles conformément aux lois en vigueur en République du Congo. Vos informations sont chiffrées et stockées de manière sécurisée.</div>
@@ -418,22 +434,243 @@ function Privacy({go}){return(<div style={{height:"100%",background:C.bg,overflo
 
 // ── Settings ──
 function Settings({go}){const[n,sN]=useState(true);const[b,sB]=useState(true);const[a,sA]=useState(true);
-return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px 30px"}}><Hdr title="Paramètres" onBack={()=>go("home")}/>
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:110}}><Hdr title="Paramètres" onBack={()=>go("home")}/>
 {[{l:"Notifications push",v:n,s:sN},{l:"Connexion biométrique",v:b,s:sB},{l:"Rappels automatiques",v:a,s:sA}].map((t,i)=>(<div key={i} style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"16px 18px",background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${C.brdL}`}}><span style={{fontSize:14,fontWeight:500,color:C.t1}}>{t.l}</span><Toggle v={t.v} set={t.s}/></div>))}
 <MenuRow icon={Z.shield} label="Sécurité" onClick={()=>go("sec")}/>
 <MenuRow icon={Z.globe} label="Langue" onClick={()=>go("lang")}/>
 <MenuRow icon={Z.help} label="FAQ & Aide" onClick={()=>go("faq")}/>
+<MenuRow icon={Z.doc} label="Conditions d'utilisation" onClick={()=>go("terms")}/>
 <MenuRow icon={Z.doc} label="Politique de confidentialité" onClick={()=>go("privacy")}/>
-<div style={{marginTop:20}}><button style={{width:"100%",padding:"14px",borderRadius:50,border:`1.5px solid ${C.red}`,background:"none",color:C.red,fontSize:14,fontWeight:600,cursor:"pointer"}}>Se déconnecter</button></div>
+<MenuRow icon={Z.star} label="À propos" onClick={()=>go("about")}/>
+<div style={{marginTop:20}}><button onClick={()=>go("login")} style={{width:"100%",padding:"14px",borderRadius:50,border:`1.5px solid ${C.red}`,background:"none",color:C.red,fontSize:14,fontWeight:600,cursor:"pointer"}}>Se déconnecter</button></div>
+<div style={{marginTop:10}}><button onClick={()=>go("deleteAccount")} style={{width:"100%",padding:"14px",borderRadius:50,border:"none",background:"none",color:C.t3,fontSize:13,fontWeight:500,cursor:"pointer"}}>Supprimer le compte</button></div>
+</div>);}
+
+// ── Withdraw from Kolo Money ──
+function Withdraw({go}){const[amt,setAmt]=useState("");const[dest,setDest]=useState(1);
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Retrait Kolo Money" onBack={()=>go("wallets")}/>
+<div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,textAlign:"center",marginBottom:16}}>
+<div style={{fontSize:13,color:C.t3,marginBottom:4}}>Solde Kolo Money</div>
+<div style={{fontSize:28,fontWeight:800,color:C.gold}}>💎 {fm(95000)} <span style={{fontSize:13,color:C.t3}}>FCFA</span></div>
+</div>
+<div style={{background:C.card,borderRadius:20,padding:"20px",textAlign:"center",marginBottom:16,border:`1px solid ${C.brd}`}}>
+<div style={{fontSize:13,color:C.t3,marginBottom:8}}>Montant à retirer</div>
+<div style={{display:"flex",alignItems:"center",justifyContent:"center"}}><input value={amt} onChange={e=>setAmt(e.target.value)} placeholder="0" style={{fontSize:32,fontWeight:800,color:C.gold,border:"none",background:"none",outline:"none",width:140,textAlign:"center"}}/><span style={{fontSize:16,fontWeight:600,color:C.t3}}>FCFA</span></div>
+</div>
+<div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Vers quel compte ?</div>
+{WALLETS.filter(w=>w.id>0).map(w=>(<button key={w.id} onClick={()=>setDest(w.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",width:"100%",background:dest===w.id?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${dest===w.id?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
+<span style={{fontSize:24}}>{w.logo}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num}</div></div>
+{dest===w.id&&<div style={{width:20,height:20,borderRadius:10,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
+</button>))}
+<div style={{background:C.orangeL,borderRadius:12,padding:"10px 14px",marginTop:12,marginBottom:16,display:"flex",gap:8,alignItems:"center",border:`1px solid ${C.orange}20`}}>
+<span style={{color:C.orange}}>{Z.warn}</span><span style={{fontSize:12,color:C.t2}}>Frais de retrait : 1% (min 100 FCFA)</span>
+</div>
+<Btn full onClick={()=>go("ok")} dis={!amt}>Retirer {amt?fm(amt):""} FCFA</Btn>
+</div>);}
+
+// ── Top up Kolo Money ──
+function TopUp({go}){const[amt,setAmt]=useState("");const[src,setSrc]=useState(1);
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Recharger Kolo Money" onBack={()=>go("wallets")}/>
+<div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,textAlign:"center",marginBottom:16}}>
+<div style={{fontSize:13,color:C.t3,marginBottom:4}}>Solde actuel</div>
+<div style={{fontSize:28,fontWeight:800,color:C.gold}}>💎 {fm(95000)} <span style={{fontSize:13,color:C.t3}}>FCFA</span></div>
+</div>
+<div style={{background:C.card,borderRadius:20,padding:"20px",textAlign:"center",marginBottom:16,border:`1px solid ${C.brd}`}}>
+<div style={{fontSize:13,color:C.t3,marginBottom:8}}>Montant à recharger</div>
+<div style={{display:"flex",alignItems:"center",justifyContent:"center"}}><input value={amt} onChange={e=>setAmt(e.target.value)} placeholder="0" style={{fontSize:32,fontWeight:800,color:C.blue,border:"none",background:"none",outline:"none",width:140,textAlign:"center"}}/><span style={{fontSize:16,fontWeight:600,color:C.t3}}>FCFA</span></div>
+</div>
+<div style={{display:"flex",gap:8,marginBottom:16}}>{[5000,10000,25000,50000].map(v=>(<button key={v} onClick={()=>setAmt(String(v))} style={{flex:1,padding:"10px 0",borderRadius:10,border:`1px solid ${C.brd}`,background:amt===String(v)?C.blueL:C.card,color:amt===String(v)?C.blue:C.t2,fontSize:12,fontWeight:600,cursor:"pointer"}}>{fm(v)}</button>))}</div>
+<div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Depuis</div>
+{WALLETS.filter(w=>w.id>0).map(w=>(<button key={w.id} onClick={()=>setSrc(w.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",width:"100%",background:src===w.id?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${src===w.id?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
+<span style={{fontSize:24}}>{w.logo}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num} · <span style={{color:C.gold}}>{fm(w.bal)} F</span></div></div>
+{src===w.id&&<div style={{width:20,height:20,borderRadius:10,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
+</button>))}
+<div style={{marginTop:16}}><Btn full onClick={()=>go("ok")} dis={!amt}>Recharger {amt?fm(amt):""} FCFA</Btn></div>
+</div>);}
+
+// ── Leave Circle ──
+function LeaveCircle({go}){const[confirmed,setConfirmed]=useState(false);
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Quitter le cercle" onBack={()=>go("home")}/>
+<div style={{textAlign:"center",marginBottom:24}}><div style={{width:64,height:64,borderRadius:20,background:C.redL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16}}>{Z.warn}</div>
+<h3 style={{fontSize:20,fontWeight:800,color:C.t0,margin:"0 0 8px"}}>Êtes-vous sûr ?</h3>
+<p style={{fontSize:13,color:C.t3,lineHeight:1.5}}>Vous êtes sur le point de quitter le Cercle Élite</p></div>
+<div style={{background:C.redL,borderRadius:16,padding:16,marginBottom:20,border:`1px solid ${C.red}20`}}>
+<div style={{fontSize:13,fontWeight:700,color:C.red,marginBottom:8}}>⚠️ Conséquences :</div>
+{["Vous perdrez votre position dans la rotation","Les cotisations déjà versées ne seront pas remboursées","Vous ne pourrez pas rejoindre ce cercle pendant 30 jours","Si c'est votre tour, le gain sera redistribué"].map((t,i)=>(<div key={i} style={{fontSize:12,color:C.t2,marginBottom:6,paddingLeft:12,borderLeft:`2px solid ${C.red}40`}}>{t}</div>))}
+</div>
+<div style={{display:"flex",alignItems:"center",gap:10,marginBottom:24}}>
+<button onClick={()=>setConfirmed(!confirmed)} style={{width:22,height:22,borderRadius:6,border:`2px solid ${confirmed?C.red:C.brd}`,background:confirmed?C.red:"transparent",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center"}}>{confirmed&&Z.okW}</button>
+<span style={{fontSize:13,color:C.t2}}>Je comprends les conséquences et je souhaite quitter</span>
+</div>
+<Btn full onClick={()=>go("ok")} dis={!confirmed} sx={{background:confirmed?C.red:"#ccc",boxShadow:"none"}}>Quitter le cercle</Btn>
+<div style={{marginTop:12}}><Btn v="s" full onClick={()=>go("home")}>Annuler</Btn></div>
+</div>);}
+
+// ── Edit Circle (Admin) ──
+function EditCircle({go}){const c=CIR[0];const[name,setName]=useState(c.name);const[amt,setAmt]=useState(String(c.amt));const[pen,setPen]=useState(String(c.pen));
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Modifier le cercle" onBack={()=>go("cd:1")}/>
+<Inp label="Nom du cercle" ph="Cercle Élite" val={name} set={setName}/>
+<Inp label="Montant par tour (FCFA)" ph="25000" val={amt} set={setAmt} type="number"/>
+<Inp label="Pénalité de retard (%)" ph="5" val={pen} set={setPen} type="number"/>
+<div style={{fontSize:14,fontWeight:600,color:C.t1,marginBottom:10,marginTop:8}}>Membres ({MEM.length})</div>
+{MEM.map(m=>(<div key={m.id} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+<Av ini={m.i} sz={36}/><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{m.n}</div><div style={{fontSize:11,color:C.t3}}>{m.p}</div></div>
+{m.id!==1&&<button style={{fontSize:11,fontWeight:600,color:C.red,background:C.redL,border:"none",borderRadius:8,padding:"4px 10px",cursor:"pointer"}}>Exclure</button>}
+{m.id===1&&<span style={{fontSize:11,fontWeight:700,color:C.blue,background:C.blueL,padding:"4px 10px",borderRadius:8}}>Admin</span>}
+</div>))}
+<div style={{marginTop:16}}><Btn full onClick={()=>go("ok")}>Enregistrer</Btn></div>
+</div>);}
+
+// ── Member Profile ──
+function MemberProf({go,mid}){const m=MEM.find(x=>x.id===mid)||MEM[0];const memberTxs=TXS.filter(tx=>tx.n.includes(m.n.split(" ")[0]));
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Profil membre" onBack={()=>go("home")}/>
+<div style={{background:C.card,borderRadius:20,padding:24,textAlign:"center",border:`1px solid ${C.brd}`,marginBottom:16}}>
+<Av ini={m.i} sz={64} col={C.blue}/>
+<div style={{fontSize:18,fontWeight:700,color:C.t0,marginTop:10}}>{m.n}</div>
+<div style={{fontSize:13,color:C.t3,marginTop:2}}>{m.p}</div>
+<div style={{display:"flex",gap:12,justifyContent:"center",marginTop:14}}>
+{[{l:"Tour",v:m.t,c:C.gold},{l:"Statut",v:m.ok?"Payé":"En attente",c:m.ok?C.green:C.orange},{l:"Pénalité",v:m.pen>0?fm(m.pen)+" F":"0 F",c:m.pen>0?C.red:C.green}].map((s,i)=>(
+<div key={i} style={{padding:"8px 14px",background:C.bg,borderRadius:10}}>
+<div style={{fontSize:14,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:C.t3}}>{s.l}</div>
+</div>))}
+</div>
+</div>
+<div style={{display:"flex",gap:8,marginBottom:16}}>
+<Btn v="s" full sx={{flex:1}}>{Z.msg} Message</Btn>
+<Btn v="s" full sx={{flex:1}}>{Z.phone} Appeler</Btn>
+</div>
+<div style={{fontSize:14,fontWeight:600,color:C.t1,marginBottom:10}}>Historique dans le cercle</div>
+{memberTxs.length>0?memberTxs.map(tx=><TxR key={tx.id} tx={tx}/>)
+:<div style={{textAlign:"center",padding:24,color:C.t3,fontSize:13}}>Aucune transaction trouvée</div>}
+</div>);}
+
+// ── Payment Calendar ──
+function Calendar({go}){const months=["Jan","Fév","Mar","Avr","Mai","Jun"];const today=3;
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Calendrier des paiements" onBack={()=>go("home")}/>
+<div style={{display:"flex",gap:8,overflowX:"auto",marginBottom:16}}>
+{CIR.map(c=>(<button key={c.id} style={{padding:"8px 16px",borderRadius:50,border:"none",cursor:"pointer",background:c.id===1?C.blue:C.card,color:c.id===1?"#fff":C.t2,fontSize:12,fontWeight:600,whiteSpace:"nowrap",flexShrink:0}}>{c.name}</button>))}
+</div>
+<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:12}}>Cercle Élite — 2026</div>
+{months.map((mo,i)=>{const isPast=i<today;const isCurrent=i===today;const member=MEM[i%MEM.length];
+return(<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",background:C.card,borderRadius:16,marginBottom:8,border:`1.5px solid ${isCurrent?C.blue+"50":C.brdL}`,opacity:isPast?.6:1}}>
+<div style={{width:44,height:44,borderRadius:14,background:isCurrent?C.blueL:isPast?C.greenL:C.bg,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+<span style={{fontSize:10,fontWeight:700,color:isCurrent?C.blue:isPast?C.green:C.t3}}>{mo}</span>
+<span style={{fontSize:14,fontWeight:800,color:isCurrent?C.blue:isPast?C.green:C.t1}}>01</span>
+</div>
+<div style={{flex:1}}>
+<div style={{fontSize:13,fontWeight:600,color:C.t1}}>Tour de {member.n}</div>
+<div style={{fontSize:12,color:C.t3}}>Cotisation : {fm(25000)} FCFA</div>
+</div>
+<div style={{textAlign:"right"}}>
+{isPast&&<Bdg s="paid"/>}
+{isCurrent&&<Bdg s="pending"/>}
+{!isPast&&!isCurrent&&<span style={{fontSize:11,color:C.t4,fontWeight:500}}>À venir</span>}
+</div>
+</div>);})}
+</div>);}
+
+// ── Circle Stats ──
+function CircleStats({go}){const data=[{l:"Jan",v:100},{l:"Fév",v:95},{l:"Mar",v:88},{l:"Avr",v:67},{l:"Mai",v:0},{l:"Jun",v:0}];const max=100;
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Statistiques" onBack={()=>go("cd:1")}/>
+{/* Summary cards */}
+<div style={{display:"flex",gap:10,marginBottom:16}}>
+{[{l:"Taux ponctualité",v:"87%",c:C.green,bg:C.greenL},{l:"Total collecté",v:"402K",c:C.gold,bg:C.goldL},{l:"Pénalités",v:"2 500",c:C.red,bg:C.redL}].map((s,i)=>(
+<div key={i} style={{flex:1,textAlign:"center",padding:"14px 8px",background:s.bg,borderRadius:14,border:`1px solid ${s.c}15`}}>
+<div style={{fontSize:18,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:C.t3,marginTop:2}}>{s.l}</div>
+</div>))}
+</div>
+{/* Chart */}
+<div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,marginBottom:16}}>
+<div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:16}}>Taux de collecte mensuel (%)</div>
+<div style={{display:"flex",alignItems:"flex-end",gap:8,height:120}}>
+{data.map((d,i)=>(<div key={i} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
+<span style={{fontSize:10,fontWeight:600,color:d.v>0?C.blue:C.t4}}>{d.v>0?d.v+"%":""}</span>
+<div style={{width:"100%",borderRadius:6,height:`${Math.max((d.v/max)*100,4)}%`,background:d.v>=80?`linear-gradient(180deg,${C.blue},${C.blueD})`:d.v>0?C.orange:C.brd,transition:"height 0.5s"}}/>
+<span style={{fontSize:10,color:C.t3}}>{d.l}</span>
+</div>))}
+</div>
+</div>
+{/* Gains history */}
+<div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:10}}>Historique des gains</div>
+{[{who:"Joeldy T.",date:"01 Jan 2026",amount:150000,status:"paid"},{who:"Grace M.",date:"01 Fév 2026",amount:150000,status:"paid"},{who:"Patrick K.",date:"01 Mar 2026",amount:150000,status:"paid"},{who:"Merveille N.",date:"01 Avr 2026",amount:150000,status:"pending"}].map((g,i)=>(
+<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+<div style={{width:30,height:30,borderRadius:8,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:800,color:C.blue}}>{i+1}</div>
+<div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{g.who}</div><div style={{fontSize:11,color:C.t3}}>{g.date}</div></div>
+<div style={{textAlign:"right"}}><div style={{fontSize:13,fontWeight:700,color:C.gold}}>{fm(g.amount)} F</div><Bdg s={g.status}/></div>
+</div>))}
+</div>);}
+
+// ── Terms of Service ──
+function Terms({go}){
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Conditions d'utilisation" onBack={()=>go("settings")}/>
+{[{t:"1. Acceptation des conditions",d:"En utilisant Likelemba, vous acceptez les présentes conditions. L'application est opérée par Lamuka Tech, société de droit congolais basée à Brazzaville."},
+{t:"2. Inscription et compte",d:"L'utilisateur doit fournir un numéro de téléphone valide et des informations exactes. Chaque personne ne peut détenir qu'un seul compte. Le PIN est confidentiel."},
+{t:"3. Fonctionnement des cercles",d:"Un cercle de tontine est un groupe d'épargne rotative. Chaque membre cotise le montant fixé à la fréquence définie. Le bénéficiaire du tour reçoit la totalité de la cagnotte."},
+{t:"4. Paiements et Kolo Money",d:"Les cotisations se font via Kolo Money, MTN Mobile Money ou Airtel Money. Kolo Money est le portefeuille interne de Likelemba. Les retraits sont soumis à des frais de 1%."},
+{t:"5. Pénalités de retard",d:"En cas de retard de cotisation, une pénalité de 5 à 10% du montant est automatiquement appliquée. Les pénalités sont redistribuées au cercle."},
+{t:"6. Responsabilités",d:"Lamuka Tech ne peut être tenue responsable des désaccords entre membres d'un cercle. L'admin du cercle est responsable de la gestion des membres."},
+{t:"7. Protection des données",d:"Vos données personnelles sont protégées conformément à la législation congolaise. Elles ne sont jamais vendues à des tiers."},
+{t:"8. Résiliation",d:"Vous pouvez supprimer votre compte à tout moment. Les cotisations en cours ne seront pas remboursées. Un délai de 30 jours s'applique avant suppression définitive."}
+].map((s,i)=>(<div key={i} style={{background:C.card,borderRadius:16,padding:16,marginBottom:8,border:`1px solid ${C.brdL}`}}>
+<div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:6}}>{s.t}</div>
+<div style={{fontSize:12,color:C.t3,lineHeight:1.5}}>{s.d}</div>
+</div>))}
+<div style={{textAlign:"center",marginTop:12,fontSize:11,color:C.t4}}>Dernière mise à jour : 01 Avril 2026</div>
+</div>);}
+
+// ── About / Contact ──
+function About({go}){
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="À propos" onBack={()=>go("settings")}/>
+<div style={{background:C.card,borderRadius:20,padding:24,textAlign:"center",border:`1px solid ${C.brd}`,marginBottom:16}}>
+<div style={{width:60,height:60,borderRadius:18,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:12,boxShadow:"0 8px 24px rgba(26,86,219,0.25)"}}><span style={{fontSize:24,fontWeight:900,color:"#fff"}}>LK</span></div>
+<div style={{fontSize:20,fontWeight:800,color:C.t0}}>Likelemba</div>
+<div style={{fontSize:12,color:C.gold,fontWeight:600,letterSpacing:1,marginTop:2}}>TONTINE DIGITALE</div>
+<div style={{fontSize:12,color:C.t3,marginTop:8}}>Version 1.0.0</div>
+</div>
+<div style={{background:C.card,borderRadius:16,padding:16,marginBottom:16,border:`1px solid ${C.brdL}`}}>
+<div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:8}}>À propos</div>
+<div style={{fontSize:13,color:C.t2,lineHeight:1.6}}>Likelemba est une application de tontine digitale développée par Lamuka Tech. Notre mission est de moderniser l'épargne communautaire en Afrique Centrale grâce à la technologie mobile.</div>
+</div>
+<div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:10}}>Contact</div>
+{[{ic:"📧",l:"Email",v:"business@lamuka-tech.com"},{ic:"📱",l:"Téléphone",v:"+242 06 466 3469"},{ic:"🌐",l:"Site web",v:"lamuka-tech.com"},{ic:"📍",l:"Adresse",v:"Brazzaville, Congo"}].map((c,i)=>(
+<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+<span style={{fontSize:20}}>{c.ic}</span><div style={{flex:1}}><div style={{fontSize:11,color:C.t3}}>{c.l}</div><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{c.v}</div></div>
+</div>))}
+<div style={{fontSize:14,fontWeight:700,color:C.t1,marginTop:16,marginBottom:10}}>Réseaux sociaux</div>
+<div style={{display:"flex",gap:10}}>
+{[{ic:"📘",l:"Facebook"},{ic:"📸",l:"Instagram"},{ic:"🐦",l:"Twitter"},{ic:"💼",l:"LinkedIn"}].map((s,i)=>(
+<div key={i} style={{flex:1,textAlign:"center",padding:"12px 4px",background:C.card,borderRadius:12,border:`1px solid ${C.brdL}`,cursor:"pointer"}}>
+<div style={{fontSize:20,marginBottom:4}}>{s.ic}</div><div style={{fontSize:10,color:C.t3}}>{s.l}</div>
+</div>))}
+</div>
+</div>);}
+
+// ── Delete Account ──
+function DeleteAccount({go}){const[reason,setReason]=useState("");const[confirmed,setConfirmed]=useState(false);
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}><Hdr title="Supprimer le compte" onBack={()=>go("settings")}/>
+<div style={{textAlign:"center",marginBottom:24}}><div style={{width:64,height:64,borderRadius:20,background:C.redL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,color:C.red}}>{Z.warn}</div>
+<h3 style={{fontSize:20,fontWeight:800,color:C.red,margin:"0 0 8px"}}>Supprimer votre compte</h3>
+<p style={{fontSize:13,color:C.t3,lineHeight:1.5}}>Cette action est irréversible</p></div>
+<div style={{background:C.redL,borderRadius:16,padding:16,marginBottom:20,border:`1px solid ${C.red}20`}}>
+<div style={{fontSize:13,fontWeight:700,color:C.red,marginBottom:8}}>⚠️ Vous allez perdre :</div>
+{["Votre solde Kolo Money (95 000 FCFA)","Tous vos cercles et cotisations en cours","Votre historique de transactions","Vos récompenses et points (600 pts)","Votre numéro ne pourra pas être réutilisé pendant 90 jours"].map((t,i)=>(<div key={i} style={{fontSize:12,color:C.t2,marginBottom:6,paddingLeft:12,borderLeft:`2px solid ${C.red}40`}}>{t}</div>))}
+</div>
+<Inp label="Raison de la suppression (optionnel)" ph="Dites-nous pourquoi vous partez..." val={reason} set={setReason} area={true}/>
+<div style={{display:"flex",alignItems:"center",gap:10,marginBottom:24}}>
+<button onClick={()=>setConfirmed(!confirmed)} style={{width:22,height:22,borderRadius:6,border:`2px solid ${confirmed?C.red:C.brd}`,background:confirmed?C.red:"transparent",cursor:"pointer",flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center"}}>{confirmed&&Z.okW}</button>
+<span style={{fontSize:13,color:C.t2}}>Je comprends que cette action est irréversible et je souhaite supprimer mon compte</span>
+</div>
+<Btn full onClick={()=>go("login")} dis={!confirmed} sx={{background:confirmed?C.red:"#ccc",boxShadow:"none"}}>Supprimer définitivement</Btn>
+<div style={{marginTop:12}}><Btn v="s" full onClick={()=>go("settings")}>Annuler</Btn></div>
 </div>);}
 
 // ── Success ──
 function Ok({go}){const[s,setS]=useState(false);useEffect(()=>{setTimeout(()=>setS(true),100)},[]);
-return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",background:C.bg,padding:"40px 28px"}}>
+return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",background:C.bg,padding:"40px 28px",paddingBottom:40}}>
 <div style={{opacity:s?1:0,transform:s?"scale(1)":"scale(0.5)",transition:"all 0.5s cubic-bezier(0.34,1.56,0.64,1)",marginBottom:24}}>{Z.okBig}</div>
 <h2 style={{fontSize:22,fontWeight:800,color:C.t0,margin:"0 0 8px",opacity:s?1:0,transition:"opacity 0.4s ease 0.2s"}}>Succès !</h2>
 <p style={{fontSize:14,color:C.t3,textAlign:"center",opacity:s?1:0,transition:"opacity 0.4s ease 0.3s"}}>Opération effectuée avec succès.</p>
-<div style={{width:"100%",marginTop:40,opacity:s?1:0,transition:"opacity 0.4s ease 0.4s"}}><Btn full onClick={()=>go("home")}>Retour à l'accueil</Btn><div style={{height:12}}/><Btn v="s" full onClick={()=>go("home")}>Voir les détails</Btn></div></div>);}
+<div style={{width:"100%",marginTop:32,opacity:s?1:0,transition:"opacity 0.4s ease 0.4s"}}><Btn full onClick={()=>go("home")}>Retour à l'accueil</Btn><div style={{height:12}}/><Btn v="s" full onClick={()=>go("home")}>Voir les détails</Btn></div></div>);}
 
 // ═══════════ MAIN APP ═══════════
 export default function App(){
@@ -442,12 +679,14 @@ export default function App(){
   const cid=sc.startsWith("cd:")?parseInt(sc.split(":")[1]):null;
   const chatId=sc.startsWith("chat:")?parseInt(sc.split(":")[1]):null;
   const txId=sc.startsWith("txd:")?parseInt(sc.split(":")[1]):null;
+  const memId=sc.startsWith("mem:")?parseInt(sc.split(":")[1]):null;
   const noSB=["splash","onb","login","ok","pin","reg1","reg2","reg3","forgot"];
 
   const render=()=>{
     if(cid) return <CircleDetail go={go} cid={cid}/>;
     if(chatId) return <Chat go={go} cid={chatId}/>;
     if(txId) return <TxDetail go={go} txId={txId}/>;
+    if(memId) return <MemberProf go={go} mid={memId}/>;
     switch(sc){
       case "splash": return <Splash go={go}/>;
       case "onb": return <Onb go={go}/>;
@@ -463,6 +702,8 @@ export default function App(){
       case "remind": return <Remind go={go}/>;
       case "qr": return <QR go={go}/>;
       case "wallets": return <Wallets go={go}/>;
+      case "withdraw": return <Withdraw go={go}/>;
+      case "topup": return <TopUp go={go}/>;
       case "sav": return <Sav go={go}/>;
       case "rcpt": return <Rcpt go={go}/>;
       case "notif": return <Notif go={go}/>;
@@ -474,10 +715,17 @@ export default function App(){
       case "lang": return <Lang go={go}/>;
       case "faq": return <FAQ go={go}/>;
       case "privacy": return <Privacy go={go}/>;
+      case "terms": return <Terms go={go}/>;
+      case "about": return <About go={go}/>;
+      case "deleteAccount": return <DeleteAccount go={go}/>;
       case "settings": return <Settings go={go}/>;
       case "createCircle": return <CreateCircle go={go}/>;
       case "joinCircle": return <JoinCircle go={go}/>;
       case "invite": return <Invite go={go}/>;
+      case "leaveCircle": return <LeaveCircle go={go}/>;
+      case "editCircle": return <EditCircle go={go}/>;
+      case "calendar": return <Calendar go={go}/>;
+      case "circleStats": return <CircleStats go={go}/>;
       case "ok": return <Ok go={go}/>;
       default: return <Home go={go}/>;
     }
@@ -487,7 +735,7 @@ export default function App(){
     <div style={{display:"flex",justifyContent:"center",alignItems:"center",minHeight:"100vh",background:"#E8ECF0",padding:20,fontFamily:"-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif"}}>
       <style>{css}</style>
       <div style={{width:375,height:812,borderRadius:44,position:"relative",overflow:"hidden",background:C.bg,boxShadow:"0 0 0 2px #D1D5DB,0 0 0 4px #B8BFC7,0 25px 80px rgba(0,0,0,0.2)"}}>
-        {!noSB.includes(sc)&&!cid&&!chatId&&!txId&&(
+        {!noSB.includes(sc)&&!cid&&!chatId&&!txId&&!memId&&(
           <div style={{position:"absolute",top:0,left:0,right:0,zIndex:20,display:"flex",justifyContent:"space-between",alignItems:"center",padding:"10px 24px 6px",fontSize:13,fontWeight:600,color:C.t1}}>
             <span>9:41</span>
             <div style={{width:120,height:28,borderRadius:14,background:"#1A1A1A",position:"absolute",left:"50%",transform:"translateX(-50%)",top:6}}/>
@@ -497,7 +745,7 @@ export default function App(){
             </div>
           </div>
         )}
-        <div style={{height:"100%",paddingTop:noSB.includes(sc)&&!cid&&!chatId&&!txId?0:44}}>{render()}</div>
+        <div style={{height:"100%",paddingTop:noSB.includes(sc)&&!cid&&!chatId&&!txId&&!memId?0:44}}>{render()}</div>
       </div>
     </div>
   );
