@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import TrustPayApp from './TrustPayApp'
+import Likelemba from './likelemba'
 import './index.css'
 
-createRoot(document.getElementById('root')).render(<TrustPayApp />)
+createRoot(document.getElementById('root')).render(<Likelemba />)
