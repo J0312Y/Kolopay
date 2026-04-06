@@ -297,7 +297,7 @@ return(<div>
 <SvgIc type={f.ic} size={22}/><span style={{fontSize:10,fontWeight:600,color:C.t2,textAlign:"center",lineHeight:1.3,whiteSpace:"pre-line"}}>{f.t}</span></button>))}
 </div>
 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:8,marginBottom:18}}>
-{[{ic:Z.phone,t:"Crédit\n& Data",s:"buyCredit"},{ic:Z.doc,t:"Factures",s:"bills"},{ic:Z.dn,t:"Micro-\ncrédit",s:"microCredit"},{ic:Z.grp,t:"Objectifs\ngroupe",s:"groupGoals"}].map((f,i)=>(
+{[{ic:Z.dn,t:"Demander\nargent",s:"requestMoney"},{ic:Z.doc,t:"Factures",s:"bills"},{ic:Z.dn,t:"Micro-\ncrédit",s:"microCredit"},{ic:Z.grp,t:"Objectifs\ngroupe",s:"groupGoals"}].map((f,i)=>(
 <button key={i} onClick={()=>go(f.s)} style={{background:C.card,borderRadius:14,padding:"12px 4px",border:`1px solid ${C.brd}`,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:6,color:C.blue}} onMouseEnter={e=>e.currentTarget.style.boxShadow=C.sh} onMouseLeave={e=>e.currentTarget.style.boxShadow="none"}>
 {f.ic}<span style={{fontSize:10,fontWeight:600,color:C.t2,textAlign:"center",lineHeight:1.3,whiteSpace:"pre-line"}}>{f.t}</span></button>))}
 </div>
@@ -1139,26 +1139,22 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>}
 </div>);}
 
-// ── Buy Credit/Data ──
-function BuyCredit({go}){const[tab,setTab]=useState("credit");const[op,setOp]=useState(0);const[amt,setAmt]=useState("");
-const ops=[{n:"MTN",logo:"mtn"},{n:"Airtel",logo:"airtel"}];
-const dataPacks=[{n:"1 Go / 1 jour",p:500},{n:"3 Go / 7 jours",p:1500},{n:"10 Go / 30 jours",p:5000},{n:"25 Go / 30 jours",p:10000},{n:"Illimité / 24h",p:1000},{n:"50 Go / 30 jours",p:15000}];
-return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Crédit & Data" onBack={()=>go("back")}/>
-<div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:16,border:`1px solid ${C.brd}`}}>
-{[{k:"credit",l:"Crédit"},{k:"data",l:"Forfait Data"}].map(t=>(<button key={t.k} onClick={()=>setTab(t.k)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t.k?`linear-gradient(135deg,${C.blue},${C.blueD})`:"transparent",color:tab===t.k?"#fff":C.t3,fontSize:13,fontWeight:600,cursor:"pointer"}}>{t.l}</button>))}
+// ── Request Money ──
+function RequestMoney({go}){const[amt,setAmt]=useState("");const[to,setTo]=useState("");const[note,setNote]=useState("");
+const contacts=[{n:"Grace M.",p:"+242 05 512 8834",i:"GM"},{n:"Patrick K.",p:"+242 06 891 2245",i:"PK"},{n:"Merveille N.",p:"+242 05 334 7712",i:"MN"},{n:"Divine L.",p:"+242 05 667 9983",i:"DL"}];
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Demander de l'argent" onBack={()=>go("back")}/>
+<div style={{background:C.card,borderRadius:20,padding:"24px 20px",textAlign:"center",marginBottom:16,border:`1px solid ${C.brd}`}}>
+<div style={{fontSize:13,color:C.t3,marginBottom:8}}>Montant demandé</div>
+<div style={{display:"flex",alignItems:"center",justifyContent:"center"}}><input value={amt} onChange={e=>setAmt(e.target.value)} placeholder="0" style={{fontSize:36,fontWeight:800,color:C.blue,border:"none",background:"none",outline:"none",width:160,textAlign:"center"}}/><span style={{fontSize:16,fontWeight:600,color:C.t3}}>FCFA</span></div>
 </div>
-<div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Opérateur</div>
-<div style={{display:"flex",gap:8,marginBottom:16}}>{ops.map((o,i)=>(<button key={i} onClick={()=>setOp(i)} style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",gap:8,padding:"14px",background:op===i?C.blueL:C.card,borderRadius:14,border:`1.5px solid ${op===i?C.blue:C.brdL}`,cursor:"pointer"}}>
-<SvgIc type={o.logo} size={28}/><span style={{fontSize:14,fontWeight:600,color:C.t1}}>{o.n}</span></button>))}</div>
-<Inp label="Numéro" ph="+242 06 XXX XXXX" icon={Z.phone}/>
-{tab==="credit"?<div>
-<div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Montant</div>
-<div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:16}}>
-{[500,1000,2000,5000,10000,20000].map(v=>(<button key={v} onClick={()=>setAmt(String(v))} style={{padding:"14px 0",borderRadius:12,border:`1.5px solid ${amt===String(v)?C.blue:C.brd}`,background:amt===String(v)?C.blueL:C.card,color:amt===String(v)?C.blue:C.t1,fontSize:14,fontWeight:700,cursor:"pointer"}}>{fm(v)} F</button>))}</div>
-</div>
-:<div>{dataPacks.map((d,i)=>(<button key={i} onClick={()=>setAmt(String(d.p))} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"14px 16px",width:"100%",background:amt===String(d.p)?C.blueL:C.card,borderRadius:14,marginBottom:6,border:`1.5px solid ${amt===String(d.p)?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
-<span style={{fontSize:13,fontWeight:600,color:C.t1}}>{d.n}</span><span style={{fontSize:14,fontWeight:700,color:C.gold}}>{fm(d.p)} F</span></button>))}</div>}
-<div style={{marginTop:16}}><Btn full onClick={()=>go("ok")} dis={!amt}>{tab==="credit"?"Recharger":"Acheter"} {amt?fm(amt)+" FCFA":""}</Btn></div>
+<div style={{display:"flex",gap:8,marginBottom:16}}>{[5000,10000,25000,50000].map(v=>(<button key={v} onClick={()=>setAmt(String(v))} style={{flex:1,padding:"10px 0",borderRadius:10,border:`1px solid ${amt===String(v)?C.blue:C.brd}`,background:amt===String(v)?C.blueL:C.card,color:amt===String(v)?C.blue:C.t2,fontSize:12,fontWeight:600,cursor:"pointer"}}>{fm(v)}</button>))}</div>
+<Inp label="Motif (optionnel)" ph="Ex: Remboursement cotisation" val={note} set={setNote}/>
+<div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Demander à</div>
+{contacts.map((c,i)=>(<button key={i} onClick={()=>setTo(c.p)} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",width:"100%",background:to===c.p?C.blueL:C.card,borderRadius:14,marginBottom:6,border:`1.5px solid ${to===c.p?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
+<Av ini={c.i} sz={40}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{c.n}</div><div style={{fontSize:12,color:C.t3}}>{c.p}</div></div>
+{to===c.p&&<div style={{width:18,height:18,borderRadius:9,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
+</button>))}
+<div style={{marginTop:16}}><Btn full onClick={()=>go("ok")} dis={!amt||!to}>Envoyer la demande</Btn></div>
 </div>);}
 
 // ── Bill Payment ──
@@ -1256,7 +1252,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>
 {/* Categories */}
 <div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:10}}>Par catégorie</div>
-{[{n:"Cotisations tontine",a:250000,pct:62,c:C.blue},{n:"Transferts P2P",a:80000,pct:20,c:C.gold},{n:"Crédit & Data",a:35000,pct:9,c:C.green},{n:"Factures",a:25000,pct:6,c:C.orange},{n:"Achats Kolo Card",a:10000,pct:3,c:C.purple}].map((c,i)=>(<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"10px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+{[{n:"Cotisations tontine",a:250000,pct:62,c:C.blue},{n:"Transferts P2P",a:80000,pct:20,c:C.gold},{n:"Demandes reçues",a:35000,pct:9,c:C.green},{n:"Factures",a:25000,pct:6,c:C.orange},{n:"Achats Kolo Card",a:10000,pct:3,c:C.purple}].map((c,i)=>(<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"10px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
 <div style={{width:8,height:32,borderRadius:4,background:c.c}}/>
 <div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{c.n}</div><div style={{background:C.bg,borderRadius:3,height:4,marginTop:4,overflow:"hidden"}}><div style={{width:`${c.pct}%`,height:"100%",background:c.c,borderRadius:3}}/></div></div>
 <div style={{textAlign:"right"}}><div style={{fontSize:13,fontWeight:700,color:C.t1}}>{fm(c.a)} F</div><div style={{fontSize:10,color:C.t3}}>{c.pct}%</div></div>
@@ -1452,7 +1448,7 @@ export default function App(){
       case "promos": return <Promos go={go}/>;
       case "contract": return <Contract go={go}/>;
       case "transfer": return <Transfer go={go}/>;
-      case "buyCredit": return <BuyCredit go={go}/>;
+      case "requestMoney": return <RequestMoney go={go}/>;
       case "bills": return <Bills go={go}/>;
       case "microCredit": return <MicroCredit go={go}/>;
       case "groupGoals": return <GroupGoals go={go}/>;
