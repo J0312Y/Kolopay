@@ -59,11 +59,103 @@ warn:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="current
 
 // ── SVG Illustrations ──
 const ILL={
-  community: <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="80" r="24" fill={C.blue} opacity="0.15"/><circle cx="100" cy="80" r="16" fill={C.blue} opacity="0.3"/><path d="M100 96a24 24 0 00-24 24v8h48v-8a24 24 0 00-24-24z" fill={C.blue} opacity="0.2"/><circle cx="56" cy="90" r="14" fill={C.gold} opacity="0.15"/><circle cx="56" cy="90" r="10" fill={C.gold} opacity="0.3"/><path d="M56 104a18 18 0 00-18 18v6h36v-6a18 18 0 00-18-18z" fill={C.gold} opacity="0.2"/><circle cx="144" cy="90" r="14" fill={C.green} opacity="0.15"/><circle cx="144" cy="90" r="10" fill={C.green} opacity="0.3"/><path d="M144 104a18 18 0 00-18 18v6h36v-6a18 18 0 00-18-18z" fill={C.green} opacity="0.2"/><circle cx="100" cy="72" r="12" fill={C.blue}/><path d="M100 84c-11 0-20 9-20 20v4h40v-4c0-11-9-20-20-20z" fill={C.blue}/><circle cx="56" cy="84" r="9" fill={C.gold}/><path d="M56 93c-8 0-15 7-15 15v3h30v-3c0-8-7-15-15-15z" fill={C.gold}/><circle cx="144" cy="84" r="9" fill={C.green}/><path d="M144 93c-8 0-15 7-15 15v3h30v-3c0-8-7-15-15-15z" fill={C.green}/><path d="M70 140h60" stroke={C.blue} strokeWidth="2" strokeDasharray="4 4" opacity="0.3"/><circle cx="76" cy="140" r="4" fill={C.gold}/><circle cx="100" cy="140" r="4" fill={C.blue}/><circle cx="124" cy="140" r="4" fill={C.green}/></svg>,
+  community: <svg width="100%" height="100%" viewBox="0 0 300 300" fill="none">
+    {/* Background circles */}
+    <circle cx="150" cy="150" r="140" fill={C.blue} opacity="0.04"/>
+    <circle cx="150" cy="150" r="110" fill={C.blue} opacity="0.06"/>
+    <circle cx="150" cy="150" r="80" fill={C.blue} opacity="0.08"/>
+    {/* Center person */}
+    <circle cx="150" cy="110" r="28" fill={C.blue}/>
+    <path d="M150 138c-22 0-40 18-40 40v16h80v-16c0-22-18-40-40-40z" fill={C.blue}/>
+    {/* Left person */}
+    <circle cx="70" cy="130" r="20" fill={C.gold}/>
+    <path d="M70 150c-16 0-30 14-30 30v12h60v-12c0-16-14-30-30-30z" fill={C.gold}/>
+    {/* Right person */}
+    <circle cx="230" cy="130" r="20" fill={C.green}/>
+    <path d="M230 150c-16 0-30 14-30 30v12h60v-12c0-16-14-30-30-30z" fill={C.green}/>
+    {/* Top left person */}
+    <circle cx="95" cy="60" r="16" fill={C.purple}/>
+    <path d="M95 76c-12 0-22 10-22 22v8h44v-8c0-12-10-22-22-22z" fill={C.purple}/>
+    {/* Top right person */}
+    <circle cx="205" cy="60" r="16" fill={C.orange}/>
+    <path d="M205 76c-12 0-22 10-22 22v8h44v-8c0-12-10-22-22-22z" fill={C.orange}/>
+    {/* Connection lines */}
+    <line x1="100" y1="130" x2="130" y2="120" stroke={C.blue} strokeWidth="2" strokeDasharray="4 4" opacity="0.3"/>
+    <line x1="200" y1="130" x2="170" y2="120" stroke={C.blue} strokeWidth="2" strokeDasharray="4 4" opacity="0.3"/>
+    <line x1="105" y1="75" x2="135" y2="100" stroke={C.blue} strokeWidth="2" strokeDasharray="4 4" opacity="0.2"/>
+    <line x1="195" y1="75" x2="165" y2="100" stroke={C.blue} strokeWidth="2" strokeDasharray="4 4" opacity="0.2"/>
+    {/* Coins/money floating */}
+    <circle cx="50" cy="220" r="14" fill={C.gold} opacity="0.8"/><text x="50" y="225" textAnchor="middle" fontSize="12" fontWeight="800" fill="#fff">F</text>
+    <circle cx="250" cy="210" r="11" fill={C.gold} opacity="0.6"/><text x="250" y="215" textAnchor="middle" fontSize="10" fontWeight="800" fill="#fff">F</text>
+    <circle cx="150" cy="240" r="16" fill={C.gold} opacity="0.9"/><text x="150" y="245" textAnchor="middle" fontSize="14" fontWeight="800" fill="#fff">F</text>
+    <circle cx="100" cy="250" r="9" fill={C.gold} opacity="0.4"/>
+    <circle cx="200" cy="255" r="7" fill={C.gold} opacity="0.3"/>
+    {/* Arrows showing rotation */}
+    <path d="M80 220 Q 115 260 150 240" stroke={C.blue} strokeWidth="2" fill="none" opacity="0.3" strokeDasharray="4 3"/>
+    <path d="M150 240 Q 185 260 220 215" stroke={C.blue} strokeWidth="2" fill="none" opacity="0.3" strokeDasharray="4 3"/>
+  </svg>,
   
-  security: <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none"><path d="M100 40l-48 24v36c0 33 20 63 48 76 28-13 48-43 48-76V64l-48-24z" fill={C.blue} opacity="0.08"/><path d="M100 52l-38 19v29c0 26 16 50 38 61 22-11 38-35 38-61V71L100 52z" fill={C.blue} opacity="0.12"/><path d="M100 64l-28 14v22c0 20 12 38 28 46 16-8 28-26 28-46V78L100 64z" fill={C.blue} opacity="0.18"/><path d="M100 76l-18 9v14c0 13 8 25 18 30 10-5 18-17 18-30V85l-18-9z" fill={C.blue}/><polyline points="90,100 98,108 112,92" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/><circle cx="60" cy="150" r="6" fill={C.gold} opacity="0.4"/><circle cx="140" cy="150" r="6" fill={C.green} opacity="0.4"/><circle cx="100" cy="160" r="4" fill={C.blue} opacity="0.3"/><rect x="55" y="148" width="90" height="4" rx="2" fill={C.blue} opacity="0.06"/></svg>,
+  security: <svg width="100%" height="100%" viewBox="0 0 300 300" fill="none">
+    {/* Background glow */}
+    <circle cx="150" cy="140" r="130" fill={C.blue} opacity="0.03"/>
+    <circle cx="150" cy="140" r="100" fill={C.blue} opacity="0.05"/>
+    {/* Shield */}
+    <path d="M150 30l-80 40v60c0 55 34 106 80 128 46-22 80-73 80-128V70l-80-40z" fill={C.blue} opacity="0.06"/>
+    <path d="M150 50l-60 30v46c0 42 26 82 60 98 34-16 60-56 60-98V80l-60-30z" fill={C.blue} opacity="0.1"/>
+    <path d="M150 70l-42 21v33c0 30 18 58 42 70 24-12 42-40 42-70V91l-42-21z" fill={C.blue} opacity="0.15"/>
+    <path d="M150 90l-26 13v22c0 20 12 38 26 46 14-8 26-26 26-46v-22l-26-13z" fill={C.blue}/>
+    <polyline points="138,118 147,127 164,108" stroke="#fff" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/>
+    {/* Lock icon left */}
+    <rect x="40" y="200" width="40" height="35" rx="6" fill={C.blue} opacity="0.12"/>
+    <rect x="48" y="190" width="24" height="15" rx="10" fill="none" stroke={C.blue} strokeWidth="3" opacity="0.2"/>
+    <circle cx="60" cy="215" r="3" fill={C.blue} opacity="0.3"/>
+    {/* Phone icon right */}
+    <rect x="220" y="195" width="32" height="50" rx="6" fill={C.green} opacity="0.12"/>
+    <rect x="226" y="200" width="20" height="30" rx="2" fill={C.green} opacity="0.08"/>
+    <circle cx="236" cy="238" r="3" fill={C.green} opacity="0.2"/>
+    {/* Checkmarks floating */}
+    <circle cx="80" cy="160" r="12" fill={C.green} opacity="0.15"/><polyline points="75,160 79,164 87,155" stroke={C.green} strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
+    <circle cx="225" cy="145" r="10" fill={C.green} opacity="0.12"/><polyline points="221,145 224,148 231,140" stroke={C.green} strokeWidth="2" strokeLinecap="round" opacity="0.4"/>
+    <circle cx="120" cy="240" r="8" fill={C.green} opacity="0.1"/><polyline points="117,240 119,242 125,236" stroke={C.green} strokeWidth="1.5" strokeLinecap="round" opacity="0.3"/>
+    {/* Encrypted data lines */}
+    <rect x="100" y="270" width="100" height="4" rx="2" fill={C.blue} opacity="0.06"/>
+    <rect x="120" y="280" width="60" height="4" rx="2" fill={C.blue} opacity="0.04"/>
+  </svg>,
   
-  wallet: <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none"><rect x="36" y="60" width="128" height="90" rx="16" fill={C.blue} opacity="0.1"/><rect x="42" y="66" width="116" height="78" rx="12" fill={C.blue} opacity="0.15"/><rect x="48" y="72" width="104" height="66" rx="10" fill={C.blue}/><rect x="56" y="82" width="50" height="6" rx="3" fill="#fff" opacity="0.3"/><rect x="56" y="94" width="30" height="4" rx="2" fill="#fff" opacity="0.2"/><circle cx="130" cy="105" r="12" fill="#fff" opacity="0.2"/><circle cx="130" cy="105" r="8" fill={C.gold}/><path d="M127 105l2.5 2.5 5-5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><rect x="56" y="118" width="88" height="10" rx="5" fill="#fff" opacity="0.1"/><circle cx="72" cy="155" r="5" fill={C.gold} opacity="0.5"/><circle cx="88" cy="155" r="5" fill={C.green} opacity="0.5"/><circle cx="104" cy="155" r="5" fill={C.blue} opacity="0.3"/><path d="M68 155h40" stroke={C.blue} strokeWidth="1" strokeDasharray="3 3" opacity="0.2"/></svg>,
+  wallet: <svg width="100%" height="100%" viewBox="0 0 300 300" fill="none">
+    {/* Background */}
+    <circle cx="150" cy="140" r="130" fill={C.blue} opacity="0.03"/>
+    {/* Card back shadow */}
+    <rect x="55" y="75" width="190" height="120" rx="16" fill={C.navy} opacity="0.08" transform="rotate(-5 150 135)"/>
+    {/* Main card */}
+    <rect x="50" y="65" width="200" height="130" rx="16" fill={C.navy}/>
+    <rect x="50" y="65" width="200" height="130" rx="16" fill="url(#cardGrad)"/>
+    <defs><linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor={C.navy}/><stop offset="100%" stopColor="#1A3A6B"/></linearGradient></defs>
+    {/* Card chip */}
+    <rect x="75" y="100" width="35" height="28" rx="5" fill={C.gold} opacity="0.7"/>
+    <line x1="75" y1="110" x2="110" y2="110" stroke={C.navy} strokeWidth="1" opacity="0.3"/>
+    <line x1="75" y1="118" x2="110" y2="118" stroke={C.navy} strokeWidth="1" opacity="0.3"/>
+    <line x1="92" y1="100" x2="92" y2="128" stroke={C.navy} strokeWidth="1" opacity="0.3"/>
+    {/* Card number */}
+    <text x="75" y="158" fontSize="13" fontWeight="600" fill="rgba(255,255,255,0.6)" letterSpacing="3">•••• •••• •••• 8901</text>
+    {/* Card brand */}
+    <text x="75" y="180" fontSize="9" fontWeight="600" fill="rgba(255,255,255,0.4)">KOLO CARD</text>
+    <circle cx="225" cy="172" r="14" fill={C.gold} opacity="0.7"/>
+    <circle cx="215" cy="172" r="14" fill={C.orange} opacity="0.5"/>
+    {/* Kolo diamond logo */}
+    <polygon points="150,210 165,235 150,260 135,235" fill={C.kolo} opacity="0.15"/>
+    <polygon points="150,218 158,235 150,252 142,235" fill={C.kolo} opacity="0.3"/>
+    <polygon points="150,226 154,235 150,244 146,235" fill={C.kolo}/>
+    {/* Floating elements */}
+    <circle cx="40" cy="240" r="12" fill={C.green} opacity="0.12"/>
+    <polyline points="35,240 39,244 47,235" stroke={C.green} strokeWidth="2" strokeLinecap="round" opacity="0.4"/>
+    <circle cx="260" cy="230" r="10" fill={C.gold} opacity="0.15"/>
+    <text x="260" y="234" textAnchor="middle" fontSize="10" fontWeight="800" fill={C.gold} opacity="0.5">F</text>
+    {/* MTN + Airtel small icons */}
+    <circle cx="100" cy="280" r="10" fill="#FFCC00" opacity="0.3"/><text x="100" y="284" textAnchor="middle" fontSize="8" fontWeight="800" fill="#000" opacity="0.4">M</text>
+    <circle cx="130" cy="280" r="10" fill="#ED1C24" opacity="0.3"/><text x="130" y="284" textAnchor="middle" fontSize="8" fontWeight="800" fill="#fff" opacity="0.6">A</text>
+    <circle cx="160" cy="280" r="12" fill={C.kolo} opacity="0.3"/><text x="160" y="284" textAnchor="middle" fontSize="8" fontWeight="800" fill="#fff" opacity="0.6">K</text>
+  </svg>,
 };
 
 // ── Icon renderer (replaces emojis) ──
@@ -133,15 +225,26 @@ return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignIte
 <div style={{position:"absolute",bottom:40,fontSize:10,color:"rgba(255,255,255,0.3)",letterSpacing:1.5,opacity:s?1:0,transition:"opacity 0.5s ease 0.7s"}}>LAMUKA TECH</div></div>);}
 
 // ── Onboarding ──
-function Onb({go}){const[p,setP]=useState(0);const pg=[{ill:ILL.community,t:"Épargnez ensemble",d:"Rejoignez des cercles de confiance et cotisez ensemble. Recevez votre cagnotte quand c'est votre tour."},{ill:ILL.security,t:"100% sécurisé",d:"Chaque transaction est tracée et protégée. Votre argent est en sécurité avec Kolo Money et Mobile Money."},{ill:ILL.wallet,t:"Kolo Money",d:"Votre portefeuille intégré. Recevez vos gains, cotisez, payez avec votre Kolo Card, le tout en un clic."}];
-return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.card,padding:"0 28px 70px"}}>
-{p<2&&<div style={{display:"flex",justifyContent:"flex-end",paddingTop:16}}><button onClick={()=>go("login")} style={{background:"none",border:"none",color:C.t3,fontSize:14,fontWeight:500,cursor:"pointer",padding:4}}>Passer</button></div>}
-<div style={{display:"flex",flexDirection:"column",alignItems:"center",marginBottom:"auto",marginTop:p<2?"10%":"18%"}}>
-<div style={{width:160,height:160,marginBottom:24}}>{pg[p].ill}</div>
-<h2 style={{fontSize:22,fontWeight:800,color:C.t0,marginBottom:8,textAlign:"center"}}>{pg[p].t}</h2>
-<p style={{fontSize:14,color:C.t2,textAlign:"center",lineHeight:1.5,maxWidth:280}}>{pg[p].d}</p></div>
-<div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:16}}>{pg.map((_,i)=><div key={i} style={{width:p===i?24:8,height:8,borderRadius:4,background:p===i?C.blue:C.brd,transition:"all 0.3s"}}/>)}</div>
-<Btn full onClick={()=>p<2?setP(p+1):go("login")}>{p<2?"Suivant":"Commencer"}</Btn></div>);}
+function Onb({go}){const[p,setP]=useState(0);
+const pg=[
+{img:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=900&fit=crop&crop=faces",t:"Épargnez ensemble",d:"Rejoignez des cercles de confiance, cotisez ensemble et recevez votre cagnotte quand c'est votre tour.",overlay:`linear-gradient(0deg,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.4) 40%,transparent 70%)`},
+{img:"https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=900&fit=crop",t:"100% sécurisé",d:"Chaque transaction est tracée et protégée par Kolo Money. Votre argent est en sécurité.",overlay:`linear-gradient(0deg,rgba(11,29,58,0.95) 0%,rgba(11,29,58,0.5) 40%,transparent 65%)`},
+{img:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=900&fit=crop",t:"Kolo Money",d:"Votre portefeuille intégré. Recevez vos gains, cotisez et payez avec votre Kolo Card.",overlay:`linear-gradient(0deg,rgba(99,102,241,0.95) 0%,rgba(99,102,241,0.4) 40%,transparent 65%)`}
+];
+return(<div style={{height:"100%",position:"relative",overflow:"hidden"}}>
+{/* Background image */}
+<div style={{position:"absolute",inset:0,backgroundImage:`url(${pg[p].img})`,backgroundSize:"cover",backgroundPosition:"center",transition:"opacity 0.5s",zIndex:0}}/>
+{/* Gradient overlay */}
+<div style={{position:"absolute",inset:0,background:pg[p].overlay,zIndex:1}}/>
+{/* Skip button */}
+{p<2&&<button onClick={()=>go("login")} style={{position:"absolute",top:16,right:20,zIndex:10,background:"rgba(255,255,255,0.2)",backdropFilter:"blur(10px)",border:"none",color:"#fff",fontSize:13,fontWeight:600,cursor:"pointer",padding:"8px 18px",borderRadius:50}}>Passer</button>}
+{/* Content at bottom */}
+<div style={{position:"absolute",bottom:0,left:0,right:0,zIndex:5,padding:"0 28px 70px"}}>
+<h2 style={{fontSize:28,fontWeight:800,color:"#fff",marginBottom:8}}>{pg[p].t}</h2>
+<p style={{fontSize:15,color:"rgba(255,255,255,0.8)",lineHeight:1.6,marginBottom:28}}>{pg[p].d}</p>
+<div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:20}}>{pg.map((_,i)=><div key={i} style={{width:p===i?24:8,height:8,borderRadius:4,background:p===i?"#fff":"rgba(255,255,255,0.3)",transition:"all 0.3s"}}/>)}</div>
+<Btn full onClick={()=>p<2?setP(p+1):go("login")} sx={{background:"#fff",color:C.t0,boxShadow:"0 4px 20px rgba(0,0,0,0.2)"}}>{p<2?"Suivant":"Commencer"}</Btn>
+</div></div>);}
 
 // ── Login ──
 function Login({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"40px 24px",paddingBottom:40}}><div style={{textAlign:"center",marginBottom:36}}><div style={{width:60,height:60,borderRadius:18,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,boxShadow:"0 12px 32px rgba(26,86,219,0.3)"}}><span style={{fontSize:24,fontWeight:900,color:"#fff"}}>LK</span></div><h2 style={{color:C.t0,fontSize:24,fontWeight:800,margin:0}}>Bon retour !</h2><p style={{color:C.t3,fontSize:13,marginTop:6}}>Connectez-vous à votre compte</p></div><div style={{flex:1}}><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><Inp label="Mot de passe" ph="Entrez votre mot de passe" type="password" icon={Z.lock}/><div style={{textAlign:"right",marginBottom:24}}><button onClick={()=>go("forgot")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer"}}>Mot de passe oublié ?</button></div><Btn full onClick={()=>go("pin")}>Se connecter</Btn><div style={{textAlign:"center",marginTop:24,fontSize:14,color:C.t2}}>Pas encore de compte ? <button onClick={()=>go("reg1")} style={{background:"none",border:"none",color:C.gold,fontWeight:700,cursor:"pointer",fontSize:14}}>S'inscrire</button></div></div></div>);}
