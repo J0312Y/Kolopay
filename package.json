@@ -1,7 +1,8 @@
 {
-  "name": "trustpay-ledger",
-  "version": "0.1.0",
+  "name": "likelemba",
   "private": true,
+  "version": "2.0.0",
+  "description": "Likelemba - Super-App Tontine Digitale du Congo by Lamuka Tech",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,16 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lucide-react": "^0.271.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
-    "@vitejs/plugin-react": "^5.0.0",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.24",
-    "tailwindcss": "^4.1.18",
-    "vite": "^5.0.0"
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.0"
   }
 }
