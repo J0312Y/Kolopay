@@ -323,10 +323,39 @@ function CirclesTab({go}){return(<div>
 </div>))}
 </div>);}
 
-function HistTab({go}){const[f,setF]=useState("Tout");const fl=f==="Tout"?TXS:TXS.filter(t=>f==="Reçu"?t.t==="in":t.t==="out");return(<div>
+function HistTab({go}){const[tab,setTab]=useState("tx");const[f,setF]=useState("Tout");const fl=f==="Tout"?TXS:TXS.filter(t=>f==="Reçu"?t.t==="in":t.t==="out");
+const pastCircles=[
+{id:10,name:"Cercle Solidarité",mem:5,amt:20000,tot:100000,gain:100000,date:"Déc 2025",status:"completed",myTurn:3},
+{id:11,name:"Cercle Famille",mem:4,amt:15000,tot:60000,gain:60000,date:"Oct 2025",status:"completed",myTurn:2},
+{id:12,name:"Cercle Startup",mem:8,amt:50000,tot:400000,gain:400000,date:"Juil 2025",status:"completed",myTurn:5},
+];
+return(<div>
+<div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:14,border:`1px solid ${C.brd}`}}>
+{[{k:"tx",l:"Transactions"},{k:"circles",l:"Cercles terminés"}].map(t=>(<button key={t.k} onClick={()=>setTab(t.k)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t.k?`linear-gradient(135deg,${C.blue},${C.blueD})`:"transparent",color:tab===t.k?"#fff":C.t3,fontSize:12,fontWeight:600,cursor:"pointer"}}>{t.l}</button>))}
+</div>
+{tab==="tx"&&<div>
 <div style={{display:"flex",alignItems:"center",gap:10,padding:"12px 16px",background:C.card,borderRadius:50,marginBottom:14,border:`1px solid ${C.brd}`}}><span style={{color:C.t3}}>{Z.srch}</span><input placeholder="Rechercher..." style={{flex:1,border:"none",background:"none",outline:"none",fontSize:14,color:C.t0}}/></div>
 <div style={{display:"flex",gap:8,marginBottom:18}}>{["Tout","Reçu","Envoyé"].map(c=><button key={c} onClick={()=>setF(c)} style={{padding:"8px 16px",borderRadius:50,border:"none",cursor:"pointer",background:f===c?`linear-gradient(135deg,${C.blue},${C.blueD})`:C.card,color:f===c?"#fff":C.t2,fontSize:12,fontWeight:600,boxShadow:f===c?"0 4px 12px rgba(26,86,219,0.2)":"none"}}>{c}</button>)}</div>
 {fl.map(tx=><TxR key={tx.id} tx={tx} onClick={()=>go("txd:"+tx.id)}/>)}
+</div>}
+{tab==="circles"&&<div>
+<div style={{display:"flex",gap:10,marginBottom:16}}>
+{[{l:"Complétés",v:"3",c:C.green,bg:C.greenL},{l:"Total gagné",v:"560K",c:C.gold,bg:C.goldL}].map((s,i)=>(
+<div key={i} style={{flex:1,textAlign:"center",padding:"14px 8px",background:s.bg,borderRadius:14}}>
+<div style={{fontSize:20,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:C.t3,marginTop:2}}>{s.l}</div></div>))}
+</div>
+{pastCircles.map(c=>(<div key={c.id} style={{background:C.card,borderRadius:16,padding:16,marginBottom:10,border:`1px solid ${C.brd}`}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+<div><div style={{fontSize:15,fontWeight:700,color:C.t0}}>{c.name}</div><div style={{fontSize:12,color:C.t3}}>{c.mem} membres · Terminé en {c.date}</div></div>
+<Bdg s="completed"/>
+</div>
+<div style={{display:"flex",gap:8}}>
+{[{l:"Cotisation",v:fm(c.amt)+" F"},{l:"Mon tour",v:"#"+c.myTurn},{l:"Gain total",v:fm(c.gain)+" F"}].map((r,i)=>(
+<div key={i} style={{flex:1,textAlign:"center",padding:"8px 4px",background:C.bg,borderRadius:10}}>
+<div style={{fontSize:12,fontWeight:700,color:i===2?C.gold:C.t1}}>{r.v}</div><div style={{fontSize:9,color:C.t3,marginTop:2}}>{r.l}</div></div>))}
+</div>
+</div>))}
+</div>}
 </div>);}
 
 function ProfTab({go}){return(<div>
