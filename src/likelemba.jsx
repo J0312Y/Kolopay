@@ -57,14 +57,53 @@ copy:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="current
 warn:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>,
 };
 
+// ── SVG Illustrations ──
+const ILL={
+  community: <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="80" r="24" fill={C.blue} opacity="0.15"/><circle cx="100" cy="80" r="16" fill={C.blue} opacity="0.3"/><path d="M100 96a24 24 0 00-24 24v8h48v-8a24 24 0 00-24-24z" fill={C.blue} opacity="0.2"/><circle cx="56" cy="90" r="14" fill={C.gold} opacity="0.15"/><circle cx="56" cy="90" r="10" fill={C.gold} opacity="0.3"/><path d="M56 104a18 18 0 00-18 18v6h36v-6a18 18 0 00-18-18z" fill={C.gold} opacity="0.2"/><circle cx="144" cy="90" r="14" fill={C.green} opacity="0.15"/><circle cx="144" cy="90" r="10" fill={C.green} opacity="0.3"/><path d="M144 104a18 18 0 00-18 18v6h36v-6a18 18 0 00-18-18z" fill={C.green} opacity="0.2"/><circle cx="100" cy="72" r="12" fill={C.blue}/><path d="M100 84c-11 0-20 9-20 20v4h40v-4c0-11-9-20-20-20z" fill={C.blue}/><circle cx="56" cy="84" r="9" fill={C.gold}/><path d="M56 93c-8 0-15 7-15 15v3h30v-3c0-8-7-15-15-15z" fill={C.gold}/><circle cx="144" cy="84" r="9" fill={C.green}/><path d="M144 93c-8 0-15 7-15 15v3h30v-3c0-8-7-15-15-15z" fill={C.green}/><path d="M70 140h60" stroke={C.blue} strokeWidth="2" strokeDasharray="4 4" opacity="0.3"/><circle cx="76" cy="140" r="4" fill={C.gold}/><circle cx="100" cy="140" r="4" fill={C.blue}/><circle cx="124" cy="140" r="4" fill={C.green}/></svg>,
+  
+  security: <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none"><path d="M100 40l-48 24v36c0 33 20 63 48 76 28-13 48-43 48-76V64l-48-24z" fill={C.blue} opacity="0.08"/><path d="M100 52l-38 19v29c0 26 16 50 38 61 22-11 38-35 38-61V71L100 52z" fill={C.blue} opacity="0.12"/><path d="M100 64l-28 14v22c0 20 12 38 28 46 16-8 28-26 28-46V78L100 64z" fill={C.blue} opacity="0.18"/><path d="M100 76l-18 9v14c0 13 8 25 18 30 10-5 18-17 18-30V85l-18-9z" fill={C.blue}/><polyline points="90,100 98,108 112,92" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/><circle cx="60" cy="150" r="6" fill={C.gold} opacity="0.4"/><circle cx="140" cy="150" r="6" fill={C.green} opacity="0.4"/><circle cx="100" cy="160" r="4" fill={C.blue} opacity="0.3"/><rect x="55" y="148" width="90" height="4" rx="2" fill={C.blue} opacity="0.06"/></svg>,
+  
+  wallet: <svg width="100%" height="100%" viewBox="0 0 200 200" fill="none"><rect x="36" y="60" width="128" height="90" rx="16" fill={C.blue} opacity="0.1"/><rect x="42" y="66" width="116" height="78" rx="12" fill={C.blue} opacity="0.15"/><rect x="48" y="72" width="104" height="66" rx="10" fill={C.blue}/><rect x="56" y="82" width="50" height="6" rx="3" fill="#fff" opacity="0.3"/><rect x="56" y="94" width="30" height="4" rx="2" fill="#fff" opacity="0.2"/><circle cx="130" cy="105" r="12" fill="#fff" opacity="0.2"/><circle cx="130" cy="105" r="8" fill={C.gold}/><path d="M127 105l2.5 2.5 5-5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><rect x="56" y="118" width="88" height="10" rx="5" fill="#fff" opacity="0.1"/><circle cx="72" cy="155" r="5" fill={C.gold} opacity="0.5"/><circle cx="88" cy="155" r="5" fill={C.green} opacity="0.5"/><circle cx="104" cy="155" r="5" fill={C.blue} opacity="0.3"/><path d="M68 155h40" stroke={C.blue} strokeWidth="1" strokeDasharray="3 3" opacity="0.2"/></svg>,
+};
+
+// ── Icon renderer (replaces emojis) ──
+const SvgIc=({type,size=24})=>{
+  const s=size;
+  const icons={
+    kolo:<svg width={s} height={s} viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" fill={C.kolo}/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.4"/></svg>,
+    mtn:<svg width={s} height={s} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#FFCC00"/><text x="12" y="16" textAnchor="middle" fontSize="10" fontWeight="800" fill="#000">M</text></svg>,
+    airtel:<svg width={s} height={s} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#ED1C24"/><text x="12" y="16" textAnchor="middle" fontSize="10" fontWeight="800" fill="#fff">A</text></svg>,
+    orange:<svg width={s} height={s} viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#FF6600"/><text x="12" y="16" textAnchor="middle" fontSize="10" fontWeight="800" fill="#fff">O</text></svg>,
+    house:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.blue} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+    laptop:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.purple} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>,
+    shieldCheck:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11.5 14.5 15 10"/></svg>,
+    plane:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5 5.1 3.1-3.6 2.1-2 .5-.5.9 2.8 1.2 1.2 2.8.9-.5.5-2 2.1-3.6 3.1 5.1.5-.3c.4-.2.6-.6.5-1.1z"/></svg>,
+    phone:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.blue} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
+    appliance:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.blue} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="14" x2="20" y2="14"/><circle cx="8" cy="18" r="1"/><circle cx="12" cy="18" r="1"/></svg>,
+    scooter:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.blue} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="7" cy="18" r="3"/><circle cx="17" cy="18" r="3"/><path d="M7 18h10"/><path d="M11 18V8l4 4h4"/><path d="M15 8V4"/></svg>,
+    market:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.blue} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>,
+    cardIc:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/><rect x="4" y="14" width="4" height="2" rx="1" fill={C.gold} stroke="none"/></svg>,
+    bag:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.green} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>,
+    trophy:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4a2 2 0 01-2-2V5a2 2 0 012-2h2"/><path d="M18 9h2a2 2 0 002-2V5a2 2 0 00-2-2h-2"/><path d="M4 22h16"/><path d="M10 22V10"/><path d="M14 22V10"/><rect x="6" y="2" width="12" height="8" rx="2"/></svg>,
+    lockBig:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><circle cx="12" cy="16" r="1"/></svg>,
+    gift:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg>,
+    tag:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>,
+    cart:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>,
+    fuel:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="12" height="18" rx="1"/><path d="M16 10h2a2 2 0 012 2v4a2 2 0 002 2"/><line x1="8" y1="10" x2="12" y2="10"/></svg>,
+    store:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7"/><path d="M3 9v12h18V9"/><rect x="9" y="13" width="6" height="8"/></svg>,
+    handshake:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L20 8l-9 9z"/><path d="M2 12l5-5 3 3"/><path d="M22 12l-5-5-3 3"/></svg>,
+  };
+  return icons[type]||null;
+};
+
 // ── DATA ──
 const MEM=[{id:1,n:"Joeldy T.",i:"JT",p:"+242 06 466 3469",ok:true,t:1,pen:0},{id:2,n:"Grace M.",i:"GM",p:"+242 05 512 8834",ok:true,t:2,pen:0},{id:3,n:"Patrick K.",i:"PK",p:"+242 06 891 2245",ok:false,t:3,pen:1250},{id:4,n:"Merveille N.",i:"MN",p:"+242 05 334 7712",ok:true,t:4,pen:0},{id:5,n:"Blessing O.",i:"BO",p:"+242 06 223 5501",ok:false,t:5,pen:1250},{id:6,n:"Divine L.",i:"DL",p:"+242 05 667 9983",ok:true,t:6,pen:0}];
-const CIR=[{id:1,name:"Cercle Élite",mem:6,amt:25000,freq:"Mensuel",tot:150000,prog:67,turn:"Joeldy T.",next:"01 Mai 2026",code:"ELITE2026",pen:5,created:"15 Jan 2026"},{id:2,name:"Cercle Amis",mem:8,amt:10000,freq:"Bi-mensuel",tot:80000,prog:45,turn:"Grace M.",next:"15 Avr 2026",code:"AMIS2026",pen:5,created:"01 Fév 2026"},{id:3,name:"Cercle Business",mem:10,amt:50000,freq:"Mensuel",tot:500000,prog:30,turn:"Patrick K.",next:"01 Mai 2026",code:"BIZ2026",pen:10,created:"01 Mar 2026"}];
+const CIR=[{id:1,name:"Cercle Élite",mem:6,amt:25000,freq:"Mensuel",tot:150000,prog:67,turn:"Joeldy T.",next:"01 Mai 2026",code:"ELITE2026",pen:5,created:"15 Jan 2026",admin:true},{id:2,name:"Cercle Amis",mem:8,amt:10000,freq:"Bi-mensuel",tot:80000,prog:45,turn:"Grace M.",next:"15 Avr 2026",code:"AMIS2026",pen:5,created:"01 Fév 2026",admin:false},{id:3,name:"Cercle Business",mem:10,amt:50000,freq:"Mensuel",tot:500000,prog:30,turn:"Patrick K.",next:"01 Mai 2026",code:"BIZ2026",pen:10,created:"01 Mar 2026",admin:true}];
 const TXS=[{id:1,t:"in",n:"Grace M.",d:"Cotisation reçue",a:25000,dt:"Aujourd'hui",tm:"14:32",circle:"Cercle Élite",ref:"LK-TX-0891"},{id:2,t:"in",n:"Divine L.",d:"Cotisation reçue",a:25000,dt:"Aujourd'hui",tm:"13:10",circle:"Cercle Élite",ref:"LK-TX-0890"},{id:3,t:"out",n:"Cercle Élite",d:"Versement cotisation",a:25000,dt:"Hier",tm:"09:15",circle:"Cercle Élite",ref:"LK-TX-0889"},{id:4,t:"in",n:"Merveille N.",d:"Cotisation reçue",a:25000,dt:"Hier",tm:"08:42",circle:"Cercle Élite",ref:"LK-TX-0888"},{id:5,t:"out",n:"Kolo Money",d:"Retrait vers MTN",a:50000,dt:"03 Avr",tm:"16:20",circle:"",ref:"LK-TX-0880"},{id:6,t:"in",n:"Cercle Amis",d:"Gain tontine",a:80000,dt:"01 Avr",tm:"10:00",circle:"Cercle Amis",ref:"LK-TX-0870"}];
-const WALLETS=[{id:0,n:"Kolo Money",num:"Wallet interne",bal:95000,logo:"💎",col:C.kolo,desc:"Votre portefeuille Likelemba"},{id:1,n:"MTN Mobile Money",num:"••• 3469",bal:175000,logo:"🟡",col:"#FFCC00",desc:""},{id:2,n:"Airtel Money",num:"••• 8834",bal:62000,logo:"🔴",col:"#FF0000",desc:""}];
+const WALLETS=[{id:0,n:"Kolo Money",num:"Wallet interne",bal:95000,logo:"kolo",col:C.kolo,desc:"Votre portefeuille Likelemba"},{id:1,n:"MTN Mobile Money",num:"••• 3469",bal:175000,logo:"mtn",col:"#FFCC00",desc:""},{id:2,n:"Airtel Money",num:"••• 8834",bal:62000,logo:"airtel",col:"#ED1C24",desc:""}];
 const NOTIFS=[{id:1,tp:"warn",tt:"Rappel cotisation",ds:"Cotisation Cercle Élite due dans 3 jours",tm:"Il y a 2h",rd:false},{id:2,tp:"in",tt:"Cotisation reçue",ds:"Grace M. a versé 25 000 FCFA",tm:"Il y a 5h",rd:false},{id:3,tp:"pen",tt:"Pénalité appliquée",ds:"Patrick K. pénalisé de 1 250 FCFA (5%)",tm:"Il y a 8h",rd:false},{id:4,tp:"gift",tt:"Votre tour approche !",ds:"Cagnotte Cercle Amis le 15 Avr",tm:"Hier",rd:true},{id:5,tp:"add",tt:"Nouveau membre",ds:"Blessing O. a rejoint Cercle Élite",tm:"Il y a 2j",rd:true},{id:6,tp:"msg",tt:"Nouveau message",ds:"Grace M. dans Cercle Élite: 'Salut tout le monde!'",tm:"Il y a 3h",rd:false}];
 const RWDS=[{id:1,tt:"Cotiseur fidèle",ds:"12 cotisations à temps",pt:200,ok:true},{id:2,tt:"Zéro retard",ds:"3 mois sans retard",pt:300,ok:true},{id:3,tt:"Ambassadeur",ds:"Inviter 5 personnes",pt:150,ok:false},{id:4,tt:"Créateur",ds:"Créer un cercle",pt:100,ok:true},{id:5,tt:"Épargnant d'or",ds:"Épargner 500K FCFA",pt:500,ok:false}];
-const SAV=[{id:1,n:"Terrain Brazzaville",tg:2000000,sv:850000,ic:"🏠",cl:C.blue},{id:2,n:"MacBook Pro",tg:800000,sv:320000,ic:"💻",cl:C.purple},{id:3,n:"Fonds d'urgence",tg:500000,sv:500000,ic:"🛡️",cl:C.green},{id:4,n:"Voyage Dubaï",tg:1500000,sv:200000,ic:"✈️",cl:C.gold}];
+const SAV=[{id:1,n:"Terrain Brazzaville",tg:2000000,sv:850000,ic:"house",cl:C.blue},{id:2,n:"MacBook Pro",tg:800000,sv:320000,ic:"laptop",cl:C.purple},{id:3,n:"Fonds d'urgence",tg:500000,sv:500000,ic:"shieldCheck",cl:C.green},{id:4,n:"Voyage Dubaï",tg:1500000,sv:200000,ic:"plane",cl:C.gold}];
 const RCPT=[{id:1,c:"Cercle Élite",a:25000,s:"paid",d:"05 Avr 2026",r:"LK-0412"},{id:2,c:"Cercle Amis",a:10000,s:"paid",d:"01 Avr 2026",r:"LK-0398"},{id:3,c:"Cercle Business",a:50000,s:"pending",d:"01 Mai 2026",r:"LK-0425"},{id:4,c:"Cercle Élite",a:25000,s:"paid",d:"01 Mar 2026",r:"LK-0301"}];
 const MSGS=[{id:1,from:"Grace M.",ini:"GM",msg:"Salut tout le monde! N'oubliez pas la cotisation 😊",time:"14:30",me:false},{id:2,from:"Joeldy T.",ini:"JT",msg:"Merci Grace! J'ai déjà cotisé.",time:"14:32",me:true},{id:3,from:"Divine L.",ini:"DL",msg:"Moi aussi c'est fait ✅",time:"14:35",me:false},{id:4,from:"Grace M.",ini:"GM",msg:"Super! Il reste Patrick et Blessing",time:"14:36",me:false},{id:5,from:"Joeldy T.",ini:"JT",msg:"Je vais leur envoyer un rappel",time:"14:38",me:true}];
 const FAQS=[{q:"Comment créer un cercle ?",a:"Allez dans l'onglet Cercles > Créer un cercle. Définissez le nom, montant, fréquence et invitez vos membres."},{q:"Comment fonctionne la pénalité ?",a:"Si un membre ne cotise pas à temps, une pénalité de 5-10% du montant est automatiquement appliquée."},{q:"Qu'est-ce que Kolo Money ?",a:"Kolo Money est votre portefeuille interne Likelemba. Vos gains de tontine y sont déposés. Vous pouvez retirer vers MTN ou Airtel."},{q:"Comment inviter des membres ?",a:"Partagez le code du cercle ou envoyez une invitation par SMS/WhatsApp depuis la page du cercle."},{q:"Mes fonds sont-ils sécurisés ?",a:"Oui, toutes les transactions sont sécurisées et tracées. Vos fonds Kolo Money sont protégés."}];
@@ -94,10 +133,15 @@ return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignIte
 <div style={{position:"absolute",bottom:40,fontSize:10,color:"rgba(255,255,255,0.3)",letterSpacing:1.5,opacity:s?1:0,transition:"opacity 0.5s ease 0.7s"}}>LAMUKA TECH</div></div>);}
 
 // ── Onboarding ──
-function Onb({go}){const[p,setP]=useState(0);const pg=[{ic:"🤝",t:"Tontine digitale",d:"Créez et gérez vos cercles de tontine. Cotisez et recevez via Kolo Money."},{ic:"🔒",t:"Sécurisé & fiable",d:"Transactions sécurisées via Mobile Money et Kolo Money. Tout est transparent."},{ic:"💎",t:"Kolo Money",d:"Votre portefeuille intégré. Recevez vos gains, cotisez, et transférez en un clic."}];
+function Onb({go}){const[p,setP]=useState(0);const pg=[{ill:ILL.community,t:"Épargnez ensemble",d:"Rejoignez des cercles de confiance et cotisez ensemble. Recevez votre cagnotte quand c'est votre tour."},{ill:ILL.security,t:"100% sécurisé",d:"Chaque transaction est tracée et protégée. Votre argent est en sécurité avec Kolo Money et Mobile Money."},{ill:ILL.wallet,t:"Kolo Money",d:"Votre portefeuille intégré. Recevez vos gains, cotisez, payez avec votre Kolo Card, le tout en un clic."}];
 return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.card,padding:"0 28px 70px"}}>
 {p<2&&<div style={{display:"flex",justifyContent:"flex-end",paddingTop:16}}><button onClick={()=>go("login")} style={{background:"none",border:"none",color:C.t3,fontSize:14,fontWeight:500,cursor:"pointer",padding:4}}>Passer</button></div>}
-<div style={{display:"flex",flexDirection:"column",alignItems:"center",marginBottom:"auto",marginTop:p<2?"15%":"25%"}}><div style={{width:90,height:90,borderRadius:28,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",fontSize:42,marginBottom:20}}>{pg[p].ic}</div><h2 style={{fontSize:22,fontWeight:800,color:C.t0,marginBottom:8,textAlign:"center"}}>{pg[p].t}</h2><p style={{fontSize:14,color:C.t2,textAlign:"center",lineHeight:1.5,maxWidth:260}}>{pg[p].d}</p></div><div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:16}}>{pg.map((_,i)=><div key={i} style={{width:p===i?24:8,height:8,borderRadius:4,background:p===i?C.blue:C.brd,transition:"all 0.3s"}}/>)}</div><Btn full onClick={()=>p<2?setP(p+1):go("login")}>{p<2?"Suivant":"Commencer"}</Btn></div>);}
+<div style={{display:"flex",flexDirection:"column",alignItems:"center",marginBottom:"auto",marginTop:p<2?"10%":"18%"}}>
+<div style={{width:160,height:160,marginBottom:24}}>{pg[p].ill}</div>
+<h2 style={{fontSize:22,fontWeight:800,color:C.t0,marginBottom:8,textAlign:"center"}}>{pg[p].t}</h2>
+<p style={{fontSize:14,color:C.t2,textAlign:"center",lineHeight:1.5,maxWidth:280}}>{pg[p].d}</p></div>
+<div style={{display:"flex",justifyContent:"center",gap:8,marginBottom:16}}>{pg.map((_,i)=><div key={i} style={{width:p===i?24:8,height:8,borderRadius:4,background:p===i?C.blue:C.brd,transition:"all 0.3s"}}/>)}</div>
+<Btn full onClick={()=>p<2?setP(p+1):go("login")}>{p<2?"Suivant":"Commencer"}</Btn></div>);}
 
 // ── Login ──
 function Login({go}){return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg,padding:"40px 24px",paddingBottom:40}}><div style={{textAlign:"center",marginBottom:36}}><div style={{width:60,height:60,borderRadius:18,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,boxShadow:"0 12px 32px rgba(26,86,219,0.3)"}}><span style={{fontSize:24,fontWeight:900,color:"#fff"}}>LK</span></div><h2 style={{color:C.t0,fontSize:24,fontWeight:800,margin:0}}>Bon retour !</h2><p style={{color:C.t3,fontSize:13,marginTop:6}}>Connectez-vous à votre compte</p></div><div style={{flex:1}}><Inp label="Numéro de téléphone" ph="+242 06 XXX XXXX" icon={Z.phone}/><Inp label="Mot de passe" ph="Entrez votre mot de passe" type="password" icon={Z.lock}/><div style={{textAlign:"right",marginBottom:24}}><button onClick={()=>go("forgot")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer"}}>Mot de passe oublié ?</button></div><Btn full onClick={()=>go("pin")}>Se connecter</Btn><div style={{textAlign:"center",marginTop:24,fontSize:14,color:C.t2}}>Pas encore de compte ? <button onClick={()=>go("reg1")} style={{background:"none",border:"none",color:C.gold,fontWeight:700,cursor:"pointer",fontSize:14}}>S'inscrire</button></div></div></div>);}
@@ -129,7 +173,7 @@ return(<div>
 <div style={{background:`linear-gradient(135deg,${C.navy},${C.navyM})`,borderRadius:24,padding:"22px 20px",marginBottom:20,boxShadow:"0 8px 32px rgba(11,29,58,0.25)"}}>
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:6}}><span style={{fontSize:12,color:"rgba(255,255,255,0.55)",fontWeight:600,letterSpacing:0.5,textTransform:"uppercase"}}>Solde Kolo Money</span><button onClick={()=>setSb(!sb)} style={{background:"none",border:"none",cursor:"pointer",color:"rgba(255,255,255,0.55)"}}>{sb?Z.eye:Z.eyeX}</button></div>
 <div style={{fontSize:32,fontWeight:800,color:C.gold,marginBottom:2}}>{sb?fm(kolo.bal):"••• •••"} <span style={{fontSize:14,fontWeight:500,color:"rgba(255,255,255,0.5)"}}>FCFA</span></div>
-<div style={{fontSize:12,color:"rgba(255,255,255,0.35)",marginBottom:18,display:"flex",alignItems:"center",gap:4}}>💎 Portefeuille interne Likelemba</div>
+<div style={{fontSize:12,color:"rgba(255,255,255,0.35)",marginBottom:18,display:"flex",alignItems:"center",gap:4}}><SvgIc type="kolo" size={14}/> Portefeuille interne Likelemba</div>
 <div style={{display:"flex",gap:8}}>
 {[{ic:Z.up,l:"Cotiser",s:"contribute"},{ic:Z.dn,l:"Recevoir",s:"wallets"},{ic:Z.qr,l:"QR Pay",s:"qr"},{ic:Z.plus,l:"Inviter",s:"invite"}].map((a,i)=>(<button key={i} onClick={()=>a.s&&go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:6,background:"rgba(255,255,255,0.08)",borderRadius:12,padding:"12px 4px",border:"none",cursor:"pointer",color:"#fff"}} onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.15)"} onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.08)"}>{a.ic}<span style={{fontSize:10,fontWeight:600,opacity:.85}}>{a.l}</span></button>))}
 </div></div>
@@ -145,15 +189,15 @@ return(<div>
 </div>
 {/* Money Fellows Features */}
 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:22}}>
-{[{ic:"🏪",t:"Cercles publics",d:"Rejoindre un cercle",s:"market",c:C.blue},{ic:"💳",t:"Kolo Card",d:"Carte prépayée",s:"koloCard",c:C.navy},{ic:"🛍️",t:"Épargner & Acheter",d:"Save Now Buy Later",s:"snbl",c:C.green},{ic:"⭐",t:"Score crédit",d:85+"/100 · Excellent",s:"creditScore",c:C.gold}].map((f,i)=>(
+{[{ic:"market",t:"Cercles publics",d:"Rejoindre un cercle",s:"market",c:C.blue},{ic:"cardIc",t:"Kolo Card",d:"Carte prépayée",s:"koloCard",c:C.navy},{ic:"bag",t:"Épargner & Acheter",d:"Save Now Buy Later",s:"snbl",c:C.green},{ic:"trophy",t:"Score crédit",d:85+"/100 · Excellent",s:"creditScore",c:C.gold}].map((f,i)=>(
 <button key={i} onClick={()=>go(f.s)} style={{background:C.card,borderRadius:16,padding:"14px 16px",border:`1px solid ${C.brd}`,cursor:"pointer",textAlign:"left",display:"flex",gap:10,alignItems:"center"}} onMouseEnter={e=>e.currentTarget.style.boxShadow=C.sh} onMouseLeave={e=>e.currentTarget.style.boxShadow="none"}>
-<span style={{fontSize:24}}>{f.ic}</span>
+<SvgIc type={f.ic} size={22}/>
 <div><div style={{fontSize:12,fontWeight:700,color:C.t1}}>{f.t}</div><div style={{fontSize:10,color:C.t3}}>{f.d}</div></div>
 </button>))}
 </div>
 {/* Promo Banner */}
 <button onClick={()=>go("promos")} style={{display:"flex",alignItems:"center",gap:12,background:`linear-gradient(135deg,${C.gold}15,${C.gold}05)`,borderRadius:14,padding:"12px 16px",border:`1px solid ${C.gold}25`,marginBottom:22,width:"100%",cursor:"pointer",textAlign:"left"}}>
-<span style={{fontSize:28}}>🎁</span><div style={{flex:1}}><div style={{fontSize:13,fontWeight:700,color:C.gold}}>Offres & Cashback</div><div style={{fontSize:11,color:C.t3}}>Jusqu'à 10% de cashback chez nos partenaires</div></div><span style={{color:C.t4}}>{Z.fwd}</span></button>
+<div style={{color:C.gold}}>{Z.gift}</div><div style={{flex:1}}><div style={{fontSize:13,fontWeight:700,color:C.gold}}>Offres & Cashback</div><div style={{fontSize:11,color:C.t3}}>Jusqu'à 10% de cashback chez nos partenaires</div></div><span style={{color:C.t4}}>{Z.fwd}</span></button>
 {/* Txs */}
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}><span style={{fontSize:16,fontWeight:700,color:C.t0}}>Activité récente</span><button onClick={()=>go("_h")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer"}}>Tout</button></div>
 {TXS.slice(0,4).map(tx=><TxR key={tx.id} tx={tx} onClick={()=>go("txd:"+tx.id)}/>)}
@@ -161,7 +205,7 @@ return(<div>
 
 function CirclesTab({go}){return(<div>
 <div style={{display:"flex",gap:10,marginBottom:16}}>{[{l:"Actifs",v:"3",c:C.blue,bg:C.blueL},{l:"Membres",v:"24",c:C.green,bg:C.greenL},{l:"Épargné",v:"423K",c:C.gold,bg:C.goldL}].map((s,i)=>(<div key={i} style={{flex:1,textAlign:"center",padding:"14px 8px",background:s.bg,borderRadius:14}}><div style={{fontSize:20,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:C.t3,marginTop:2}}>{s.l}</div></div>))}</div>
-<div style={{display:"flex",gap:8,marginBottom:16}}><Btn full onClick={()=>go("createCircle")}>{Z.plus} Créer un cercle</Btn><Btn v="s" onClick={()=>go("joinCircle")} sx={{flexShrink:0}}>{Z.link}</Btn><Btn v="s" onClick={()=>go("market")} sx={{flexShrink:0}}>🏪</Btn></div>
+<div style={{display:"flex",gap:8,marginBottom:16}}><Btn full onClick={()=>go("createCircle")}>{Z.plus} Créer un cercle</Btn><Btn v="s" onClick={()=>go("joinCircle")} sx={{flexShrink:0}}>{Z.link}</Btn><Btn v="s" onClick={()=>go("market")} sx={{flexShrink:0}}><SvgIc type="market" size={18}/></Btn></div>
 {CIR.map(c=>(<div key={c.id} onClick={()=>go("cd:"+c.id)} style={{display:"flex",alignItems:"center",gap:14,padding:16,background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${C.brd}`,cursor:"pointer"}} onMouseEnter={e=>e.currentTarget.style.boxShadow=C.sh} onMouseLeave={e=>e.currentTarget.style.boxShadow="none"}>
 <div style={{width:44,height:44,borderRadius:14,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue}}>{Z.grp}</div>
 <div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{c.name}</div><div style={{fontSize:12,color:C.t3}}>{c.mem} membres · {c.freq}</div></div>
@@ -235,18 +279,23 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>
 {/* Actions */}
 <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"}}>
-{[{l:"Cotiser",ic:Z.up,s:"contribute"},{l:"Rappel",ic:Z.bell,s:"remind"},{l:"Chat",ic:Z.msg,s:"chat:"+c.id},{l:"Inviter",ic:Z.plus,s:"invite"}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:"1 1 22%",display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:11,fontWeight:600,color:C.blue}}>{a.ic}<span>{a.l}</span></button>))}
+{[{l:"Cotiser",ic:Z.up,s:"contribute"},{l:"Chat",ic:Z.msg,s:"chat:"+c.id},{l:"Inviter",ic:Z.plus,s:"invite"},{l:"Calendrier",ic:Z.cal,s:"calendar"}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:"1 1 22%",display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:11,fontWeight:600,color:C.blue}}>{a.ic}<span>{a.l}</span></button>))}
 </div>
 <div style={{display:"flex",gap:6,marginBottom:16}}>
-{[{l:"Calendrier",ic:Z.cal,s:"calendar"},{l:"Stats",ic:Z.tgt,s:"circleStats"},{l:"Contrat",ic:Z.doc,s:"contract"},{l:"Modifier",ic:Z.gear,s:"editCircle"},{l:"Quitter",ic:Z.warn,s:"leaveCircle",c:C.red}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${a.c?a.c+"20":C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:10,fontWeight:600,color:a.c||C.t2}}>{a.ic}<span>{a.l}</span></button>))}
+{[{l:"Contrat",ic:Z.doc,s:"contract"},{l:"Stats",ic:Z.tgt,s:"circleStats"},
+...(c.admin?[{l:"Rappel",ic:Z.bell,s:"remind"},{l:"Modifier",ic:Z.gear,s:"editCircle"}]:[]),
+{l:"Quitter",ic:Z.warn,s:"leaveCircle",c:C.red}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${a.c?a.c+"20":C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:10,fontWeight:600,color:a.c||C.t2}}>{a.ic}<span>{a.l}</span></button>))}
 </div>
+{!c.admin&&<div style={{background:C.blueL,borderRadius:10,padding:"8px 14px",marginBottom:12,display:"flex",alignItems:"center",gap:8,border:`1px solid ${C.blue}15`}}>
+<span style={{color:C.blue}}>{Z.usr}</span><span style={{fontSize:12,color:C.t2}}>Admin : <span style={{fontWeight:700,color:C.t1}}>Grace M.</span></span>
+</div>}
 {/* Tabs */}
 <div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:16,border:`1px solid ${C.brd}`}}>
 {[{k:"m",l:"Membres"},{k:"r",l:"Rotation"},{k:"g",l:"Règles"}].map(t=>(<button key={t.k} onClick={()=>setTab(t.k)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t.k?`linear-gradient(135deg,${C.blue},${C.blueD})`:"transparent",color:tab===t.k?"#fff":C.t3,fontSize:12,fontWeight:600,cursor:"pointer",boxShadow:tab===t.k?"0 4px 12px rgba(26,86,219,0.2)":"none"}}>{t.l}</button>))}
 </div>
 {tab==="m"&&<><div style={{fontSize:12,color:C.t3,marginBottom:10}}><span style={{color:C.green,fontWeight:700}}>{paid}</span> payé(s) · <span style={{color:C.red,fontWeight:700}}>{MEM.length-paid}</span> en attente</div>
 {MEM.map(m=>(<div key={m.id} onClick={()=>go("mem:"+m.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:16,marginBottom:6,border:`1px solid ${C.brdL}`,cursor:"pointer"}}>
-<Av ini={m.i} sz={40}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{m.n}</div><div style={{fontSize:12,color:C.t3}}>{m.p}{m.pen>0&&<span style={{color:C.red,fontWeight:600}}> · Pénalité: {fm(m.pen)} F</span>}</div></div>
+<Av ini={m.i} sz={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:6}}><span style={{fontSize:14,fontWeight:600,color:C.t1}}>{m.n}</span>{((c.admin&&m.id===1)||(!c.admin&&m.id===2))&&<span style={{fontSize:9,fontWeight:700,color:C.blue,background:C.blueL,padding:"2px 6px",borderRadius:4}}>ADMIN</span>}</div><div style={{fontSize:12,color:C.t3}}>{m.p}{m.pen>0&&<span style={{color:C.red,fontWeight:600}}> · Pénalité: {fm(m.pen)} F</span>}</div></div>
 <div style={{textAlign:"center",marginRight:8}}><div style={{fontSize:9,color:C.t3,fontWeight:600,textTransform:"uppercase"}}>Tour</div><div style={{fontSize:16,fontWeight:800,color:C.gold}}>{m.t}</div></div><Bdg s={m.ok?"paid":"pending"}/></div>))}</>}
 {tab==="r"&&MEM.map((m,i)=>(<div key={m.id} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",background:i===0?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${i===0?C.blue+"40":C.brdL}`,position:"relative"}}>
 {i===0&&<div style={{position:"absolute",top:8,right:12,fontSize:9,fontWeight:700,color:C.gold,background:C.goldL,padding:"2px 8px",borderRadius:6}}>EN COURS</div>}
@@ -283,7 +332,7 @@ function Invite({go}){return(<div style={{height:"100%",background:C.bg,overflow
 <Btn v="s" full>{Z.copy} Copier le code</Btn>
 </div>
 <div style={{fontSize:14,fontWeight:600,color:C.t1,marginBottom:12}}>Partager via</div>
-{[{l:"WhatsApp",ic:"📱",c:"#25D366"},{l:"SMS",ic:"💬",c:C.blue},{l:"Lien",ic:"🔗",c:C.purple}].map((m,i)=>(<button key={i} style={{display:"flex",alignItems:"center",gap:14,padding:"14px 16px",width:"100%",background:C.card,borderRadius:12,marginBottom:8,border:`1px solid ${C.brdL}`,cursor:"pointer",textAlign:"left"}}><span style={{fontSize:24}}>{m.ic}</span><span style={{flex:1,fontSize:14,fontWeight:500,color:C.t1}}>Inviter via {m.l}</span><span style={{color:C.t4}}>{Z.fwd}</span></button>))}
+{[{l:"WhatsApp",ic:"wa",c:"#25D366"},{l:"SMS",ic:"sms",c:C.blue},{l:"Lien",ic:"lnk",c:C.purple}].map((m,i)=>(<button key={i} style={{display:"flex",alignItems:"center",gap:14,padding:"14px 16px",width:"100%",background:C.card,borderRadius:12,marginBottom:8,border:`1px solid ${C.brdL}`,cursor:"pointer",textAlign:"left"}}><div style={{width:40,height:40,borderRadius:12,background:m.c+"15",display:"flex",alignItems:"center",justifyContent:"center",color:m.c,fontWeight:700,fontSize:14}}>{m.l[0]}</div><span style={{flex:1,fontSize:14,fontWeight:500,color:C.t1}}>Inviter via {m.l}</span><span style={{color:C.t4}}>{Z.fwd}</span></button>))}
 </div>);}
 
 // ── Chat ──
@@ -319,7 +368,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>
 <div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Payer via</div>
 {WALLETS.map((w,i)=>(<button key={w.id} onClick={()=>setWal(i)} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",width:"100%",background:wal===i?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${wal===i?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
-<span style={{fontSize:24}}>{w.logo}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num} · <span style={{color:C.gold}}>{fm(w.bal)} F</span></div></div>
+<SvgIc type={w.logo} size={24}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num} · <span style={{color:C.gold}}>{fm(w.bal)} F</span></div></div>
 {wal===i&&<div style={{width:20,height:20,borderRadius:10,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
 </button>))}
 <div style={{marginTop:16}}><Btn full onClick={()=>go("confirm")}>Continuer</Btn></div>
@@ -329,7 +378,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 function Confirm({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Confirmer le paiement" onBack={()=>go("contribute")}/>
 <div style={{background:C.card,borderRadius:24,padding:24,border:`1px solid ${C.brd}`,marginBottom:20}}>
 <div style={{textAlign:"center",marginBottom:20}}><div style={{fontSize:13,color:C.t3,marginBottom:4}}>Vous allez cotiser</div><div style={{fontSize:32,fontWeight:800,color:C.gold}}>25 000 <span style={{fontSize:14,color:C.t3}}>FCFA</span></div></div>
-{[{l:"Cercle",v:"Cercle Élite"},{l:"Via",v:"💎 Kolo Money"},{l:"Solde après",v:"70 000 FCFA"},{l:"Frais",v:"Gratuit"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"12px 0",borderBottom:i<3?`1px solid ${C.brd}`:""}}><span style={{fontSize:13,color:C.t3}}>{r.l}</span><span style={{fontSize:13,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
+{[{l:"Cercle",v:"Cercle Élite"},{l:"Via",v:"Kolo Money"},{l:"Solde après",v:"70 000 FCFA"},{l:"Frais",v:"Gratuit"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"12px 0",borderBottom:i<3?`1px solid ${C.brd}`:""}}><span style={{fontSize:13,color:C.t3}}>{r.l}</span><span style={{fontSize:13,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
 </div>
 <div style={{background:C.orangeL,borderRadius:12,padding:"12px 16px",marginBottom:20,display:"flex",gap:10,alignItems:"center",border:`1px solid ${C.orange}20`}}>
 <span style={{color:C.orange}}>{Z.warn}</span><span style={{fontSize:12,color:C.t2}}>Cette opération est irréversible</span>
@@ -361,7 +410,7 @@ function Wallets({go}){const tot=WALLETS.reduce((s,a)=>s+a.bal,0);return(<div st
 <Btn v="s" full onClick={()=>go("withdraw")} sx={{flex:1}}>{Z.up} Retirer</Btn>
 </div>
 {WALLETS.map(w=>(<div key={w.id} style={{background:C.card,borderRadius:16,padding:18,marginBottom:10,border:`1px solid ${C.brd}`}}>
-<div style={{display:"flex",alignItems:"center",gap:12,marginBottom:10}}><span style={{fontSize:28}}>{w.logo}</span><div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num}</div></div>{w.id===0&&<span style={{fontSize:10,fontWeight:700,color:C.kolo,background:C.koloL,padding:"3px 8px",borderRadius:6}}>INTERNE</span>}</div>
+<div style={{display:"flex",alignItems:"center",gap:12,marginBottom:10}}><SvgIc type={w.logo} size={28}/><div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num}</div></div>{w.id===0&&<span style={{fontSize:10,fontWeight:700,color:C.kolo,background:C.koloL,padding:"3px 8px",borderRadius:6}}>INTERNE</span>}</div>
 <div style={{fontSize:22,fontWeight:800,color:C.gold}}>{fm(w.bal)} <span style={{fontSize:13,fontWeight:500,color:C.t3}}>FCFA</span></div>
 {w.desc&&<div style={{fontSize:11,color:C.t3,marginTop:4}}>{w.desc}</div>}
 </div>))}
@@ -371,7 +420,7 @@ function Wallets({go}){const tot=WALLETS.reduce((s,a)=>s+a.bal,0);return(<div st
 // ── Savings ──
 function Sav({go}){return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Objectifs d'épargne" onBack={()=>go("home")} right={<button style={{background:"none",border:"none",cursor:"pointer",color:C.blue}}>{Z.plus}</button>}/>
 {SAV.map(s=>(<div key={s.id} style={{background:C.card,borderRadius:16,padding:"16px 18px",marginBottom:10,border:`1px solid ${C.brdL}`}}>
-<div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}><span style={{fontSize:24}}>{s.ic}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{s.n}</div></div><span style={{fontSize:13,fontWeight:700,color:s.sv>=s.tg?C.green:C.gold}}>{fm(s.sv)} / {fm(s.tg)}</span></div>
+<div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}><SvgIc type={s.ic} size={24}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{s.n}</div></div><span style={{fontSize:13,fontWeight:700,color:s.sv>=s.tg?C.green:C.gold}}>{fm(s.sv)} / {fm(s.tg)}</span></div>
 <div style={{background:C.bg,borderRadius:4,height:6,overflow:"hidden"}}><div style={{width:`${Math.min(s.sv/s.tg*100,100)}%`,height:"100%",background:s.sv>=s.tg?C.green:s.cl,borderRadius:4}}/></div>
 <div style={{textAlign:"right",marginTop:4,fontSize:11,color:C.t3}}>{Math.round(s.sv/s.tg*100)}%</div></div>))}</div>);}
 
@@ -396,7 +445,7 @@ function Rwd({go}){const pts=RWDS.filter(r=>r.ok).reduce((s,r)=>s+r.pt,0);return
 <div style={{background:`linear-gradient(135deg,${C.navy},${C.navyM})`,borderRadius:24,padding:24,textAlign:"center",marginBottom:20,boxShadow:"0 8px 32px rgba(11,29,58,0.25)"}}>
 <div style={{fontSize:13,color:"rgba(255,255,255,0.6)",marginBottom:4}}>Points gagnés</div><div style={{fontSize:40,fontWeight:800,color:C.gold}}>{pts}</div><div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginTop:4}}>Cotisez pour débloquer plus !</div></div>
 {RWDS.map(r=>(<div key={r.id} style={{display:"flex",alignItems:"center",gap:14,padding:16,background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${C.brdL}`,opacity:r.ok?1:.45}}>
-<div style={{width:46,height:46,borderRadius:14,background:r.ok?C.goldL:C.bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:20}}>{r.ok?"🏆":"🔒"}</div>
+<div style={{width:46,height:46,borderRadius:14,background:r.ok?C.goldL:C.bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:20}}>{r.ok?<SvgIc type="trophy" size={20}/>:<SvgIc type="lockBig" size={20}/>}</div>
 <div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{r.tt}</div><div style={{fontSize:12,color:C.t3}}>{r.ds}</div></div>
 <div style={{textAlign:"right"}}><div style={{fontSize:14,fontWeight:700,color:r.ok?C.gold:C.t4}}>+{r.pt}</div><Bdg s={r.ok?"completed":"pending"}/></div></div>))}</div>);}
 
@@ -475,7 +524,7 @@ function Withdraw({go}){const[amt,setAmt]=useState("");const[dest,setDest]=useSt
 return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Retrait Kolo Money" onBack={()=>go("wallets")}/>
 <div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,textAlign:"center",marginBottom:16}}>
 <div style={{fontSize:13,color:C.t3,marginBottom:4}}>Solde Kolo Money</div>
-<div style={{fontSize:28,fontWeight:800,color:C.gold}}>💎 {fm(95000)} <span style={{fontSize:13,color:C.t3}}>FCFA</span></div>
+<div style={{fontSize:28,fontWeight:800,color:C.gold}}><SvgIc type="kolo" size={18}/> {fm(95000)} <span style={{fontSize:13,color:C.t3}}>FCFA</span></div>
 </div>
 <div style={{background:C.card,borderRadius:20,padding:"20px",textAlign:"center",marginBottom:16,border:`1px solid ${C.brd}`}}>
 <div style={{fontSize:13,color:C.t3,marginBottom:8}}>Montant à retirer</div>
@@ -483,7 +532,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>
 <div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Vers quel compte ?</div>
 {WALLETS.filter(w=>w.id>0).map(w=>(<button key={w.id} onClick={()=>setDest(w.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",width:"100%",background:dest===w.id?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${dest===w.id?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
-<span style={{fontSize:24}}>{w.logo}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num}</div></div>
+<SvgIc type={w.logo} size={24}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num}</div></div>
 {dest===w.id&&<div style={{width:20,height:20,borderRadius:10,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
 </button>))}
 <div style={{background:C.orangeL,borderRadius:12,padding:"10px 14px",marginTop:12,marginBottom:16,display:"flex",gap:8,alignItems:"center",border:`1px solid ${C.orange}20`}}>
@@ -497,7 +546,7 @@ function TopUp({go}){const[amt,setAmt]=useState("");const[src,setSrc]=useState(1
 return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Recharger Kolo Money" onBack={()=>go("wallets")}/>
 <div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,textAlign:"center",marginBottom:16}}>
 <div style={{fontSize:13,color:C.t3,marginBottom:4}}>Solde actuel</div>
-<div style={{fontSize:28,fontWeight:800,color:C.gold}}>💎 {fm(95000)} <span style={{fontSize:13,color:C.t3}}>FCFA</span></div>
+<div style={{fontSize:28,fontWeight:800,color:C.gold}}><SvgIc type="kolo" size={18}/> {fm(95000)} <span style={{fontSize:13,color:C.t3}}>FCFA</span></div>
 </div>
 <div style={{background:C.card,borderRadius:20,padding:"20px",textAlign:"center",marginBottom:16,border:`1px solid ${C.brd}`}}>
 <div style={{fontSize:13,color:C.t3,marginBottom:8}}>Montant à recharger</div>
@@ -506,7 +555,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 <div style={{display:"flex",gap:8,marginBottom:16}}>{[5000,10000,25000,50000].map(v=>(<button key={v} onClick={()=>setAmt(String(v))} style={{flex:1,padding:"10px 0",borderRadius:10,border:`1px solid ${C.brd}`,background:amt===String(v)?C.blueL:C.card,color:amt===String(v)?C.blue:C.t2,fontSize:12,fontWeight:600,cursor:"pointer"}}>{fm(v)}</button>))}</div>
 <div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:10}}>Depuis</div>
 {WALLETS.filter(w=>w.id>0).map(w=>(<button key={w.id} onClick={()=>setSrc(w.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",width:"100%",background:src===w.id?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${src===w.id?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
-<span style={{fontSize:24}}>{w.logo}</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num} · <span style={{color:C.gold}}>{fm(w.bal)} F</span></div></div>
+<SvgIc type={w.logo} size={24}/><div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num} · <span style={{color:C.gold}}>{fm(w.bal)} F</span></div></div>
 {src===w.id&&<div style={{width:20,height:20,borderRadius:10,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
 </button>))}
 <div style={{marginTop:16}}><Btn full onClick={()=>go("ok")} dis={!amt}>Recharger {amt?fm(amt):""} FCFA</Btn></div>
@@ -656,15 +705,15 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 <div style={{fontSize:13,color:C.t2,lineHeight:1.6}}>Likelemba est une application de tontine digitale développée par Lamuka Tech. Notre mission est de moderniser l'épargne communautaire en Afrique Centrale grâce à la technologie mobile.</div>
 </div>
 <div style={{fontSize:14,fontWeight:700,color:C.t1,marginBottom:10}}>Contact</div>
-{[{ic:"📧",l:"Email",v:"business@lamuka-tech.com"},{ic:"📱",l:"Téléphone",v:"+242 06 466 3469"},{ic:"🌐",l:"Site web",v:"lamuka-tech.com"},{ic:"📍",l:"Adresse",v:"Brazzaville, Congo"}].map((c,i)=>(
+{[{ic:"email",l:"Email",v:"business@lamuka-tech.com"},{ic:"tel",l:"Téléphone",v:"+242 06 466 3469"},{ic:"web",l:"Site web",v:"lamuka-tech.com"},{ic:"loc",l:"Adresse",v:"Brazzaville, Congo"}].map((c,i)=>(
 <div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
-<span style={{fontSize:20}}>{c.ic}</span><div style={{flex:1}}><div style={{fontSize:11,color:C.t3}}>{c.l}</div><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{c.v}</div></div>
+<div style={{width:36,height:36,borderRadius:10,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue}}>{Z.globe}</div><div style={{flex:1}}><div style={{fontSize:11,color:C.t3}}>{c.l}</div><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{c.v}</div></div>
 </div>))}
 <div style={{fontSize:14,fontWeight:700,color:C.t1,marginTop:16,marginBottom:10}}>Réseaux sociaux</div>
 <div style={{display:"flex",gap:10}}>
-{[{ic:"📘",l:"Facebook"},{ic:"📸",l:"Instagram"},{ic:"🐦",l:"Twitter"},{ic:"💼",l:"LinkedIn"}].map((s,i)=>(
+{[{ic:"fb",l:"Facebook"},{ic:"ig",l:"Instagram"},{ic:"tw",l:"Twitter"},{ic:"li",l:"LinkedIn"}].map((s,i)=>(
 <div key={i} style={{flex:1,textAlign:"center",padding:"12px 4px",background:C.card,borderRadius:12,border:`1px solid ${C.brdL}`,cursor:"pointer"}}>
-<div style={{fontSize:20,marginBottom:4}}>{s.ic}</div><div style={{fontSize:10,color:C.t3}}>{s.l}</div>
+<div style={{width:28,height:28,borderRadius:8,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue,fontSize:11,fontWeight:700}}>{s.l[0]}</div><div style={{fontSize:10,color:C.t3}}>{s.l}</div>
 </div>))}
 </div>
 </div>);}
@@ -696,16 +745,16 @@ const PUB_CIRCLES=[
 {id:13,name:"Cercle 200K",amt:200000,dur:"12 mois",mem:12,filled:5,slots:Array.from({length:12},(_,i)=>({n:i+1,fee:Math.max(16-i*1.5,0).toFixed(0)*1,taken:i<5}))},
 ];
 const PROMOS=[
-{id:1,title:"25% sur vos 2 premiers versements",desc:"Rejoignez un cercle public et économisez sur les frais des 2 premiers slots",code:"BIENVENUE25",color:C.blue,icon:"🎉"},
-{id:2,title:"Cashback 10% chez Shoprite",desc:"Payez avec votre Kolo Card et recevez 10% de cashback",color:C.green,icon:"🛒"},
-{id:3,title:"Parrainage : 5 000 FCFA offerts",desc:"Invitez un ami et recevez chacun 5 000 FCFA sur Kolo Money",code:"PARRAIN5K",color:C.gold,icon:"🤝"},
-{id:4,title:"0% de frais sur le dernier slot",desc:"Les derniers tours sont toujours gratuits !",color:C.purple,icon:"💎"},
+{id:1,title:"25% sur vos 2 premiers versements",desc:"Rejoignez un cercle public et économisez sur les frais des 2 premiers slots",code:"BIENVENUE25",color:C.blue,icon:"gift"},
+{id:2,title:"Cashback 10% chez Shoprite",desc:"Payez avec votre Kolo Card et recevez 10% de cashback",color:C.green,icon:"cart"},
+{id:3,title:"Parrainage : 5 000 FCFA offerts",desc:"Invitez un ami et recevez chacun 5 000 FCFA sur Kolo Money",code:"PARRAIN5K",color:C.gold,icon:"hand"},
+{id:4,title:"0% de frais sur le dernier slot",desc:"Les derniers tours sont toujours gratuits !",color:C.purple,icon:"kolo"},
 ];
 const SNBL_PLANS=[
-{id:1,name:"Smartphone",target:150000,monthly:25000,dur:"6 mois",icon:"📱",partner:"Airtel Shop",progress:60},
-{id:2,name:"Électroménager",target:300000,monthly:30000,dur:"10 mois",icon:"🏠",partner:"Shoprite Congo",progress:20},
-{id:3,name:"Scooter",target:500000,monthly:50000,dur:"10 mois",icon:"🛵",partner:"Motor Congo",progress:0},
-{id:4,name:"Laptop",target:400000,monthly:40000,dur:"10 mois",icon:"💻",partner:"Tech Store BZV",progress:0},
+{id:1,name:"Smartphone",target:150000,monthly:25000,dur:"6 mois",ic:"phone",partner:"Airtel Shop",progress:60},
+{id:2,name:"Électroménager",target:300000,monthly:30000,dur:"10 mois",ic:"appliance",partner:"Shoprite Congo",progress:20},
+{id:3,name:"Scooter",target:500000,monthly:50000,dur:"10 mois",ic:"scooter",partner:"Motor Congo",progress:0},
+{id:4,name:"Laptop",target:400000,monthly:40000,dur:"10 mois",ic:"laptop",partner:"Tech Store BZV",progress:0},
 ];
 
 function Marketplace({go}){const[tab,setTab]=useState("all");const[dur,setDur]=useState("all");
@@ -713,7 +762,7 @@ const filtered=dur==="all"?PUB_CIRCLES:PUB_CIRCLES.filter(c=>c.dur.includes(dur)
 return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Cercles publics" onBack={()=>go("home")}/>
 {/* Promo banner */}
 <div style={{background:`linear-gradient(135deg,${C.blue},${C.blueD})`,borderRadius:16,padding:"16px 18px",marginBottom:16,display:"flex",alignItems:"center",gap:12}}>
-<span style={{fontSize:32}}>🎁</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:"#fff"}}>25% de réduction !</div><div style={{fontSize:11,color:"rgba(255,255,255,0.7)"}}>Sur vos 2 premiers versements</div></div>
+<div style={{color:C.gold}}>{Z.gift}</div><div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:"#fff"}}>25% de réduction !</div><div style={{fontSize:11,color:"rgba(255,255,255,0.7)"}}>Sur vos 2 premiers versements</div></div>
 <button onClick={()=>go("promos")} style={{background:"rgba(255,255,255,0.2)",border:"none",borderRadius:8,padding:"6px 12px",color:"#fff",fontSize:11,fontWeight:600,cursor:"pointer"}}>Voir</button>
 </div>
 {/* Duration filter */}
@@ -776,7 +825,7 @@ function KYC({go}){const[step,setStep]=useState(1);
 return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:40}}><Hdr title="Vérification d'identité" onBack={()=>go("market")}/>
 <div style={{display:"flex",gap:4,marginBottom:24}}>{[1,2,3].map(s=>(<div key={s} style={{flex:1,height:4,borderRadius:2,background:s<=step?C.blue:C.brd}}/>))}</div>
 {step===1&&<div>
-<div style={{textAlign:"center",marginBottom:24}}><div style={{width:80,height:80,borderRadius:24,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",fontSize:36,marginBottom:12}}>🪪</div>
+<div style={{textAlign:"center",marginBottom:24}}><div style={{width:80,height:80,borderRadius:24,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:12,color:C.blue}}>{Z.doc}</div>
 <h3 style={{fontSize:18,fontWeight:700,color:C.t0,margin:"0 0 6px"}}>Carte d'identité</h3>
 <p style={{fontSize:13,color:C.t3}}>Prenez une photo recto de votre carte d'identité nationale</p></div>
 <div style={{background:C.card,borderRadius:20,height:180,border:`2px dashed ${C.brd}`,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",cursor:"pointer",marginBottom:16}}>
@@ -787,20 +836,20 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 <Btn full onClick={()=>setStep(2)}>Suivant</Btn>
 </div>}
 {step===2&&<div>
-<div style={{textAlign:"center",marginBottom:24}}><div style={{width:80,height:80,borderRadius:24,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",fontSize:36,marginBottom:12}}>🤳</div>
+<div style={{textAlign:"center",marginBottom:24}}><div style={{width:80,height:80,borderRadius:24,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:12,color:C.blue}}>{Z.usr}</div>
 <h3 style={{fontSize:18,fontWeight:700,color:C.t0,margin:"0 0 6px"}}>Selfie de vérification</h3>
 <p style={{fontSize:13,color:C.t3}}>Prenez un selfie clair avec un bon éclairage</p></div>
 <div style={{background:C.card,borderRadius:"50%",width:200,height:200,margin:"0 auto 20px",border:`3px dashed ${C.blue}`,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
-<span style={{fontSize:48}}>📸</span>
+<div style={{color:C.blue}}>{Z.cam}</div>
 </div>
 <Btn full onClick={()=>setStep(3)}>Vérifier mon identité</Btn>
 </div>}
 {step===3&&<div style={{textAlign:"center",paddingTop:40}}>
-<div style={{width:80,height:80,borderRadius:24,background:C.greenL,display:"inline-flex",alignItems:"center",justifyContent:"center",fontSize:40,marginBottom:16}}>✅</div>
+<div style={{width:80,height:80,borderRadius:24,background:C.greenL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,color:C.green}}>{Z.shield}</div>
 <h3 style={{fontSize:20,fontWeight:800,color:C.green,margin:"0 0 8px"}}>Vérifié !</h3>
 <p style={{fontSize:13,color:C.t3,marginBottom:32}}>Votre identité a été confirmée avec succès. Vous pouvez maintenant rejoindre des cercles publics.</p>
 <div style={{background:C.card,borderRadius:16,padding:16,border:`1px solid ${C.brd}`,marginBottom:20,textAlign:"left"}}>
-{[{l:"Nom",v:"Joeldy Tsina"},{l:"N° ID",v:"CG-2026-XXXXX"},{l:"Score crédit",v:"⭐ 85/100"},{l:"Statut",v:"✅ Vérifié"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:i<3?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
+{[{l:"Nom",v:"Joeldy Tsina"},{l:"N° ID",v:"CG-2026-XXXXX"},{l:"Score crédit",v:"★ 85/100"},{l:"Statut",v:"● Vérifié"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:i<3?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
 </div>
 <Btn full onClick={()=>go("ok")}>Continuer</Btn>
 </div>}
@@ -837,7 +886,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 <div style={{position:"absolute",top:-20,right:-20,width:100,height:100,borderRadius:50,background:"rgba(255,255,255,0.05)"}}/>
 <div style={{display:"flex",justifyContent:"space-between",marginBottom:24}}>
 <div style={{fontSize:12,fontWeight:700,color:"rgba(255,255,255,0.7)",letterSpacing:1}}>KOLO CARD</div>
-<div style={{fontSize:12,fontWeight:600,color:C.gold}}>💎 PREMIUM</div>
+<div style={{fontSize:12,fontWeight:600,color:C.gold}}><SvgIc type="kolo" size={14}/> PREMIUM</div>
 </div>
 <div onClick={()=>setShowNum(!showNum)} style={{fontSize:18,fontWeight:600,color:"#fff",letterSpacing:3,marginBottom:20,cursor:"pointer"}}>{showNum?"5342 •••• •••• 8901":"•••• •••• •••• 8901"}</div>
 <div style={{display:"flex",justifyContent:"space-between"}}>
@@ -857,8 +906,8 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>
 {/* Benefits */}
 <div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:12}}>Avantages Kolo Card</div>
-{[{ic:"🛒",t:"Paiement en magasin",d:"Payez chez tous les marchands acceptant Mastercard"},{ic:"🌐",t:"Achats en ligne",d:"Compatible avec tous les sites e-commerce"},{ic:"💰",t:"Cashback 5%",d:"Sur tous vos achats avec la Kolo Card"},{ic:"🏧",t:"Retrait ATM",d:"Retirez aux distributeurs partenaires"},{ic:"🔒",t:"Sécurisé",d:"Gel instantané, alertes en temps réel"}].map((b,i)=>(<div key={i} style={{display:"flex",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
-<span style={{fontSize:24}}>{b.ic}</span><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{b.t}</div><div style={{fontSize:11,color:C.t3}}>{b.d}</div></div>
+{[{ic:"cart",t:"Paiement en magasin",d:"Payez chez tous les marchands acceptant Mastercard"},{ic:"web",t:"Achats en ligne",d:"Compatible avec tous les sites e-commerce"},{ic:"cash",t:"Cashback 5%",d:"Sur tous vos achats avec la Kolo Card"},{ic:"atm",t:"Retrait ATM",d:"Retirez aux distributeurs partenaires"},{ic:"lock",t:"Sécurisé",d:"Gel instantané, alertes en temps réel"}].map((b,i)=>(<div key={i} style={{display:"flex",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+<div style={{width:36,height:36,borderRadius:10,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue}}>{Z.shield}</div><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{b.t}</div><div style={{fontSize:11,color:C.t3}}>{b.d}</div></div>
 </div>))}
 <div style={{marginTop:12}}><Btn v="s" full onClick={()=>go("promos")}>{Z.star} Voir les offres cashback</Btn></div>
 </div>);}
@@ -877,7 +926,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>
 {tab==="browse"&&SNBL_PLANS.map(p=>(<div key={p.id} style={{background:C.card,borderRadius:20,padding:18,marginBottom:12,border:`1px solid ${C.brd}`}}>
 <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
-<div style={{width:48,height:48,borderRadius:14,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",fontSize:24}}>{p.icon}</div>
+<div style={{width:48,height:48,borderRadius:14,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center"}}><SvgIc type={p.ic} size={24}/></div>
 <div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.t0}}>{p.name}</div><div style={{fontSize:12,color:C.t3}}>Partenaire : {p.partner}</div></div>
 <div style={{textAlign:"right"}}><div style={{fontSize:16,fontWeight:800,color:C.gold}}>{fm(p.target)}</div><div style={{fontSize:10,color:C.t3}}>FCFA</div></div>
 </div>
@@ -891,7 +940,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 {SNBL_PLANS.filter(p=>p.progress>0).length>0?
 SNBL_PLANS.filter(p=>p.progress>0).map(p=>(<div key={p.id} style={{background:C.card,borderRadius:20,padding:18,marginBottom:12,border:`1px solid ${C.brd}`}}>
 <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
-<span style={{fontSize:28}}>{p.icon}</span>
+<SvgIc type={p.ic} size={24}/>
 <div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:C.t0}}>{p.name}</div><div style={{fontSize:12,color:C.t3}}>{p.partner}</div></div>
 <div style={{textAlign:"right"}}><div style={{fontSize:14,fontWeight:700,color:C.gold}}>{fm(Math.round(p.target*p.progress/100))}</div><div style={{fontSize:10,color:C.t3}}>/ {fm(p.target)}</div></div>
 </div>
@@ -908,7 +957,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 {PROMOS.map(p=>(<div key={p.id} style={{background:C.card,borderRadius:20,padding:18,marginBottom:12,border:`1px solid ${C.brd}`,overflow:"hidden",position:"relative"}}>
 <div style={{position:"absolute",top:0,left:0,width:4,height:"100%",background:p.color}}/>
 <div style={{display:"flex",gap:12,alignItems:"flex-start"}}>
-<span style={{fontSize:32}}>{p.icon}</span>
+<div style={{width:40,height:40,borderRadius:12,background:p.color+"12",display:"flex",alignItems:"center",justifyContent:"center",color:p.color}}>{Z.gift}</div>
 <div style={{flex:1}}>
 <div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:4}}>{p.title}</div>
 <div style={{fontSize:12,color:C.t3,lineHeight:1.4,marginBottom:8}}>{p.desc}</div>
@@ -920,8 +969,8 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 </div>
 </div>))}
 <div style={{fontSize:14,fontWeight:700,color:C.t0,marginTop:8,marginBottom:12}}>Partenaires cashback</div>
-{[{n:"Shoprite Congo",cb:"10%",ic:"🛒"},{n:"Airtel Shop",cb:"8%",ic:"📱"},{n:"Total Energies",cb:"5%",ic:"⛽"},{n:"Poto-Poto Market",cb:"3%",ic:"🏪"}].map((p,i)=>(<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
-<span style={{fontSize:24}}>{p.ic}</span><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{p.n}</div></div>
+{[{n:"Shoprite Congo",cb:"10%",ic:"S"},{n:"Airtel Shop",cb:"8%",ic:"A"},{n:"Total Energies",cb:"5%",ic:"T"},{n:"Poto-Poto Market",cb:"3%",ic:"P"}].map((p,i)=>(<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+<div style={{width:36,height:36,borderRadius:10,background:C.greenL,display:"flex",alignItems:"center",justifyContent:"center",color:C.green,fontSize:14,fontWeight:800}}>{p.ic}</div><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{p.n}</div></div>
 <span style={{fontSize:14,fontWeight:800,color:C.green}}>{p.cb}</span>
 </div>))}
 </div>);}
@@ -937,7 +986,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 {[{l:"Parties",v:"6 membres vérifiés"},{l:"Montant/tour",v:"25 000 FCFA"},{l:"Fréquence",v:"Mensuel"},{l:"Durée",v:"6 mois (Jan - Jun 2026)"},{l:"Cagnotte totale",v:"150 000 FCFA"},{l:"Pénalité retard",v:"5% automatique"},{l:"Méthode",v:"Kolo Money / Mobile Money"},{l:"Supervisé par",v:"Lamuka Tech S.A."},{l:"Juridiction",v:"République du Congo"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"10px 0",borderBottom:i<8?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
 </div>
 <div style={{background:C.blueL,borderRadius:14,padding:14,marginBottom:16,border:`1px solid ${C.blue}15`}}>
-<div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>🔒 Sécurité du contrat</div>
+<div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>{Z.lock} Sécurité du contrat</div>
 <div style={{fontSize:11,color:C.t2,lineHeight:1.5}}>Ce contrat est enregistré numériquement et sécurisé par Lamuka Tech. Chaque cotisation et versement est tracé de manière transparente. En cas de litige, le contrat fait foi.</div>
 </div>
 <div style={{display:"flex",gap:8}}>
