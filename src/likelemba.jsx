@@ -466,7 +466,7 @@ return(<div style={{height:"100%",display:"flex",flexDirection:"column",backgrou
 <div style={{fontSize:10,color:C.t4,marginTop:2,textAlign:m.me?"right":"left"}}>{m.time}</div>
 </div></div>))}
 </div>
-<div style={{padding:"8px 18px 60px",background:C.card,borderTop:`1px solid ${C.brd}`}}>
+<div style={{padding:"8px 18px 16px",background:C.card,borderTop:`1px solid ${C.brd}`}}>
 <div style={{display:"flex",gap:8}}>
 <input value={msg} onChange={e=>setMsg(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doSend()} placeholder="Écrire un message..." style={{flex:1,padding:"12px 16px",borderRadius:50,border:`1px solid ${C.brd}`,background:C.bg,outline:"none",fontSize:14,color:C.t0}}/>
 <button onClick={doSend} style={{width:44,height:44,borderRadius:22,background:`linear-gradient(135deg,${C.blue},${C.blueD})`,border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",flexShrink:0,boxShadow:"0 4px 12px rgba(26,86,219,0.25)"}}>{Z.send}</button>
@@ -1280,7 +1280,7 @@ return(<div style={{height:"100%",display:"flex",flexDirection:"column",backgrou
 {m.from==="lamu"&&<div style={{width:28,height:28,borderRadius:14,background:`linear-gradient(135deg,${C.blue},${C.kolo})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,flexShrink:0,marginRight:6}}>🤖</div>}
 <div style={{maxWidth:"80%",padding:"12px 16px",borderRadius:16,borderTopLeftRadius:m.from==="me"?16:4,borderTopRightRadius:m.from==="me"?4:16,background:m.from==="me"?C.blue:C.card,color:m.from==="me"?"#fff":C.t1,fontSize:13,lineHeight:1.5,whiteSpace:"pre-line",boxShadow:m.from==="me"?"none":C.sh}}>{m.text}</div></div>))}
 </div>
-<div style={{padding:"8px 18px 60px",background:C.card,borderTop:`1px solid ${C.brd}`}}>
+<div style={{padding:"8px 18px 16px",background:C.card,borderTop:`1px solid ${C.brd}`}}>
 <div style={{display:"flex",gap:8}}>
 <input value={msg} onChange={e=>setMsg(e.target.value)} onKeyDown={e=>e.key==="Enter"&&doSend()} placeholder="Posez une question à Lamu..." style={{flex:1,padding:"12px 16px",borderRadius:50,border:`1px solid ${C.brd}`,background:C.bg,outline:"none",fontSize:14,color:C.t0}}/>
 <button onClick={doSend} style={{width:44,height:44,borderRadius:22,background:`linear-gradient(135deg,${C.blue},${C.kolo})`,border:"none",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",flexShrink:0}}>{Z.send}</button>
