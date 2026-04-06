@@ -143,6 +143,17 @@ return(<div>
 <div style={{display:"flex",justifyContent:"space-between"}}><span style={{fontSize:11,color:C.t3}}>Tour: {c.turn}</span><span style={{fontSize:11,fontWeight:700,color:C.gold}}>{c.prog}%</span></div>
 </div>))}
 </div>
+{/* Money Fellows Features */}
+<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:22}}>
+{[{ic:"🏪",t:"Cercles publics",d:"Rejoindre un cercle",s:"market",c:C.blue},{ic:"💳",t:"Kolo Card",d:"Carte prépayée",s:"koloCard",c:C.navy},{ic:"🛍️",t:"Épargner & Acheter",d:"Save Now Buy Later",s:"snbl",c:C.green},{ic:"⭐",t:"Score crédit",d:85+"/100 · Excellent",s:"creditScore",c:C.gold}].map((f,i)=>(
+<button key={i} onClick={()=>go(f.s)} style={{background:C.card,borderRadius:16,padding:"14px 16px",border:`1px solid ${C.brd}`,cursor:"pointer",textAlign:"left",display:"flex",gap:10,alignItems:"center"}} onMouseEnter={e=>e.currentTarget.style.boxShadow=C.sh} onMouseLeave={e=>e.currentTarget.style.boxShadow="none"}>
+<span style={{fontSize:24}}>{f.ic}</span>
+<div><div style={{fontSize:12,fontWeight:700,color:C.t1}}>{f.t}</div><div style={{fontSize:10,color:C.t3}}>{f.d}</div></div>
+</button>))}
+</div>
+{/* Promo Banner */}
+<button onClick={()=>go("promos")} style={{display:"flex",alignItems:"center",gap:12,background:`linear-gradient(135deg,${C.gold}15,${C.gold}05)`,borderRadius:14,padding:"12px 16px",border:`1px solid ${C.gold}25`,marginBottom:22,width:"100%",cursor:"pointer",textAlign:"left"}}>
+<span style={{fontSize:28}}>🎁</span><div style={{flex:1}}><div style={{fontSize:13,fontWeight:700,color:C.gold}}>Offres & Cashback</div><div style={{fontSize:11,color:C.t3}}>Jusqu'à 10% de cashback chez nos partenaires</div></div><span style={{color:C.t4}}>{Z.fwd}</span></button>
 {/* Txs */}
 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}><span style={{fontSize:16,fontWeight:700,color:C.t0}}>Activité récente</span><button onClick={()=>go("_h")} style={{background:"none",border:"none",color:C.blue,fontSize:13,fontWeight:600,cursor:"pointer"}}>Tout</button></div>
 {TXS.slice(0,4).map(tx=><TxR key={tx.id} tx={tx} onClick={()=>go("txd:"+tx.id)}/>)}
@@ -150,7 +161,7 @@ return(<div>
 
 function CirclesTab({go}){return(<div>
 <div style={{display:"flex",gap:10,marginBottom:16}}>{[{l:"Actifs",v:"3",c:C.blue,bg:C.blueL},{l:"Membres",v:"24",c:C.green,bg:C.greenL},{l:"Épargné",v:"423K",c:C.gold,bg:C.goldL}].map((s,i)=>(<div key={i} style={{flex:1,textAlign:"center",padding:"14px 8px",background:s.bg,borderRadius:14}}><div style={{fontSize:20,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:C.t3,marginTop:2}}>{s.l}</div></div>))}</div>
-<div style={{display:"flex",gap:8,marginBottom:16}}><Btn full onClick={()=>go("createCircle")}>{Z.plus} Créer un cercle</Btn><Btn v="s" onClick={()=>go("joinCircle")} sx={{flexShrink:0}}>{Z.link}</Btn></div>
+<div style={{display:"flex",gap:8,marginBottom:16}}><Btn full onClick={()=>go("createCircle")}>{Z.plus} Créer un cercle</Btn><Btn v="s" onClick={()=>go("joinCircle")} sx={{flexShrink:0}}>{Z.link}</Btn><Btn v="s" onClick={()=>go("market")} sx={{flexShrink:0}}>🏪</Btn></div>
 {CIR.map(c=>(<div key={c.id} onClick={()=>go("cd:"+c.id)} style={{display:"flex",alignItems:"center",gap:14,padding:16,background:C.card,borderRadius:16,marginBottom:8,border:`1px solid ${C.brd}`,cursor:"pointer"}} onMouseEnter={e=>e.currentTarget.style.boxShadow=C.sh} onMouseLeave={e=>e.currentTarget.style.boxShadow="none"}>
 <div style={{width:44,height:44,borderRadius:14,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue}}>{Z.grp}</div>
 <div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{c.name}</div><div style={{fontSize:12,color:C.t3}}>{c.mem} membres · {c.freq}</div></div>
@@ -170,9 +181,13 @@ function ProfTab({go}){return(<div>
 <MenuRow icon={Z.usr} label="Modifier le profil" onClick={()=>go("editProfile")}/>
 <MenuRow icon={Z.shield} label="Sécurité & PIN" onClick={()=>go("sec")}/>
 <MenuRow icon={Z.wal} label="Portefeuilles" onClick={()=>go("wallets")}/>
+<MenuRow icon={Z.star} label="Kolo Card" onClick={()=>go("koloCard")} color={C.navy}/>
+<MenuRow icon={Z.tgt} label="Score de crédit" onClick={()=>go("creditScore")} color={C.gold}/>
 <MenuRow icon={Z.tgt} label="Objectifs d'épargne" onClick={()=>go("sav")}/>
 <MenuRow icon={Z.doc} label="Reçus de cotisation" onClick={()=>go("rcpt")}/>
+<MenuRow icon={Z.doc} label="Mes contrats" onClick={()=>go("contract")}/>
 <MenuRow icon={Z.star} label="Récompenses" onClick={()=>go("rwd")}/>
+<MenuRow icon={Z.gift} label="Offres & Cashback" onClick={()=>go("promos")} color={C.green}/>
 <MenuRow icon={Z.bell} label="Notifications" onClick={()=>go("notif")}/>
 <MenuRow icon={Z.globe} label="Langue" onClick={()=>go("lang")}/>
 <MenuRow icon={Z.help} label="FAQ & Aide" onClick={()=>go("faq")}/>
@@ -223,7 +238,7 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 {[{l:"Cotiser",ic:Z.up,s:"contribute"},{l:"Rappel",ic:Z.bell,s:"remind"},{l:"Chat",ic:Z.msg,s:"chat:"+c.id},{l:"Inviter",ic:Z.plus,s:"invite"}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:"1 1 22%",display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:11,fontWeight:600,color:C.blue}}>{a.ic}<span>{a.l}</span></button>))}
 </div>
 <div style={{display:"flex",gap:6,marginBottom:16}}>
-{[{l:"Calendrier",ic:Z.cal,s:"calendar"},{l:"Stats",ic:Z.tgt,s:"circleStats"},{l:"Modifier",ic:Z.gear,s:"editCircle"},{l:"Quitter",ic:Z.warn,s:"leaveCircle",c:C.red}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${a.c?a.c+"20":C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:10,fontWeight:600,color:a.c||C.t2}}>{a.ic}<span>{a.l}</span></button>))}
+{[{l:"Calendrier",ic:Z.cal,s:"calendar"},{l:"Stats",ic:Z.tgt,s:"circleStats"},{l:"Contrat",ic:Z.doc,s:"contract"},{l:"Modifier",ic:Z.gear,s:"editCircle"},{l:"Quitter",ic:Z.warn,s:"leaveCircle",c:C.red}].map((a,i)=>(<button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${a.c?a.c+"20":C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:10,fontWeight:600,color:a.c||C.t2}}>{a.ic}<span>{a.l}</span></button>))}
 </div>
 {/* Tabs */}
 <div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:16,border:`1px solid ${C.brd}`}}>
@@ -673,6 +688,264 @@ return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px
 <div style={{marginTop:12}}><Btn v="s" full onClick={()=>go("settings")}>Annuler</Btn></div>
 </div>);}
 
+// ── Marketplace Public Circles ──
+const PUB_CIRCLES=[
+{id:10,name:"Cercle 50K",amt:50000,dur:"6 mois",mem:6,filled:4,slots:[{n:1,fee:15,taken:true},{n:2,fee:12,taken:true},{n:3,fee:8,taken:false},{n:4,fee:5,taken:true},{n:5,fee:2,taken:true},{n:6,fee:0,taken:false}]},
+{id:11,name:"Cercle 100K",amt:100000,dur:"10 mois",mem:10,filled:7,slots:[{n:1,fee:16,taken:true},{n:2,fee:14,taken:true},{n:3,fee:12,taken:true},{n:4,fee:10,taken:false},{n:5,fee:8,taken:true},{n:6,fee:6,taken:true},{n:7,fee:4,taken:true},{n:8,fee:2,taken:false},{n:9,fee:1,taken:true},{n:10,fee:0,taken:false}]},
+{id:12,name:"Cercle 25K",amt:25000,dur:"6 mois",mem:6,filled:2,slots:[{n:1,fee:15,taken:true},{n:2,fee:12,taken:false},{n:3,fee:8,taken:false},{n:4,fee:5,taken:true},{n:5,fee:2,taken:false},{n:6,fee:0,taken:false}]},
+{id:13,name:"Cercle 200K",amt:200000,dur:"12 mois",mem:12,filled:5,slots:Array.from({length:12},(_,i)=>({n:i+1,fee:Math.max(16-i*1.5,0).toFixed(0)*1,taken:i<5}))},
+];
+const PROMOS=[
+{id:1,title:"25% sur vos 2 premiers versements",desc:"Rejoignez un cercle public et économisez sur les frais des 2 premiers slots",code:"BIENVENUE25",color:C.blue,icon:"🎉"},
+{id:2,title:"Cashback 10% chez Shoprite",desc:"Payez avec votre Kolo Card et recevez 10% de cashback",color:C.green,icon:"🛒"},
+{id:3,title:"Parrainage : 5 000 FCFA offerts",desc:"Invitez un ami et recevez chacun 5 000 FCFA sur Kolo Money",code:"PARRAIN5K",color:C.gold,icon:"🤝"},
+{id:4,title:"0% de frais sur le dernier slot",desc:"Les derniers tours sont toujours gratuits !",color:C.purple,icon:"💎"},
+];
+const SNBL_PLANS=[
+{id:1,name:"Smartphone",target:150000,monthly:25000,dur:"6 mois",icon:"📱",partner:"Airtel Shop",progress:60},
+{id:2,name:"Électroménager",target:300000,monthly:30000,dur:"10 mois",icon:"🏠",partner:"Shoprite Congo",progress:20},
+{id:3,name:"Scooter",target:500000,monthly:50000,dur:"10 mois",icon:"🛵",partner:"Motor Congo",progress:0},
+{id:4,name:"Laptop",target:400000,monthly:40000,dur:"10 mois",icon:"💻",partner:"Tech Store BZV",progress:0},
+];
+
+function Marketplace({go}){const[tab,setTab]=useState("all");const[dur,setDur]=useState("all");
+const filtered=dur==="all"?PUB_CIRCLES:PUB_CIRCLES.filter(c=>c.dur.includes(dur));
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Cercles publics" onBack={()=>go("home")}/>
+{/* Promo banner */}
+<div style={{background:`linear-gradient(135deg,${C.blue},${C.blueD})`,borderRadius:16,padding:"16px 18px",marginBottom:16,display:"flex",alignItems:"center",gap:12}}>
+<span style={{fontSize:32}}>🎁</span><div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:"#fff"}}>25% de réduction !</div><div style={{fontSize:11,color:"rgba(255,255,255,0.7)"}}>Sur vos 2 premiers versements</div></div>
+<button onClick={()=>go("promos")} style={{background:"rgba(255,255,255,0.2)",border:"none",borderRadius:8,padding:"6px 12px",color:"#fff",fontSize:11,fontWeight:600,cursor:"pointer"}}>Voir</button>
+</div>
+{/* Duration filter */}
+<div style={{display:"flex",gap:6,marginBottom:16,overflowX:"auto"}}>
+{[{k:"all",l:"Tous"},{k:"6",l:"6 mois"},{k:"10",l:"10 mois"},{k:"12",l:"12 mois"}].map(f=>(<button key={f.k} onClick={()=>setDur(f.k)} style={{padding:"8px 14px",borderRadius:50,border:"none",cursor:"pointer",background:dur===f.k?C.blue:C.card,color:dur===f.k?"#fff":C.t2,fontSize:12,fontWeight:600,whiteSpace:"nowrap",flexShrink:0}}>{f.l}</button>))}
+</div>
+{/* Circle cards */}
+{filtered.map(c=>{const avail=c.slots.filter(s=>!s.taken);const minFee=Math.min(...avail.map(s=>s.fee));
+return(<div key={c.id} style={{background:C.card,borderRadius:20,padding:18,marginBottom:12,border:`1px solid ${C.brd}`}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
+<div><div style={{fontSize:16,fontWeight:700,color:C.t0}}>{c.name}</div><div style={{fontSize:12,color:C.t3}}>{c.dur} · {c.mem} membres</div></div>
+<div style={{textAlign:"right"}}><div style={{fontSize:18,fontWeight:800,color:C.gold}}>{fm(c.amt)} F</div><div style={{fontSize:10,color:C.t3}}>par tour</div></div>
+</div>
+{/* Progress */}
+<div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}><span style={{fontSize:11,color:C.t3}}>{c.filled}/{c.mem} places prises</span><span style={{fontSize:11,fontWeight:600,color:avail.length<=2?C.red:C.green}}>{avail.length} dispo</span></div>
+<div style={{background:C.bg,borderRadius:4,height:6,overflow:"hidden",marginBottom:12}}><div style={{width:`${(c.filled/c.mem)*100}%`,height:"100%",background:`linear-gradient(90deg,${C.blue},${C.gold})`,borderRadius:4}}/></div>
+{/* Available slots */}
+<div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:12}}>
+{c.slots.map(s=>(<div key={s.n} style={{width:40,height:40,borderRadius:10,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",background:s.taken?C.brd:s.fee===0?C.greenL:C.blueL,border:`1.5px solid ${s.taken?"transparent":s.fee===0?C.green:C.blue}`,opacity:s.taken?.4:1,cursor:s.taken?"default":"pointer"}}>
+<span style={{fontSize:12,fontWeight:700,color:s.taken?C.t4:s.fee===0?C.green:C.blue}}>{s.n}</span>
+<span style={{fontSize:8,fontWeight:600,color:s.taken?C.t4:s.fee===0?C.green:C.t3}}>{s.fee}%</span>
+</div>))}
+</div>
+{minFee===0&&<div style={{background:C.greenL,borderRadius:8,padding:"6px 10px",marginBottom:10,display:"inline-block"}}><span style={{fontSize:11,fontWeight:700,color:C.green}}>🎉 Slot gratuit disponible !</span></div>}
+<Btn full onClick={()=>go("slotPick:"+c.id)}>Rejoindre · dès {minFee}% de frais</Btn>
+</div>);})}
+</div>);}
+
+// ── Slot Picker ──
+function SlotPick({go,cid}){const c=PUB_CIRCLES.find(x=>x.id===cid)||PUB_CIRCLES[0];const[sel,setSel]=useState(null);const selSlot=c.slots.find(s=>s.n===sel);
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Choisir votre slot" onBack={()=>go("market")}/>
+<div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,marginBottom:16,textAlign:"center"}}>
+<div style={{fontSize:20,fontWeight:800,color:C.t0}}>{c.name}</div>
+<div style={{fontSize:28,fontWeight:800,color:C.gold,marginTop:4}}>{fm(c.amt)} FCFA</div>
+<div style={{fontSize:12,color:C.t3,marginTop:2}}>{c.dur} · Cotisation mensuelle</div>
+</div>
+<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>Choisissez votre tour</div>
+<div style={{fontSize:12,color:C.t3,marginBottom:12}}>Plus vous choisissez un slot tard, moins vous payez de frais</div>
+{c.slots.filter(s=>!s.taken).map(s=>(<button key={s.n} onClick={()=>setSel(s.n)} style={{display:"flex",alignItems:"center",gap:14,padding:"14px 16px",width:"100%",background:sel===s.n?C.blueL:C.card,borderRadius:16,marginBottom:8,border:`1.5px solid ${sel===s.n?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
+<div style={{width:40,height:40,borderRadius:12,background:s.fee===0?C.greenL:C.blueL,display:"flex",alignItems:"center",justifyContent:"center"}}>
+<span style={{fontSize:16,fontWeight:800,color:s.fee===0?C.green:C.blue}}>{s.n}</span></div>
+<div style={{flex:1}}>
+<div style={{fontSize:14,fontWeight:600,color:C.t1}}>Tour {s.n}</div>
+<div style={{fontSize:12,color:C.t3}}>Vous recevez {fm(c.amt*c.mem)} F au mois {s.n}</div>
+</div>
+<div style={{textAlign:"right"}}>
+<div style={{fontSize:16,fontWeight:800,color:s.fee===0?C.green:C.gold}}>{s.fee}%</div>
+<div style={{fontSize:10,color:C.t3}}>frais: {fm(Math.round(c.amt*s.fee/100))} F</div>
+</div>
+</button>))}
+{sel&&<div style={{background:C.card,borderRadius:16,padding:16,marginTop:8,border:`1px solid ${C.brd}`}}>
+<div style={{fontSize:13,fontWeight:600,color:C.t1,marginBottom:8}}>Résumé</div>
+{[{l:"Cotisation mensuelle",v:fm(c.amt)+" F"},{l:"Frais ("+selSlot?.fee+"%)",v:fm(Math.round(c.amt*selSlot?.fee/100))+" F"},{l:"Total/mois",v:fm(c.amt+Math.round(c.amt*selSlot?.fee/100))+" F"},{l:"Vous recevez",v:fm(c.amt*c.mem)+" F"},{l:"Au mois",v:"Mois "+sel}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"6px 0",borderBottom:i<4?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:700,color:C.t1}}>{r.v}</span></div>))}
+</div>}
+<div style={{marginTop:16}}><Btn full onClick={()=>go("kyc")} dis={!sel}>Continuer → Vérification d'identité</Btn></div>
+</div>);}
+
+// ── KYC Verification ──
+function KYC({go}){const[step,setStep]=useState(1);
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Vérification d'identité" onBack={()=>go("market")}/>
+<div style={{display:"flex",gap:4,marginBottom:24}}>{[1,2,3].map(s=>(<div key={s} style={{flex:1,height:4,borderRadius:2,background:s<=step?C.blue:C.brd}}/>))}</div>
+{step===1&&<div>
+<div style={{textAlign:"center",marginBottom:24}}><div style={{width:80,height:80,borderRadius:24,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",fontSize:36,marginBottom:12}}>🪪</div>
+<h3 style={{fontSize:18,fontWeight:700,color:C.t0,margin:"0 0 6px"}}>Carte d'identité</h3>
+<p style={{fontSize:13,color:C.t3}}>Prenez une photo recto de votre carte d'identité nationale</p></div>
+<div style={{background:C.card,borderRadius:20,height:180,border:`2px dashed ${C.brd}`,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",cursor:"pointer",marginBottom:16}}>
+<span style={{color:C.blue,marginBottom:8}}>{Z.cam}</span>
+<span style={{fontSize:13,color:C.t2}}>Appuyez pour capturer</span>
+<span style={{fontSize:11,color:C.t3,marginTop:4}}>JPEG ou PNG · Max 5MB</span>
+</div>
+<Btn full onClick={()=>setStep(2)}>Suivant</Btn>
+</div>}
+{step===2&&<div>
+<div style={{textAlign:"center",marginBottom:24}}><div style={{width:80,height:80,borderRadius:24,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",fontSize:36,marginBottom:12}}>🤳</div>
+<h3 style={{fontSize:18,fontWeight:700,color:C.t0,margin:"0 0 6px"}}>Selfie de vérification</h3>
+<p style={{fontSize:13,color:C.t3}}>Prenez un selfie clair avec un bon éclairage</p></div>
+<div style={{background:C.card,borderRadius:"50%",width:200,height:200,margin:"0 auto 20px",border:`3px dashed ${C.blue}`,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}>
+<span style={{fontSize:48}}>📸</span>
+</div>
+<Btn full onClick={()=>setStep(3)}>Vérifier mon identité</Btn>
+</div>}
+{step===3&&<div style={{textAlign:"center",paddingTop:40}}>
+<div style={{width:80,height:80,borderRadius:24,background:C.greenL,display:"inline-flex",alignItems:"center",justifyContent:"center",fontSize:40,marginBottom:16}}>✅</div>
+<h3 style={{fontSize:20,fontWeight:800,color:C.green,margin:"0 0 8px"}}>Vérifié !</h3>
+<p style={{fontSize:13,color:C.t3,marginBottom:32}}>Votre identité a été confirmée avec succès. Vous pouvez maintenant rejoindre des cercles publics.</p>
+<div style={{background:C.card,borderRadius:16,padding:16,border:`1px solid ${C.brd}`,marginBottom:20,textAlign:"left"}}>
+{[{l:"Nom",v:"Joeldy Tsina"},{l:"N° ID",v:"CG-2026-XXXXX"},{l:"Score crédit",v:"⭐ 85/100"},{l:"Statut",v:"✅ Vérifié"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:i<3?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
+</div>
+<Btn full onClick={()=>go("ok")}>Continuer</Btn>
+</div>}
+</div>);}
+
+// ── Credit Score ──
+function CreditScore({go}){const score=85;const factors=[{l:"Cotisations à temps",v:"12/12",pct:100,c:C.green},{l:"Ancienneté",v:"6 mois",pct:60,c:C.blue},{l:"Cercles complétés",v:"2",pct:40,c:C.gold},{l:"Pénalités",v:"0",pct:100,c:C.green},{l:"Parrainage",v:"3 filleuls",pct:30,c:C.purple}];
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Score de crédit" onBack={()=>go("home")}/>
+<div style={{background:`linear-gradient(135deg,${C.navy},${C.navyM})`,borderRadius:24,padding:24,textAlign:"center",marginBottom:20}}>
+<div style={{fontSize:13,color:"rgba(255,255,255,0.6)",marginBottom:8}}>Votre Score Likelemba</div>
+<div style={{position:"relative",width:120,height:120,margin:"0 auto 12px"}}>
+<svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="8"/><circle cx="60" cy="60" r="52" fill="none" stroke={C.gold} strokeWidth="8" strokeDasharray={`${score*3.27} 327`} strokeLinecap="round" transform="rotate(-90 60 60)"/></svg>
+<div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}><div style={{fontSize:32,fontWeight:800,color:C.gold}}>{score}</div><div style={{fontSize:10,color:"rgba(255,255,255,0.5)"}}>/ 100</div></div>
+</div>
+<div style={{fontSize:14,fontWeight:700,color:C.green}}>Excellent</div>
+<div style={{fontSize:11,color:"rgba(255,255,255,0.5)",marginTop:4}}>Vous avez accès aux meilleurs slots</div>
+</div>
+<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:12}}>Facteurs de votre score</div>
+{factors.map((f,i)=>(<div key={i} style={{background:C.card,borderRadius:14,padding:"12px 16px",marginBottom:8,border:`1px solid ${C.brdL}`}}>
+<div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}><span style={{fontSize:13,fontWeight:600,color:C.t1}}>{f.l}</span><span style={{fontSize:13,fontWeight:700,color:f.c}}>{f.v}</span></div>
+<div style={{background:C.bg,borderRadius:3,height:4,overflow:"hidden"}}><div style={{width:`${f.pct}%`,height:"100%",background:f.c,borderRadius:3}}/></div>
+</div>))}
+<div style={{background:C.blueL,borderRadius:14,padding:14,marginTop:8,border:`1px solid ${C.blue}15`}}>
+<div style={{fontSize:13,fontWeight:600,color:C.blue,marginBottom:4}}>💡 Comment améliorer votre score ?</div>
+<div style={{fontSize:12,color:C.t2,lineHeight:1.5}}>Cotisez à temps, complétez des cercles, et parrainez vos amis pour monter votre score et accéder aux slots à 0% de frais.</div>
+</div>
+</div>);}
+
+// ── Kolo Card ──
+function KoloCard({go}){const[showNum,setShowNum]=useState(false);
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Kolo Card" onBack={()=>go("home")}/>
+{/* Card */}
+<div style={{background:`linear-gradient(135deg,${C.navy},#1A3A6B)`,borderRadius:20,padding:"24px 22px",marginBottom:20,boxShadow:"0 12px 40px rgba(11,29,58,0.4)",position:"relative",overflow:"hidden"}}>
+<div style={{position:"absolute",top:-20,right:-20,width:100,height:100,borderRadius:50,background:"rgba(255,255,255,0.05)"}}/>
+<div style={{display:"flex",justifyContent:"space-between",marginBottom:24}}>
+<div style={{fontSize:12,fontWeight:700,color:"rgba(255,255,255,0.7)",letterSpacing:1}}>KOLO CARD</div>
+<div style={{fontSize:12,fontWeight:600,color:C.gold}}>💎 PREMIUM</div>
+</div>
+<div onClick={()=>setShowNum(!showNum)} style={{fontSize:18,fontWeight:600,color:"#fff",letterSpacing:3,marginBottom:20,cursor:"pointer"}}>{showNum?"5342 •••• •••• 8901":"•••• •••• •••• 8901"}</div>
+<div style={{display:"flex",justifyContent:"space-between"}}>
+<div><div style={{fontSize:9,color:"rgba(255,255,255,0.4)"}}>TITULAIRE</div><div style={{fontSize:13,fontWeight:600,color:"#fff"}}>JOELDY TSINA</div></div>
+<div><div style={{fontSize:9,color:"rgba(255,255,255,0.4)"}}>EXPIRE</div><div style={{fontSize:13,fontWeight:600,color:"#fff"}}>12/28</div></div>
+<div style={{display:"flex",alignItems:"flex-end"}}><div style={{width:30,height:20,borderRadius:4,background:C.gold,opacity:0.8}}/><div style={{width:30,height:20,borderRadius:4,background:C.orange,opacity:0.6,marginLeft:-12}}/></div>
+</div>
+</div>
+{/* Balance */}
+<div style={{background:C.card,borderRadius:16,padding:"14px 18px",display:"flex",justifyContent:"space-between",marginBottom:16,border:`1px solid ${C.brd}`}}>
+<span style={{fontSize:13,color:C.t3}}>Solde Kolo Card</span><span style={{fontSize:16,fontWeight:800,color:C.gold}}>{fm(95000)} FCFA</span>
+</div>
+{/* Actions */}
+<div style={{display:"flex",gap:8,marginBottom:20}}>
+<Btn full onClick={()=>go("topup")} sx={{flex:1}}>{Z.dn} Recharger</Btn>
+<Btn v="s" full onClick={()=>{}} sx={{flex:1}}>{Z.gear} Gérer</Btn>
+</div>
+{/* Benefits */}
+<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:12}}>Avantages Kolo Card</div>
+{[{ic:"🛒",t:"Paiement en magasin",d:"Payez chez tous les marchands acceptant Mastercard"},{ic:"🌐",t:"Achats en ligne",d:"Compatible avec tous les sites e-commerce"},{ic:"💰",t:"Cashback 5%",d:"Sur tous vos achats avec la Kolo Card"},{ic:"🏧",t:"Retrait ATM",d:"Retirez aux distributeurs partenaires"},{ic:"🔒",t:"Sécurisé",d:"Gel instantané, alertes en temps réel"}].map((b,i)=>(<div key={i} style={{display:"flex",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+<span style={{fontSize:24}}>{b.ic}</span><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{b.t}</div><div style={{fontSize:11,color:C.t3}}>{b.d}</div></div>
+</div>))}
+<div style={{marginTop:12}}><Btn v="s" full onClick={()=>go("promos")}>{Z.star} Voir les offres cashback</Btn></div>
+</div>);}
+
+// ── Save Now Buy Later ──
+function SNBL({go}){const[tab,setTab]=useState("browse");
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Épargner & Acheter" onBack={()=>go("home")}/>
+{/* Header */}
+<div style={{background:`linear-gradient(135deg,${C.blue},${C.blueD})`,borderRadius:20,padding:"18px 20px",marginBottom:16}}>
+<div style={{fontSize:16,fontWeight:800,color:"#fff",marginBottom:4}}>Save Now, Buy Later</div>
+<div style={{fontSize:12,color:"rgba(255,255,255,0.7)"}}>Épargnez d'abord, achetez sans dette. 0% d'intérêt.</div>
+</div>
+{/* Tabs */}
+<div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:16,border:`1px solid ${C.brd}`}}>
+{[{k:"browse",l:"Découvrir"},{k:"my",l:"Mes plans"}].map(t=>(<button key={t.k} onClick={()=>setTab(t.k)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t.k?`linear-gradient(135deg,${C.blue},${C.blueD})`:"transparent",color:tab===t.k?"#fff":C.t3,fontSize:13,fontWeight:600,cursor:"pointer"}}>{t.l}</button>))}
+</div>
+{tab==="browse"&&SNBL_PLANS.map(p=>(<div key={p.id} style={{background:C.card,borderRadius:20,padding:18,marginBottom:12,border:`1px solid ${C.brd}`}}>
+<div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
+<div style={{width:48,height:48,borderRadius:14,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",fontSize:24}}>{p.icon}</div>
+<div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.t0}}>{p.name}</div><div style={{fontSize:12,color:C.t3}}>Partenaire : {p.partner}</div></div>
+<div style={{textAlign:"right"}}><div style={{fontSize:16,fontWeight:800,color:C.gold}}>{fm(p.target)}</div><div style={{fontSize:10,color:C.t3}}>FCFA</div></div>
+</div>
+<div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
+<span style={{fontSize:12,color:C.t3}}>{fm(p.monthly)} F/mois × {p.dur}</span>
+<span style={{fontSize:12,fontWeight:600,color:C.green}}>0% intérêt</span>
+</div>
+<Btn full onClick={()=>go("ok")} sx={{padding:"10px 20px",fontSize:13}}>Commencer à épargner</Btn>
+</div>))}
+{tab==="my"&&<div>
+{SNBL_PLANS.filter(p=>p.progress>0).length>0?
+SNBL_PLANS.filter(p=>p.progress>0).map(p=>(<div key={p.id} style={{background:C.card,borderRadius:20,padding:18,marginBottom:12,border:`1px solid ${C.brd}`}}>
+<div style={{display:"flex",alignItems:"center",gap:12,marginBottom:12}}>
+<span style={{fontSize:28}}>{p.icon}</span>
+<div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:C.t0}}>{p.name}</div><div style={{fontSize:12,color:C.t3}}>{p.partner}</div></div>
+<div style={{textAlign:"right"}}><div style={{fontSize:14,fontWeight:700,color:C.gold}}>{fm(Math.round(p.target*p.progress/100))}</div><div style={{fontSize:10,color:C.t3}}>/ {fm(p.target)}</div></div>
+</div>
+<div style={{background:C.bg,borderRadius:4,height:6,overflow:"hidden",marginBottom:4}}><div style={{width:`${p.progress}%`,height:"100%",background:`linear-gradient(90deg,${C.blue},${C.gold})`,borderRadius:4}}/></div>
+<div style={{textAlign:"right",fontSize:11,color:C.t3}}>{p.progress}% épargné</div>
+</div>))
+:<div style={{textAlign:"center",padding:32,color:C.t3,fontSize:13}}>Aucun plan actif. Découvrez les offres !</div>}
+</div>}
+</div>);}
+
+// ── Promos & Cashback ──
+function Promos({go}){
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Offres & Cashback" onBack={()=>go("home")}/>
+{PROMOS.map(p=>(<div key={p.id} style={{background:C.card,borderRadius:20,padding:18,marginBottom:12,border:`1px solid ${C.brd}`,overflow:"hidden",position:"relative"}}>
+<div style={{position:"absolute",top:0,left:0,width:4,height:"100%",background:p.color}}/>
+<div style={{display:"flex",gap:12,alignItems:"flex-start"}}>
+<span style={{fontSize:32}}>{p.icon}</span>
+<div style={{flex:1}}>
+<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:4}}>{p.title}</div>
+<div style={{fontSize:12,color:C.t3,lineHeight:1.4,marginBottom:8}}>{p.desc}</div>
+{p.code&&<div style={{display:"inline-flex",alignItems:"center",gap:6,background:C.bg,borderRadius:8,padding:"4px 10px",border:`1px dashed ${C.brd}`}}>
+<span style={{fontSize:12,fontWeight:700,color:p.color,letterSpacing:1}}>{p.code}</span>
+<span style={{color:C.t3}}>{Z.copy}</span>
+</div>}
+</div>
+</div>
+</div>))}
+<div style={{fontSize:14,fontWeight:700,color:C.t0,marginTop:8,marginBottom:12}}>Partenaires cashback</div>
+{[{n:"Shoprite Congo",cb:"10%",ic:"🛒"},{n:"Airtel Shop",cb:"8%",ic:"📱"},{n:"Total Energies",cb:"5%",ic:"⛽"},{n:"Poto-Poto Market",cb:"3%",ic:"🏪"}].map((p,i)=>(<div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
+<span style={{fontSize:24}}>{p.ic}</span><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{p.n}</div></div>
+<span style={{fontSize:14,fontWeight:800,color:C.green}}>{p.cb}</span>
+</div>))}
+</div>);}
+
+// ── Digital Contract ──
+function Contract({go}){
+return(<div style={{height:"100%",background:C.bg,overflowY:"auto",padding:"12px 18px",paddingBottom:80}}><Hdr title="Contrat numérique" onBack={()=>go("home")}/>
+<div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,marginBottom:16}}>
+<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+<div><div style={{fontSize:16,fontWeight:700,color:C.t0}}>Contrat N° LK-2026-0412</div><div style={{fontSize:12,color:C.t3}}>Cercle Élite · Signé le 15 Jan 2026</div></div>
+<div style={{background:C.greenL,borderRadius:8,padding:"4px 10px"}}><span style={{fontSize:11,fontWeight:700,color:C.green}}>Actif</span></div>
+</div>
+{[{l:"Parties",v:"6 membres vérifiés"},{l:"Montant/tour",v:"25 000 FCFA"},{l:"Fréquence",v:"Mensuel"},{l:"Durée",v:"6 mois (Jan - Jun 2026)"},{l:"Cagnotte totale",v:"150 000 FCFA"},{l:"Pénalité retard",v:"5% automatique"},{l:"Méthode",v:"Kolo Money / Mobile Money"},{l:"Supervisé par",v:"Lamuka Tech S.A."},{l:"Juridiction",v:"République du Congo"}].map((r,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"10px 0",borderBottom:i<8?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:600,color:C.t1}}>{r.v}</span></div>))}
+</div>
+<div style={{background:C.blueL,borderRadius:14,padding:14,marginBottom:16,border:`1px solid ${C.blue}15`}}>
+<div style={{fontSize:12,color:C.blue,fontWeight:600,marginBottom:4}}>🔒 Sécurité du contrat</div>
+<div style={{fontSize:11,color:C.t2,lineHeight:1.5}}>Ce contrat est enregistré numériquement et sécurisé par Lamuka Tech. Chaque cotisation et versement est tracé de manière transparente. En cas de litige, le contrat fait foi.</div>
+</div>
+<div style={{display:"flex",gap:8}}>
+<Btn v="s" full sx={{flex:1}}>{Z.dn} Télécharger PDF</Btn>
+<Btn v="s" full sx={{flex:1}}>{Z.send} Partager</Btn>
+</div>
+</div>);}
+
 // ── Success ──
 function Ok({go}){const[s,setS]=useState(false);useEffect(()=>{setTimeout(()=>setS(true),100)},[]);
 return(<div style={{height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",background:C.bg,padding:"40px 28px",paddingBottom:40}}>
@@ -689,6 +962,7 @@ export default function App(){
   const chatId=sc.startsWith("chat:")?parseInt(sc.split(":")[1]):null;
   const txId=sc.startsWith("txd:")?parseInt(sc.split(":")[1]):null;
   const memId=sc.startsWith("mem:")?parseInt(sc.split(":")[1]):null;
+  const slotId=sc.startsWith("slotPick:")?parseInt(sc.split(":")[1]):null;
   const noSB=["splash","onb","login","ok","pin","reg1","reg2","reg3","forgot"];
 
   const render=()=>{
@@ -696,6 +970,7 @@ export default function App(){
     if(chatId) return <Chat go={go} cid={chatId}/>;
     if(txId) return <TxDetail go={go} txId={txId}/>;
     if(memId) return <MemberProf go={go} mid={memId}/>;
+    if(slotId) return <SlotPick go={go} cid={slotId}/>;
     switch(sc){
       case "splash": return <Splash go={go}/>;
       case "onb": return <Onb go={go}/>;
@@ -735,6 +1010,13 @@ export default function App(){
       case "editCircle": return <EditCircle go={go}/>;
       case "calendar": return <Calendar go={go}/>;
       case "circleStats": return <CircleStats go={go}/>;
+      case "market": return <Marketplace go={go}/>;
+      case "kyc": return <KYC go={go}/>;
+      case "creditScore": return <CreditScore go={go}/>;
+      case "koloCard": return <KoloCard go={go}/>;
+      case "snbl": return <SNBL go={go}/>;
+      case "promos": return <Promos go={go}/>;
+      case "contract": return <Contract go={go}/>;
       case "ok": return <Ok go={go}/>;
       default: return <Home go={go}/>;
     }
@@ -752,7 +1034,7 @@ export default function App(){
               <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="0" width="16" height="11" rx="2" stroke="currentColor" strokeWidth="1" fill="none"/><rect x="16.5" y="3.5" width="1.5" height="4" rx="0.5" fill="currentColor"/><rect x="1.5" y="1.5" width="10" height="8" rx="1" fill={C.green}/></svg>
             </div>
         </div>
-        <div style={{height:"100%",paddingTop:noSB.includes(sc)&&!cid&&!chatId&&!txId&&!memId?0:16}}>{render()}</div>
+        <div style={{height:"100%",paddingTop:noSB.includes(sc)&&!cid&&!chatId&&!txId&&!memId&&!slotId?0:16}}>{render()}</div>
       </div>
     </div>
   );
