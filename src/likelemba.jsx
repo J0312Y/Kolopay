@@ -361,8 +361,10 @@ const switchTab=(i)=>{setTab(i);const routes=["home","home_c","home_h","home_p"]
 const tg=s=>{if(s==="_c")switchTab(1);else if(s==="_h")switchTab(2);else go(s);};
 return(<div style={{height:"100%",display:"flex",flexDirection:"column",background:C.bg}}>
 <div style={{flex:1,overflowY:"auto",padding:"12px 18px",paddingBottom:100}}>
-<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}><div><div style={{fontSize:13,color:C.t3}}>Mbote 👋</div><div style={{fontSize:20,fontWeight:800,color:C.t0}}>Joeldy</div></div>
-<button onClick={()=>go("notif")} style={{width:42,height:42,borderRadius:14,background:C.card,border:`1px solid ${C.brd}`,cursor:"pointer",position:"relative",display:"flex",alignItems:"center",justifyContent:"center",color:C.t1}}>{Z.bell}<div style={{position:"absolute",top:10,right:10,width:8,height:8,borderRadius:4,background:C.red,border:"2px solid #fff"}}/></button></div>
+{tab===0&&<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}><div><div style={{fontSize:13,color:C.t3}}>Mbote 👋</div><div style={{fontSize:20,fontWeight:800,color:C.t0}}>Joeldy</div></div>
+<button onClick={()=>go("notif")} style={{width:42,height:42,borderRadius:14,background:C.card,border:`1px solid ${C.brd}`,cursor:"pointer",position:"relative",display:"flex",alignItems:"center",justifyContent:"center",color:C.t1}}>{Z.bell}<div style={{position:"absolute",top:10,right:10,width:8,height:8,borderRadius:4,background:C.red,border:"2px solid #fff"}}/></button></div>}
+{tab===1&&<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}><div style={{fontSize:20,fontWeight:800,color:C.t0}}>Mes cercles</div></div>}
+{tab===2&&<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}><div style={{fontSize:20,fontWeight:800,color:C.t0}}>Historique</div></div>}
 {tab===0&&<HomeTab go={tg}/>}{tab===1&&<CirclesTab go={tg}/>}{tab===2&&<HistTab go={tg}/>}{tab===3&&<ProfTab go={tg}/>}
 </div>
 <div style={{position:"absolute",bottom:0,left:0,right:0,padding:"0 16px",paddingBottom:"max(12px, env(safe-area-inset-bottom, 12px))",background:`linear-gradient(transparent,${C.bg} 30%)`}}>
