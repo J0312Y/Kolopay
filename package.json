@@ -2,7 +2,7 @@
   "name": "likelemba",
   "private": true,
   "version": "2.0.0",
-  "description": "Likelemba - Super-App Tontine Digitale du Congo by Lamuka Tech",
+  "description": "Likelemba - Super-App Tontine Digitale du Congo",
   "type": "module",
   "scripts": {
     "dev": "vite",
