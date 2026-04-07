@@ -64,7 +64,7 @@ trophy:<svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={C.gold}
 };return ic[type]||null;};
 
 // ── DATA ──
-const MEM=[{id:1,n:"Joeldy T.",i:"JT",p:"+242 06 466 3469",ok:true,t:1,pen:0},{id:2,n:"Grace M.",i:"GM",p:"+242 05 512 8834",ok:true,t:2,pen:0},{id:3,n:"Patrick K.",i:"PK",p:"+242 06 891 2245",ok:false,t:3,pen:1250,pseudo:"Le Sage"},{id:4,n:"Merveille N.",i:"MN",p:"+242 05 334 7712",ok:true,t:4,pen:0},{id:5,n:"Blessing O.",i:"BO",p:"+242 06 223 5501",ok:false,t:5,pen:1250,pseudo:"CG_Saver"},{id:6,n:"Divine L.",i:"DL",p:"+242 05 667 9983",ok:true,t:6,pen:0}];
+const MEM=[{id:1,n:"Joeldy T.",i:"JT",p:"+242 06 466 3469",ok:true,t:1,pen:0},{id:2,n:"Grace M.",i:"GM",p:"+242 05 512 8834",ok:true,t:2,pen:0},{id:3,n:"Patrick K.",i:"PK",p:"+242 06 891 2245",ok:false,t:3,pen:1250},{id:4,n:"Merveille N.",i:"MN",p:"+242 05 334 7712",ok:true,t:4,pen:0},{id:5,n:"Blessing O.",i:"BO",p:"+242 06 223 5501",ok:false,t:5,pen:1250},{id:6,n:"Divine L.",i:"DL",p:"+242 05 667 9983",ok:true,t:6,pen:0}];
 const CIR=[{id:1,name:"Cercle Élite",mem:6,amt:25000,freq:"Mensuel",tot:150000,prog:67,turn:"Joeldy T.",next:"01 Mai 2026",code:"ELITE2026",pen:5,created:"15 Jan 2026",admin:true},{id:2,name:"Cercle Amis",mem:8,amt:10000,freq:"Bi-mensuel",tot:80000,prog:45,turn:"Grace M.",next:"15 Avr 2026",code:"AMIS2026",pen:5,created:"01 Fév 2026",admin:false},{id:3,name:"Cercle Business",mem:10,amt:50000,freq:"Mensuel",tot:500000,prog:30,turn:"Patrick K.",next:"01 Mai 2026",code:"BIZ2026",pen:10,created:"01 Mar 2026",admin:true}];
 const TXS=[{id:1,t:"in",n:"Grace M.",d:"Cotisation reçue",a:25000,dt:"Aujourd'hui",tm:"14:32",circle:"Cercle Élite",ref:"LK-TX-0891"},{id:2,t:"in",n:"Divine L.",d:"Cotisation reçue",a:25000,dt:"Aujourd'hui",tm:"13:10",circle:"Cercle Élite",ref:"LK-TX-0890"},{id:3,t:"out",n:"Cercle Élite",d:"Versement cotisation",a:25000,dt:"Hier",tm:"09:15",circle:"Cercle Élite",ref:"LK-TX-0889"},{id:4,t:"in",n:"Merveille N.",d:"Cotisation reçue",a:25000,dt:"Hier",tm:"08:42",circle:"Cercle Élite",ref:"LK-TX-0888"},{id:5,t:"out",n:"Kolo Pay",d:"Retrait vers MTN",a:50000,dt:"03 Avr",tm:"16:20",circle:"",ref:"LK-TX-0880"},{id:6,t:"in",n:"Cercle Amis",d:"Gain tontine",a:80000,dt:"01 Avr",tm:"10:00",circle:"Cercle Amis",ref:"LK-TX-0870"}];
 const WALLETS=[{id:0,n:"Kolo Pay",num:"Wallet interne",bal:95000,logo:"kolo",col:C.kolo,desc:"Votre portefeuille Likelemba"},{id:1,n:"MTN Mobile Money",num:"••• 3469",bal:175000,logo:"mtn",col:"#FFCC00",desc:""},{id:2,n:"Airtel Money",num:"••• 8834",bal:62000,logo:"airtel",col:"#ED1C24",desc:""}];
@@ -186,9 +186,6 @@ function ProfTab({go}){return <div>
 <MenuRow icon={Z.shield} label="Sécurité & PIN" onClick={()=>go("sec")}/>
 <MenuRow icon={Z.wal} label="Portefeuilles" onClick={()=>go("wallets")}/>
 <MenuRow icon={Z.star} label="Gamification" onClick={()=>go("gamification")} color={C.gold}/>
-<MenuRow icon={Z.tgt} label="Trust Score" onClick={()=>go("trustScore")} color={C.green}/>
-<MenuRow icon={Z.doc} label="KYC Complet" onClick={()=>go("kycFull")} color={C.blue}/>
-<MenuRow icon={Z.shield} label="Fonds de Garantie" onClick={()=>go("emergencyFund")} color={C.green}/>
 <MenuRow icon={Z.heart} label="Famille" onClick={()=>go("family")} color={C.red}/>
 <MenuRow icon={Z.tgt} label="Objectifs d'épargne" onClick={()=>go("sav")}/>
 <MenuRow icon={Z.gift} label="Parrainage" onClick={()=>go("referral")} color={C.green}/>
@@ -228,11 +225,11 @@ return <Scroll><Hdr title={c.name} onBack={()=>go("back")}/>
 <div style={{display:"flex",justifyContent:"space-between"}}><span style={{fontSize:11,color:C.t3}}>Collecté: {c.prog}%</span><span style={{fontSize:11,color:C.t3}}>Prochain: <span style={{fontWeight:700,color:C.gold}}>{c.next}</span></span></div></div>
 {/* Actions */}
 <div style={{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"}}>{[{l:"Cotiser",ic:Z.up,s:"contribute"},{l:"Chat",ic:Z.msg,s:"chat:"+c.id},{l:"Inviter",ic:Z.plus,s:"invite"},{l:"Calendrier",ic:Z.cal,s:"calendar"}].map((a,i)=><button key={i} onClick={()=>go(a.s)} style={{flex:"1 1 22%",display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:11,fontWeight:600,color:C.blue}}>{a.ic}<span>{a.l}</span></button>)}</div>
-<div style={{display:"flex",gap:6,marginBottom:16}}>{[{l:"Stats",ic:Z.tgt,s:"circleStats"},{l:"Escrow",ic:Z.shield,s:"escrow"},{l:"Board",ic:Z.grp,s:"groupDashboard"},...(c.admin?[{l:"Rappel",ic:Z.bell,s:"remind"},{l:"Sanctions",ic:Z.warn,s:"sanctions",c:C.red},{l:"Modifier",ic:Z.gear,s:"editCircle"}]:[]),{l:"Quitter",ic:Z.warn,s:"leaveCircle",c:C.red}].map((a,i)=><button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${a.c?a.c+"20":C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:10,fontWeight:600,color:a.c||C.t2}}>{a.ic}<span>{a.l}</span></button>)}</div>
+<div style={{display:"flex",gap:6,marginBottom:16}}>{[{l:"Stats",ic:Z.tgt,s:"circleStats"},...(c.admin?[{l:"Rappel",ic:Z.bell,s:"remind"},{l:"Modifier",ic:Z.gear,s:"editCircle"}]:[]),{l:"Quitter",ic:Z.warn,s:"leaveCircle",c:C.red}].map((a,i)=><button key={i} onClick={()=>go(a.s)} style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:4,background:C.card,border:`1px solid ${a.c?a.c+"20":C.brd}`,borderRadius:12,padding:"10px 0",cursor:"pointer",fontSize:10,fontWeight:600,color:a.c||C.t2}}>{a.ic}<span>{a.l}</span></button>)}</div>
 {!c.admin&&<div style={{background:C.blueL,borderRadius:10,padding:"8px 14px",marginBottom:12,fontSize:12,color:C.t2}}>Admin: <span style={{fontWeight:700,color:C.t1}}>Grace M.</span></div>}
 {/* Tabs */}
 <div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:16,border:`1px solid ${C.brd}`}}>{[{k:"m",l:"Membres"},{k:"r",l:"Rotation"},{k:"g",l:"Règles"}].map(t=><button key={t.k} onClick={()=>setTab(t.k)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t.k?C.blue:"transparent",color:tab===t.k?"#fff":C.t3,fontSize:12,fontWeight:600,cursor:"pointer"}}>{t.l}</button>)}</div>
-{tab==="m"&&<div><div style={{fontSize:12,color:C.t3,marginBottom:10}}><span style={{color:C.green,fontWeight:700}}>{paid}</span> payé(s) · <span style={{color:C.red,fontWeight:700}}>{MEM.length-paid}</span> en attente</div>{MEM.map(m=><div key={m.id} onClick={()=>go("mem:"+m.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:16,marginBottom:6,border:`1px solid ${C.brdL}`,cursor:"pointer"}}><Av ini={m.pseudo?m.pseudo[0]+m.pseudo[1]:m.i} sz={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap"}}><span style={{fontSize:14,fontWeight:600,color:C.t1}}>{c.admin?m.n:(m.pseudo||m.n)}</span>{m.pseudo&&<span style={{fontSize:9,fontWeight:700,color:C.purple,background:C.purpleL,padding:"2px 6px",borderRadius:4}}>PSEUDO</span>}{((c.admin&&m.id===1)||(!c.admin&&m.id===2))&&<span style={{fontSize:9,fontWeight:700,color:C.blue,background:C.blueL,padding:"2px 6px",borderRadius:4}}>ADMIN</span>}</div><div style={{fontSize:12,color:C.t3}}>{c.admin?m.p:(m.pseudo?"Membre anonyme":m.p)}{m.pen>0&&<span style={{color:C.red}}> · Pénalité: {fm(m.pen)} F</span>}</div>{c.admin&&m.pseudo&&<div style={{fontSize:11,color:C.purple,marginTop:2}}>Pseudo : {m.pseudo}</div>}</div><div style={{textAlign:"center",marginRight:8}}><div style={{fontSize:9,color:C.t3,fontWeight:600}}>TOUR</div><div style={{fontSize:16,fontWeight:800,color:C.gold}}>{m.t}</div></div><Bdg s={m.ok?"paid":"pending"}/></div>)}</div>}
+{tab==="m"&&<div><div style={{fontSize:12,color:C.t3,marginBottom:10}}><span style={{color:C.green,fontWeight:700}}>{paid}</span> payé(s) · <span style={{color:C.red,fontWeight:700}}>{MEM.length-paid}</span> en attente</div>{MEM.map(m=><div key={m.id} onClick={()=>go("mem:"+m.id)} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:C.card,borderRadius:16,marginBottom:6,border:`1px solid ${C.brdL}`,cursor:"pointer"}}><Av ini={m.i} sz={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:6}}><span style={{fontSize:14,fontWeight:600,color:C.t1}}>{m.n}</span>{((c.admin&&m.id===1)||(!c.admin&&m.id===2))&&<span style={{fontSize:9,fontWeight:700,color:C.blue,background:C.blueL,padding:"2px 6px",borderRadius:4}}>ADMIN</span>}</div><div style={{fontSize:12,color:C.t3}}>{m.p}{m.pen>0&&<span style={{color:C.red}}> · Pénalité: {fm(m.pen)} F</span>}</div></div><div style={{textAlign:"center",marginRight:8}}><div style={{fontSize:9,color:C.t3,fontWeight:600}}>TOUR</div><div style={{fontSize:16,fontWeight:800,color:C.gold}}>{m.t}</div></div><Bdg s={m.ok?"paid":"pending"}/></div>)}</div>}
 {tab==="r"&&MEM.map((m,i)=><div key={m.id} style={{display:"flex",alignItems:"center",gap:12,padding:"14px 16px",background:i===0?C.blueL:C.card,borderRadius:16,marginBottom:6,border:`1.5px solid ${i===0?C.blue+"40":C.brdL}`}}><div style={{width:30,height:30,borderRadius:8,background:i===0?C.blue:C.bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:800,color:i===0?"#fff":C.t3}}>{m.t}</div><Av ini={m.i} sz={36}/><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{m.n}</div></div><span style={{fontSize:14,fontWeight:700,color:i===0?C.gold:C.t4}}>{fm(c.tot)} F</span></div>)}
 {tab==="g"&&[{l:"Montant/tour",v:fm(c.amt)+" FCFA"},{l:"Fréquence",v:c.freq},{l:"Membres",v:c.mem},{l:"Pénalité",v:c.pen+"%"},{l:"Paiement",v:"Kolo Pay / Mobile Money"},{l:"Code",v:c.code}].map((r,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"13px 16px",background:C.card,borderRadius:12,marginBottom:6,border:`1px solid ${C.brdL}`}}><span style={{fontSize:13,color:C.t3}}>{r.l}</span><span style={{fontSize:13,fontWeight:700,color:C.t1}}>{r.v}</span></div>)}
 </Scroll>;}
@@ -253,33 +250,9 @@ return <Scroll><Hdr title="Cotiser" onBack={()=>go("back")}/>
 <div style={{marginTop:16}}><Btn full onClick={()=>go("ok")}>Cotiser</Btn></div></Scroll>;}
 
 // ── Wallets ──
-function Wallets({go}){const tot=WALLETS.reduce((s,a)=>s+a.bal,0);const[sb,setSb]=useState(true);
-return <Scroll><Hdr title="Portefeuilles" onBack={()=>go("back")}/>
-{/* Premium balance card */}
-<div style={{background:`linear-gradient(135deg,${C.navy},#1A3A6B)`,borderRadius:24,padding:"24px 20px",marginBottom:16,boxShadow:"0 12px 40px rgba(11,29,58,0.3)",position:"relative",overflow:"hidden"}}>
-<div style={{position:"absolute",top:-30,right:-30,width:120,height:120,borderRadius:60,background:"rgba(255,255,255,0.04)"}}/>
-<div style={{position:"absolute",bottom:-40,left:-20,width:100,height:100,borderRadius:50,background:"rgba(255,255,255,0.03)"}}/>
-<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
-<span style={{fontSize:12,color:"rgba(255,255,255,0.5)",fontWeight:600,letterSpacing:0.5}}>SOLDE TOTAL</span>
-<button onClick={()=>setSb(!sb)} style={{background:"rgba(255,255,255,0.1)",border:"none",borderRadius:8,padding:"4px 10px",cursor:"pointer",color:"rgba(255,255,255,0.6)",display:"flex",alignItems:"center",gap:4,fontSize:11}}>{sb?Z.eye:Z.eyeX} {sb?"Masquer":"Afficher"}</button>
-</div>
-<div style={{fontSize:34,fontWeight:800,color:"#fff",marginBottom:4}}>{sb?fm(tot):"••• •••"} <span style={{fontSize:14,fontWeight:500,color:"rgba(255,255,255,0.4)"}}>FCFA</span></div>
-{/* Mini wallet breakdown */}
-<div style={{display:"flex",gap:12,marginTop:16}}>
-{WALLETS.map(w=><div key={w.id} style={{flex:1,background:"rgba(255,255,255,0.08)",borderRadius:12,padding:"10px 8px",textAlign:"center"}}>
-<SvgIc type={w.logo} size={20}/>
-<div style={{fontSize:11,fontWeight:600,color:"rgba(255,255,255,0.7)",marginTop:4}}>{sb?fm(w.bal):"•••"}</div>
-<div style={{fontSize:9,color:"rgba(255,255,255,0.4)",marginTop:2}}>{w.id===0?"Kolo Pay":w.id===1?"MTN":"Airtel"}</div>
-</div>)}
-</div>
-</div>
-{/* Action buttons */}
-<div style={{display:"flex",gap:8,marginBottom:16}}>
-<Btn full onClick={()=>go("topup")} sx={{flex:1}}>{Z.dn} Recharger</Btn>
-<Btn v="s" full onClick={()=>go("withdraw")} sx={{flex:1}}>{Z.up} Retirer</Btn>
-<Btn v="s" full onClick={()=>go("transfer")} sx={{flex:1}}>{Z.send} Envoyer</Btn>
-</div>
-{/* Wallet cards */}
+function Wallets({go}){const tot=WALLETS.reduce((s,a)=>s+a.bal,0);return <Scroll><Hdr title="Portefeuilles" onBack={()=>go("back")}/>
+<div style={{background:C.card,borderRadius:16,padding:"14px 18px",display:"flex",justifyContent:"space-between",marginBottom:12,border:`1px solid ${C.brd}`}}><span style={{fontSize:13,color:C.t3}}>Solde total</span><span style={{fontSize:16,fontWeight:800,color:C.gold}}>{fm(tot)} FCFA</span></div>
+<div style={{display:"flex",gap:8,marginBottom:16}}><Btn full onClick={()=>go("topup")} sx={{flex:1}}>{Z.dn} Recharger</Btn><Btn v="s" full onClick={()=>go("withdraw")} sx={{flex:1}}>{Z.up} Retirer</Btn></div>
 {WALLETS.map(w=><div key={w.id} style={{background:C.card,borderRadius:16,padding:18,marginBottom:10,border:`1px solid ${C.brd}`}}>
 <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:10}}><SvgIc type={w.logo} size={28}/><div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.t1}}>{w.n}</div><div style={{fontSize:12,color:C.t3}}>{w.num}</div></div>{w.id===0&&<span style={{fontSize:10,fontWeight:700,color:C.kolo,background:C.koloL,padding:"3px 8px",borderRadius:6}}>INTERNE</span>}</div>
 <div style={{fontSize:22,fontWeight:800,color:C.gold}}>{fm(w.bal)} <span style={{fontSize:13,color:C.t3}}>FCFA</span></div></div>)}
@@ -322,24 +295,7 @@ function FAQ({go}){const[o,setO]=useState(null);return <Scroll><Hdr title="FAQ" 
 
 // ── Create/Join/Invite/QR/Remind/Savings/Receipts ──
 function CreateCircle({go}){const[name,setName]=useState("");const[amt,setAmt]=useState("");return <Scroll><Hdr title="Créer un cercle" onBack={()=>go("back")}/><Inp label="Nom" ph="Ex: Cercle Famille" val={name} set={setName}/><Inp label="Montant/tour (FCFA)" ph="25000" val={amt} set={setAmt} type="number"/><div style={{marginBottom:16}}><label style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:6,display:"block"}}>Fréquence</label><div style={{display:"flex",gap:8}}>{["Hebdo","Bi-mensuel","Mensuel"].map(f=><button key={f} style={{flex:1,padding:"12px 0",borderRadius:12,border:"none",cursor:"pointer",background:f==="Mensuel"?C.blue:C.card,color:f==="Mensuel"?"#fff":C.t2,fontSize:13,fontWeight:600}}>{f}</button>)}</div></div><Btn full onClick={()=>go("ok")} dis={!name||!amt}>Créer</Btn></Scroll>;}
-function JoinCircle({go}){const[code,setCode]=useState("");const[anon,setAnon]=useState(false);const[pseudo,setPseudo]=useState("");
-return <Scroll><Hdr title="Rejoindre" onBack={()=>go("back")}/>
-<div style={{textAlign:"center",marginBottom:24}}><div style={{width:60,height:60,borderRadius:20,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,color:C.blue}}>{Z.link}</div><h3 style={{fontSize:18,fontWeight:700,color:C.t0}}>Code d'invitation</h3><p style={{fontSize:13,color:C.t3,marginTop:4}}>Entrez le code partagé par l'admin</p></div>
-<Inp label="Code du cercle" ph="ELITE2026" val={code} set={setCode}/>
-{/* Anonymous toggle */}
-<div style={{background:C.card,borderRadius:16,padding:16,marginBottom:16,border:`1px solid ${C.brd}`}}>
-<div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:anon?12:0}}>
-<div style={{display:"flex",alignItems:"center",gap:10}}><span style={{color:C.purple}}>{Z.usr}</span><div><div style={{fontSize:14,fontWeight:600,color:C.t1}}>Rejoindre en anonyme</div><div style={{fontSize:11,color:C.t3}}>Les membres verront votre pseudo</div></div></div>
-<Toggle v={anon} set={setAnon}/></div>
-{anon&&<div>
-<div style={{background:C.purpleL,borderRadius:10,padding:"8px 12px",marginBottom:12,fontSize:12,color:C.purple,border:`1px solid ${C.purple}15`}}>Votre vrai nom reste visible uniquement par l'admin du cercle</div>
-<Inp label="Pseudo" ph="Ex: Le Sage, Mbongo242, CG_Saver..." val={pseudo} set={setPseudo} icon={Z.usr}/>
-</div>}
-</div>
-<div style={{textAlign:"center",marginBottom:16}}><span style={{fontSize:13,color:C.t3}}>ou</span></div>
-<Btn v="s" full onClick={()=>go("qr")}>{Z.qr} Scanner un QR code</Btn>
-<div style={{marginTop:16}}><Btn full onClick={()=>go("ok")} dis={!code||(anon&&!pseudo)}>Rejoindre{anon?" en tant que "+pseudo:""}</Btn></div>
-</Scroll>;}
+function JoinCircle({go}){const[code,setCode]=useState("");return <Scroll><Hdr title="Rejoindre" onBack={()=>go("back")}/><div style={{textAlign:"center",marginBottom:32}}><div style={{width:60,height:60,borderRadius:20,background:C.blueL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,color:C.blue}}>{Z.link}</div><h3 style={{fontSize:18,fontWeight:700,color:C.t0}}>Code d'invitation</h3></div><Inp label="Code" ph="ELITE2026" val={code} set={setCode}/><Btn full onClick={()=>go("ok")} dis={!code}>Rejoindre</Btn></Scroll>;}
 function Invite({go}){return <Scroll><Hdr title="Inviter" onBack={()=>go("back")}/><div style={{background:C.card,borderRadius:16,padding:20,border:`1px solid ${C.brd}`,textAlign:"center",marginBottom:20}}><div style={{fontSize:24,fontWeight:800,color:C.blue,letterSpacing:2,marginBottom:12}}>ELITE2026</div><Btn v="s" full>{Z.copy} Copier</Btn></div>{["WhatsApp","SMS","Lien"].map((m,i)=><button key={i} style={{display:"flex",alignItems:"center",gap:14,padding:"14px 16px",width:"100%",background:C.card,borderRadius:12,marginBottom:8,border:`1px solid ${C.brdL}`,cursor:"pointer"}}><div style={{width:36,height:36,borderRadius:10,background:C.blueL,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue,fontWeight:700,fontSize:14}}>{m[0]}</div><span style={{flex:1,fontSize:14,color:C.t1}}>Inviter via {m}</span><span style={{color:C.t4}}>{Z.fwd}</span></button>)}</Scroll>;}
 function QR({go}){const[tab,setTab]=useState("my");return <Scroll><Hdr title="QR Code" onBack={()=>go("back")}/>
 <div style={{display:"flex",background:C.card,borderRadius:50,padding:3,marginBottom:20,border:`1px solid ${C.brd}`}}>{[{k:"my",l:"Mon QR"},{k:"scan",l:"Scanner"}].map(t=><button key={t.k} onClick={()=>setTab(t.k)} style={{flex:1,padding:"10px 0",borderRadius:50,border:"none",background:tab===t.k?C.blue:"transparent",color:tab===t.k?"#fff":C.t3,fontSize:13,fontWeight:600,cursor:"pointer"}}>{t.l}</button>)}</div>
@@ -578,267 +534,6 @@ return <Scroll><Hdr title="Micro-assurance" onBack={()=>go("back")}/>
 </div>)}
 </Scroll>;}
 
-// ════════════ SECURITY & FINTECH MODULES ════════════
-
-// ── 1. Enhanced KYC Module ──
-function KYCFull({go}){const[step,setStep]=useState(1);const[idType,setIdType]=useState(null);const[captured,setCaptured]=useState({id:false,selfie:false,residence:false});
-const idTypes=[{k:"cni",l:"Carte Nationale d'Identité",d:"Congo-Brazzaville"},{k:"passport",l:"Passeport",d:"Tout pays"},{k:"permit",l:"Permis de séjour",d:"Résidents étrangers"}];
-return <Scroll><Hdr title="Vérification KYC" onBack={()=>go("back")}/>
-{/* Progress */}
-<div style={{display:"flex",gap:4,marginBottom:8}}>{[1,2,3,4].map(s=><div key={s} style={{flex:1,height:4,borderRadius:2,background:s<=step?C.blue:C.brd}}/>)}</div>
-<div style={{fontSize:11,color:C.t3,marginBottom:20}}>Étape {step}/4</div>
-
-{step===1&&<div>
-<h3 style={{fontSize:18,fontWeight:700,color:C.t0,marginBottom:4}}>Pièce d'identité</h3>
-<p style={{fontSize:13,color:C.t3,marginBottom:20}}>Sélectionnez le type de document</p>
-{idTypes.map(t=><button key={t.k} onClick={()=>setIdType(t.k)} style={{display:"flex",alignItems:"center",gap:12,padding:"16px",width:"100%",background:idType===t.k?C.blueL:C.card,borderRadius:16,marginBottom:8,border:`1.5px solid ${idType===t.k?C.blue:C.brdL}`,cursor:"pointer",textAlign:"left"}}>
-<div style={{width:44,height:44,borderRadius:12,background:idType===t.k?C.blueM:C.bg,display:"flex",alignItems:"center",justifyContent:"center",color:C.blue}}>{Z.doc}</div>
-<div style={{flex:1}}><div style={{fontSize:14,fontWeight:600,color:C.t1}}>{t.l}</div><div style={{fontSize:11,color:C.t3}}>{t.d}</div></div>
-{idType===t.k&&<div style={{width:20,height:20,borderRadius:10,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center"}}>{Z.okW}</div>}
-</button>)}
-<div style={{marginTop:20}}><Btn full onClick={()=>setStep(2)} dis={!idType}>Continuer</Btn></div>
-</div>}
-
-{step===2&&<div>
-<h3 style={{fontSize:18,fontWeight:700,color:C.t0,marginBottom:4}}>Scan du document</h3>
-<p style={{fontSize:13,color:C.t3,marginBottom:20}}>Photographiez recto et verso de votre document</p>
-{["Recto","Verso"].map((side,i)=><div key={i} style={{marginBottom:16}}>
-<div style={{fontSize:13,fontWeight:600,color:C.t2,marginBottom:8}}>{side}</div>
-<button onClick={()=>setCaptured(p=>({...p,id:true}))} style={{width:"100%",height:160,background:captured.id&&i===0?C.greenL:C.card,borderRadius:20,border:`2px dashed ${captured.id&&i===0?C.green:C.brd}`,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",cursor:"pointer",gap:8}}>
-{captured.id&&i===0?<><div style={{color:C.green}}>{Z.ok}</div><span style={{fontSize:13,fontWeight:600,color:C.green}}>Capturé</span></>:<><div style={{color:C.t3}}>{Z.cam}</div><span style={{fontSize:13,color:C.t3}}>Appuyez pour capturer</span><span style={{fontSize:11,color:C.t4}}>JPEG/PNG · Max 5 Mo</span></>}
-</button></div>)}
-<div style={{background:C.orangeL,borderRadius:12,padding:"10px 14px",marginBottom:16,display:"flex",gap:8,border:`1px solid ${C.orange}20`}}>
-<span style={{color:C.orange}}>{Z.warn}</span><span style={{fontSize:12,color:C.t2}}>Assurez-vous que le document est lisible et non expiré</span></div>
-<Btn full onClick={()=>setStep(3)}>Continuer</Btn>
-</div>}
-
-{step===3&&<div>
-<h3 style={{fontSize:18,fontWeight:700,color:C.t0,marginBottom:4}}>Preuve de résidence</h3>
-<p style={{fontSize:13,color:C.t3,marginBottom:20}}>Facture récente (SNE, SNDE, internet) de moins de 3 mois</p>
-<button onClick={()=>setCaptured(p=>({...p,residence:true}))} style={{width:"100%",height:180,background:captured.residence?C.greenL:C.card,borderRadius:20,border:`2px dashed ${captured.residence?C.green:C.brd}`,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",cursor:"pointer",gap:8,marginBottom:16}}>
-{captured.residence?<><div style={{color:C.green}}>{Z.ok}</div><span style={{fontSize:13,fontWeight:600,color:C.green}}>Document ajouté</span></>:<><div style={{color:C.t3}}>{Z.doc}</div><span style={{fontSize:13,color:C.t3}}>Importer un document</span><span style={{fontSize:11,color:C.t4}}>PDF, JPEG ou PNG</span></>}
-</button>
-<div style={{background:C.blueL,borderRadius:12,padding:"10px 14px",marginBottom:16,border:`1px solid ${C.blue}15`}}>
-<div style={{fontSize:12,fontWeight:600,color:C.blue}}>Documents acceptés :</div>
-<div style={{fontSize:11,color:C.t2,marginTop:4}}>Facture SNE, SNDE, Canal+, attestation de domicile, contrat de bail</div></div>
-<Btn full onClick={()=>setStep(4)}>Continuer</Btn>
-</div>}
-
-{step===4&&<div style={{textAlign:"center",paddingTop:20}}>
-<div style={{width:80,height:80,borderRadius:24,background:C.greenL,display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:16,color:C.green}}>{Z.shield}</div>
-<h3 style={{fontSize:20,fontWeight:800,color:C.green}}>KYC Validé</h3>
-<p style={{fontSize:13,color:C.t3,marginTop:8,marginBottom:24}}>Votre identité est vérifiée. Vous pouvez rejoindre des cercles.</p>
-<div style={{background:C.card,borderRadius:16,padding:16,border:`1px solid ${C.brd}`,textAlign:"left",marginBottom:20}}>
-{[{l:"Nom",v:"Joeldy Tsina"},{l:"ID",v:"CG-2026-XXXXX"},{l:"Résidence",v:"Brazzaville, Congo"},{l:"Niveau KYC",v:"Niveau 3 (Complet)"},{l:"Trust Score",v:"85 / 100"},{l:"Statut",v:"Vérifié"}].map((r,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:i<5?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:600,color:i===5?C.green:C.t1}}>{r.v}</span></div>)}
-</div>
-<Btn full onClick={()=>go("ok")}>Accéder aux cercles</Btn>
-</div>}
-</Scroll>;}
-
-// ── 2. Escrow & Transit Wallet ──
-function Escrow({go}){
-const flow=[{s:"Cotisation",d:"Membre verse dans le wallet de transit",st:"completed",amt:25000},{s:"Séquestre",d:"Fonds bloqués sur le compte Lamuka Tech (tiers de confiance)",st:"completed",amt:25000},{s:"Vérification",d:"Système vérifie que tous les membres ont cotisé",st:"active",amt:150000},{s:"Libération",d:"Fonds transférés au bénéficiaire du tour",st:"pending",amt:150000}];
-const txLogs=[{hash:"0xA3F8...E291",from:"Grace M.",to:"Escrow",amt:25000,time:"14:32",status:"ok"},{hash:"0xB7C2...F410",from:"Divine L.",to:"Escrow",amt:25000,time:"13:10",status:"ok"},{hash:"0xC1D9...A882",from:"Merveille N.",to:"Escrow",amt:25000,time:"08:42",status:"ok"},{hash:"0xD5E3...B193",from:"Patrick K.",to:"Escrow",amt:0,time:"—",status:"pending"}];
-return <Scroll><Hdr title="Escrow & Transit" onBack={()=>go("back")}/>
-{/* Escrow balance */}
-<div style={{background:`linear-gradient(135deg,${C.navy},${C.navyM})`,borderRadius:20,padding:20,marginBottom:16}}>
-<div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}><span style={{fontSize:12,color:"rgba(255,255,255,0.5)"}}>COMPTE DE TRANSIT</span><span style={{fontSize:10,fontWeight:700,color:C.gold,background:"rgba(245,166,35,0.2)",padding:"3px 8px",borderRadius:6}}>SÉQUESTRE</span></div>
-<div style={{fontSize:28,fontWeight:800,color:C.gold}}>{fm(100000)} <span style={{fontSize:13,color:"rgba(255,255,255,0.4)"}}>FCFA</span></div>
-<div style={{fontSize:11,color:"rgba(255,255,255,0.4)",marginTop:4}}>4/6 cotisations reçues · Cercle Élite</div>
-</div>
-{/* Flow */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:12}}>Flux de la transaction</div>
-{flow.map((f,i)=><div key={i} style={{display:"flex",gap:12,marginBottom:0}}>
-<div style={{display:"flex",flexDirection:"column",alignItems:"center"}}><div style={{width:28,height:28,borderRadius:14,background:f.st==="completed"?C.green:f.st==="active"?C.blue:C.brd,display:"flex",alignItems:"center",justifyContent:"center"}}>{f.st==="completed"?Z.okW:f.st==="active"?<div style={{width:8,height:8,borderRadius:4,background:"#fff"}}/>:null}</div>{i<3&&<div style={{width:2,height:32,background:f.st==="completed"?C.green:C.brd}}/>}</div>
-<div style={{flex:1,paddingBottom:16}}><div style={{fontSize:13,fontWeight:600,color:f.st==="completed"?C.green:f.st==="active"?C.blue:C.t3}}>{f.s}</div><div style={{fontSize:11,color:C.t3}}>{f.d}</div><div style={{fontSize:12,fontWeight:700,color:C.gold,marginTop:2}}>{fm(f.amt)} F</div></div></div>)}
-{/* Transaction logs */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginTop:8,marginBottom:12}}>Logs de transactions</div>
-<div style={{background:C.card,borderRadius:16,border:`1px solid ${C.brd}`,overflow:"hidden"}}>
-<div style={{display:"flex",padding:"10px 14px",background:C.bg,fontSize:10,fontWeight:700,color:C.t3,gap:8}}><span style={{flex:2}}>HASH</span><span style={{flex:2}}>DE → VERS</span><span style={{flex:1,textAlign:"right"}}>MONTANT</span></div>
-{txLogs.map((tx,i)=><div key={i} style={{display:"flex",padding:"10px 14px",borderTop:`1px solid ${C.brd}`,fontSize:11,gap:8,alignItems:"center"}}>
-<span style={{flex:2,fontFamily:"monospace",color:C.kolo,fontSize:10}}>{tx.hash}</span>
-<span style={{flex:2,color:C.t2}}>{tx.from} → {tx.to}</span>
-<span style={{flex:1,textAlign:"right",fontWeight:700,color:tx.status==="ok"?C.green:C.orange}}>{tx.amt?fm(tx.amt)+" F":"—"}</span>
-</div>)}
-</div>
-<div style={{background:C.blueL,borderRadius:12,padding:"10px 14px",marginTop:12,border:`1px solid ${C.blue}15`}}>
-<div style={{fontSize:11,color:C.blue,fontWeight:600}}>{Z.shield} Chaque transaction est hashée et immuable</div></div>
-</Scroll>;}
-
-// ── 3. Trust Score & Social Scoring ──
-function TrustScore({go}){const score=85;
-const factors=[
-{l:"Ancienneté",v:"6 mois",w:20,s:18,max:20,c:C.blue,d:"2 pts / mois d'activité"},
-{l:"Ponctualité",v:"12/12",w:35,s:35,max:35,c:C.green,d:"Cotisations à temps sur le total"},
-{l:"Cercles complétés",v:"2/3",w:15,s:10,max:15,c:C.gold,d:"Cercles menés à terme"},
-{l:"Pénalités reçues",v:"0",w:20,s:20,max:20,c:C.green,d:"0 pénalité = score max"},
-{l:"Parrainage",v:"3 filleuls",w:10,s:2,max:10,c:C.purple,d:"1 pt par filleul actif"}
-];
-const ranks=[{r:1,n:"Joeldy T.",s:85,i:"JT"},{r:2,n:"Grace M.",s:78,i:"GM"},{r:3,n:"Merveille N.",s:72,i:"MN"},{r:4,n:"Divine L.",s:65,i:"DL"},{r:5,n:"Patrick K.",s:42,i:"PK"},{r:6,n:"Blessing O.",s:38,i:"BO"}];
-return <Scroll><Hdr title="Trust Score" onBack={()=>go("back")}/>
-{/* Score card */}
-<div style={{background:`linear-gradient(135deg,${C.navy},${C.navyM})`,borderRadius:24,padding:24,textAlign:"center",marginBottom:20}}>
-<div style={{fontSize:13,color:"rgba(255,255,255,0.6)",marginBottom:8}}>Votre Trust Score</div>
-<div style={{position:"relative",width:130,height:130,margin:"0 auto 12px"}}><svg width="130" height="130" viewBox="0 0 130 130"><circle cx="65" cy="65" r="56" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="8"/><circle cx="65" cy="65" r="56" fill="none" stroke={score>=70?C.green:score>=50?C.orange:C.red} strokeWidth="8" strokeDasharray={`${score*3.52} 352`} strokeLinecap="round" transform="rotate(-90 65 65)"/></svg><div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)"}}><div style={{fontSize:36,fontWeight:800,color:C.gold}}>{score}</div><div style={{fontSize:10,color:"rgba(255,255,255,0.5)"}}>/ 100</div></div></div>
-<div style={{fontSize:14,fontWeight:700,color:C.green}}>Fiable</div>
-<div style={{fontSize:11,color:"rgba(255,255,255,0.4)",marginTop:4}}>Top 15% des utilisateurs</div>
-</div>
-{/* Breakdown */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>Décomposition du score</div>
-{factors.map((f,i)=><div key={i} style={{background:C.card,borderRadius:14,padding:"14px 16px",marginBottom:8,border:`1px solid ${C.brdL}`}}>
-<div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}><span style={{fontSize:13,fontWeight:600,color:C.t1}}>{f.l}</span><span style={{fontSize:13,fontWeight:700,color:f.c}}>{f.s}/{f.max} pts</span></div>
-<div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}><span style={{fontSize:11,color:C.t3}}>{f.d}</span><span style={{fontSize:11,color:C.t3}}>Poids: {f.w}%</span></div>
-<div style={{background:C.bg,borderRadius:3,height:4}}><div style={{width:`${(f.s/f.max)*100}%`,height:"100%",background:f.c,borderRadius:3}}/></div>
-</div>)}
-{/* Ranking for cycle */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginTop:16,marginBottom:4}}>Rang automatique du cycle</div>
-<div style={{fontSize:12,color:C.t3,marginBottom:12}}>Les scores élevés reçoivent en premier, les scores bas en dernier</div>
-{ranks.map(u=><div key={u.r} style={{display:"flex",alignItems:"center",gap:12,padding:"10px 16px",background:u.r<=2?C.greenL:u.r>=5?C.redL:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${u.r<=2?C.green+"20":u.r>=5?C.red+"20":C.brdL}`}}>
-<div style={{width:28,height:28,borderRadius:8,background:u.r===1?C.gold:u.r===2?C.t4:C.bg,display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:800,color:u.r<=2?"#fff":C.t3}}>{u.r}</div>
-<Av ini={u.i} sz={32}/><div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{u.n}</div></div>
-<div style={{textAlign:"right"}}><div style={{fontSize:14,fontWeight:700,color:u.s>=70?C.green:u.s>=50?C.orange:C.red}}>{u.s}</div><div style={{fontSize:9,color:C.t3}}>Tour #{u.r}</div></div>
-</div>)}
-</Scroll>;}
-
-// ── 4. Emergency Fund (Fonds de Garantie) ──
-function EmergencyFund({go}){
-const fund=87500;const totalCollected=4375000;const rate=2;
-const history=[{d:"05 Avr",circle:"Cercle Élite",cotisation:150000,prelevé:3000},{d:"01 Avr",circle:"Cercle Amis",cotisation:80000,prelevé:1600},{d:"15 Mar",circle:"Cercle Business",cotisation:500000,prelevé:10000},{d:"01 Mar",circle:"Cercle Élite",cotisation:150000,prelevé:3000}];
-const payouts=[{d:"20 Mar",to:"Patrick K.",reason:"Défaut de paiement couvert",amt:12500}];
-return <Scroll><Hdr title="Fonds de Garantie" onBack={()=>go("back")}/>
-<div style={{background:`linear-gradient(135deg,${C.green},#047857)`,borderRadius:20,padding:20,marginBottom:16,color:"#fff"}}>
-<div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}}><span style={{fontSize:12,opacity:.7}}>FONDS DE RÉSERVE</span><span style={{fontSize:10,fontWeight:700,background:"rgba(255,255,255,0.2)",padding:"3px 8px",borderRadius:6}}>{rate}% / cotisation</span></div>
-<div style={{fontSize:28,fontWeight:800}}>{fm(fund)} <span style={{fontSize:13,opacity:.6}}>FCFA</span></div>
-<div style={{fontSize:11,opacity:.6,marginTop:4}}>Protège les membres contre les défauts de paiement</div>
-</div>
-{/* Stats */}
-<div style={{display:"flex",gap:10,marginBottom:16}}>
-{[{l:"Total collecté",v:fm(totalCollected),c:C.blue},{l:"Réserve",v:fm(fund),c:C.green},{l:"Utilisé",v:fm(12500),c:C.orange}].map((s,i)=><div key={i} style={{flex:1,textAlign:"center",padding:"12px 8px",background:C.card,borderRadius:14,border:`1px solid ${C.brd}`}}><div style={{fontSize:14,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:C.t3}}>{s.l}</div></div>)}
-</div>
-{/* Prélèvements */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>Prélèvements récents ({rate}%)</div>
-{history.map((h,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"12px 16px",background:C.card,borderRadius:14,marginBottom:6,border:`1px solid ${C.brdL}`}}>
-<div><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{h.circle}</div><div style={{fontSize:11,color:C.t3}}>{h.d} · Cotisation: {fm(h.cotisation)} F</div></div>
-<span style={{fontSize:13,fontWeight:700,color:C.green}}>+{fm(h.prelevé)} F</span></div>)}
-{/* Déblocages */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginTop:16,marginBottom:10}}>Déblocages d'urgence</div>
-{payouts.map((p,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"12px 16px",background:C.orangeL,borderRadius:14,marginBottom:6,border:`1px solid ${C.orange}20`}}>
-<div><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{p.to}</div><div style={{fontSize:11,color:C.t3}}>{p.d} · {p.reason}</div></div>
-<span style={{fontSize:13,fontWeight:700,color:C.orange}}>-{fm(p.amt)} F</span></div>)}
-</Scroll>;}
-
-// ── 5. Sanctions & Penalties Dashboard ──
-function Sanctions({go}){
-const members=[
-{n:"Patrick K.",i:"PK",status:"late",daysLate:3,penalty:3750,received:true,blocked:true},
-{n:"Blessing O.",i:"BO",status:"late",daysLate:1,penalty:1250,received:false,blocked:false},
-];
-const allMembers=[...MEM.map(m=>({...m,status:m.ok?"ok":"late",daysLate:m.ok?0:m.id===3?3:1}))];
-return <Scroll><Hdr title="Sanctions & Pénalités" onBack={()=>go("back")}/>
-{/* Alert banner */}
-<div style={{background:C.redL,borderRadius:16,padding:"14px 18px",marginBottom:16,display:"flex",alignItems:"center",gap:12,border:`1px solid ${C.red}20`}}>
-<span style={{color:C.red}}>{Z.warn}</span>
-<div><div style={{fontSize:13,fontWeight:700,color:C.red}}>2 membres en retard</div><div style={{fontSize:11,color:C.t2}}>Pénalités appliquées automatiquement</div></div>
-</div>
-{/* Late members */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>Membres en défaut</div>
-{members.map((m,i)=><div key={i} style={{background:C.card,borderRadius:16,padding:16,marginBottom:10,border:`1.5px solid ${m.blocked?C.red+"40":C.orange+"30"}`}}>
-<div style={{display:"flex",alignItems:"center",gap:12,marginBottom:10}}>
-<Av ini={m.i} sz={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:6}}><span style={{fontSize:14,fontWeight:600,color:C.t1}}>{m.n}</span>{m.blocked&&<span style={{fontSize:9,fontWeight:700,color:C.red,background:C.redL,padding:"2px 6px",borderRadius:4}}>BLOQUÉ</span>}</div><div style={{fontSize:12,color:C.t3}}>{m.daysLate} jour(s) de retard</div></div>
-</div>
-{/* Penalty calc */}
-<div style={{background:C.bg,borderRadius:12,padding:12,marginBottom:10}}>
-<div style={{fontSize:11,fontWeight:600,color:C.t2,marginBottom:6}}>Calcul de la pénalité (5% × jours)</div>
-{[{l:"Cotisation due",v:fm(25000)+" F"},{l:"Taux",v:"5% / jour"},{l:"Jours de retard",v:m.daysLate},{l:"Pénalité totale",v:fm(m.penalty)+" F",bold:true}].map((r,j)=><div key={j} style={{display:"flex",justifyContent:"space-between",padding:"4px 0"}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:r.bold?700:500,color:r.bold?C.red:C.t1}}>{r.v}</span></div>)}
-</div>
-{/* Actions */}
-<div style={{display:"flex",gap:8}}>
-<Btn v="s" full sx={{flex:1,padding:"10px",fontSize:12}}>{Z.bell} Rappel SMS</Btn>
-{m.received&&!m.blocked&&<Btn full sx={{flex:1,padding:"10px",fontSize:12,background:C.red,boxShadow:"none"}}>{Z.lock} Bloquer</Btn>}
-{m.blocked&&<Btn full sx={{flex:1,padding:"10px",fontSize:12,background:C.red,boxShadow:"none"}}>{Z.doc} Dossier</Btn>}
-</div>
-{m.blocked&&<div style={{background:C.redL,borderRadius:10,padding:"8px 12px",marginTop:10,fontSize:11,color:C.red,border:`1px solid ${C.red}15`}}>{Z.warn} Compte verrouillé — Dossier de recouvrement généré automatiquement (KYC: CG-2026-XXXXX)</div>}
-</div>)}
-{/* All members status */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginTop:16,marginBottom:10}}>Statut de tous les membres</div>
-{allMembers.map((m,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:12,padding:"10px 16px",background:C.card,borderRadius:14,marginBottom:4,border:`1px solid ${C.brdL}`}}>
-<div style={{width:8,height:8,borderRadius:4,background:m.status==="ok"?C.green:m.daysLate>2?C.red:C.orange}}/>
-<span style={{flex:1,fontSize:13,fontWeight:500,color:C.t1}}>{m.n}</span>
-<span style={{fontSize:11,fontWeight:600,color:m.status==="ok"?C.green:C.red}}>{m.status==="ok"?"À jour":m.daysLate+"j retard"}</span>
-</div>)}
-{/* Auto-trigger info */}
-<div style={{background:C.blueL,borderRadius:14,padding:14,marginTop:16,border:`1px solid ${C.blue}15`}}>
-<div style={{fontSize:13,fontWeight:600,color:C.blue,marginBottom:6}}>Déclencheurs automatiques</div>
-{["T+24h : Notification push + SMS d'alerte","T+24h : Pénalité 5% / jour appliquée","Défaut post-réception : Compte bloqué + dossier recouvrement","Fonds de garantie activé pour couvrir le cercle"].map((t,i)=><div key={i} style={{fontSize:11,color:C.t2,marginBottom:4,paddingLeft:10,borderLeft:`2px solid ${C.blue}30`}}>{t}</div>)}
-</div>
-</Scroll>;}
-
-// ── 6. Group Transparency Dashboard ──
-function GroupDashboard({go}){
-const circle=CIR[0];const total=circle.amt*circle.mem;const collected=MEM.filter(m=>m.ok).length*circle.amt;
-const pct=Math.round(collected/total*100);
-return <Scroll><Hdr title="Tableau de bord du cercle" onBack={()=>go("back")}/>
-{/* Collection progress */}
-<div style={{background:C.card,borderRadius:20,padding:20,border:`1px solid ${C.brd}`,marginBottom:16}}>
-<div style={{display:"flex",justifyContent:"space-between",marginBottom:12}}>
-<div><div style={{fontSize:16,fontWeight:700,color:C.t0}}>{circle.name}</div><div style={{fontSize:12,color:C.t3}}>Tour en cours · {circle.turn}</div></div>
-<div style={{textAlign:"right"}}><div style={{fontSize:22,fontWeight:800,color:C.gold}}>{pct}%</div><div style={{fontSize:10,color:C.t3}}>collecté</div></div></div>
-<div style={{background:C.bg,borderRadius:6,height:12,overflow:"hidden",marginBottom:8}}><div style={{width:`${pct}%`,height:"100%",background:`linear-gradient(90deg,${C.blue},${C.gold})`,borderRadius:6,transition:"width 0.5s"}}/></div>
-<div style={{display:"flex",justifyContent:"space-between",fontSize:12,color:C.t3}}><span>{fm(collected)} / {fm(total)} FCFA</span><span>{MEM.filter(m=>m.ok).length}/{MEM.length} membres</span></div>
-</div>
-{/* Real-time member status */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>État des paiements (temps réel)</div>
-<div style={{display:"flex",gap:8,marginBottom:14}}>
-{[{l:"Payé",v:MEM.filter(m=>m.ok).length,c:C.green,bg:C.greenL},{l:"En attente",v:MEM.filter(m=>!m.ok&&m.pen===0).length,c:C.orange,bg:C.orangeL},{l:"En retard",v:MEM.filter(m=>m.pen>0).length,c:C.red,bg:C.redL}].map((s,i)=><div key={i} style={{flex:1,textAlign:"center",padding:"12px 8px",background:s.bg,borderRadius:14}}><div style={{fontSize:20,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:C.t3}}>{s.l}</div></div>)}
-</div>
-{/* Member cards - anonymous friendly */}
-{MEM.map(m=>{const status=m.ok?"paid":m.pen>0?"late":"pending";const colors={paid:{bg:C.greenL,c:C.green,t:"Payé",brd:C.green+"20"},pending:{bg:C.orangeL,c:C.orange,t:"En attente",brd:C.orange+"20"},late:{bg:C.redL,c:C.red,t:"En retard",brd:C.red+"20"}};const st=colors[status];
-return <div key={m.id} style={{display:"flex",alignItems:"center",gap:12,padding:"12px 16px",background:st.bg,borderRadius:14,marginBottom:6,border:`1px solid ${st.brd}`}}>
-<div style={{width:10,height:10,borderRadius:5,background:st.c,flexShrink:0}}/>
-<Av ini={m.pseudo?m.pseudo.slice(0,2):m.i} sz={32}/>
-<div style={{flex:1}}><div style={{fontSize:13,fontWeight:600,color:C.t1}}>{m.pseudo||m.n.split(" ")[0]+" "+m.n.split(" ")[1]?.[0]+"."}</div></div>
-<div style={{textAlign:"right"}}><span style={{fontSize:11,fontWeight:700,color:st.c}}>{st.t}</span>{m.pen>0&&<div style={{fontSize:10,color:C.red}}>Pénalité: {fm(m.pen)} F</div>}</div>
-</div>;})}
-{/* Reserve fund info */}
-<div style={{background:C.card,borderRadius:16,padding:16,marginTop:16,border:`1px solid ${C.brd}`}}>
-<div style={{fontSize:13,fontWeight:700,color:C.t0,marginBottom:8}}>Protection du cercle</div>
-{[{l:"Fonds de garantie (2%)",v:fm(3000)+" F",c:C.green},{l:"Pénalités collectées",v:fm(2500)+" F",c:C.orange},{l:"Prochain versement",v:circle.next,c:C.blue}].map((r,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"6px 0",borderBottom:i<2?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:700,color:r.c}}>{r.v}</span></div>)}
-</div>
-<div style={{background:C.blueL,borderRadius:12,padding:"10px 14px",marginTop:12,border:`1px solid ${C.blue}15`}}>
-<div style={{fontSize:11,color:C.blue}}>{Z.shield} Données de paiement exposées sans compromettre les informations privées (téléphone, adresse masqués)</div></div>
-</Scroll>;}
-
-// ── 7. Recovery Dossier ──
-function RecoveryDossier({go}){
-return <Scroll><Hdr title="Dossier de recouvrement" onBack={()=>go("back")}/>
-<div style={{background:C.redL,borderRadius:20,padding:20,marginBottom:16,border:`1px solid ${C.red}20`}}>
-<div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}><span style={{color:C.red}}>{Z.warn}</span><span style={{fontSize:16,fontWeight:700,color:C.red}}>Dossier #REC-2026-0042</span></div>
-<div style={{fontSize:12,color:C.t2}}>Généré automatiquement le 05 Avr 2026</div>
-</div>
-{/* Debtor info (from KYC) */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>Informations du débiteur (KYC)</div>
-<div style={{background:C.card,borderRadius:16,padding:16,border:`1px solid ${C.brd}`,marginBottom:16}}>
-{[{l:"Nom",v:"Patrick Koumba"},{l:"ID National",v:"CG-2026-44821"},{l:"Téléphone",v:"+242 06 891 2245"},{l:"Résidence",v:"Bacongo, Brazzaville"},{l:"Niveau KYC",v:"Niveau 3 (Complet)"}].map((r,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:i<4?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:600,color:C.t1}}>{r.v}</span></div>)}
-</div>
-{/* Debt details */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>Détail de la dette</div>
-<div style={{background:C.card,borderRadius:16,padding:16,border:`1px solid ${C.brd}`,marginBottom:16}}>
-{[{l:"Cercle",v:"Cercle Élite"},{l:"Pot reçu le",v:"01 Mar 2026"},{l:"Montant reçu",v:fm(150000)+" F"},{l:"Cotisations restantes",v:"3 × "+fm(25000)+" F"},{l:"Total dû",v:fm(75000)+" F"},{l:"Pénalités accumulées",v:fm(3750)+" F"},{l:"Total à recouvrer",v:fm(78750)+" F"}].map((r,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderBottom:i<6?`1px solid ${C.brd}`:""}}><span style={{fontSize:12,color:C.t3}}>{r.l}</span><span style={{fontSize:12,fontWeight:i===6?800:600,color:i===6?C.red:C.t1}}>{r.v}</span></div>)}
-</div>
-{/* Actions */}
-<div style={{fontSize:14,fontWeight:700,color:C.t0,marginBottom:10}}>Actions</div>
-<div style={{background:C.card,borderRadius:16,padding:16,border:`1px solid ${C.brd}`,marginBottom:16}}>
-{[{l:"Compte bloqué",v:"05 Avr 2026",done:true},{l:"SMS de mise en demeure",v:"06 Avr 2026",done:true},{l:"Appel téléphonique",v:"08 Avr 2026",done:false},{l:"Transmission au service juridique",v:"Après 15j",done:false}].map((a,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"8px 0",borderBottom:i<3?`1px solid ${C.brd}`:"",opacity:a.done?1:.5}}>
-<div style={{width:18,height:18,borderRadius:9,background:a.done?C.green:C.brd,display:"flex",alignItems:"center",justifyContent:"center"}}>{a.done&&Z.okW}</div>
-<div style={{flex:1}}><span style={{fontSize:12,color:C.t1}}>{a.l}</span></div>
-<span style={{fontSize:11,color:C.t3}}>{a.v}</span></div>)}
-</div>
-<div style={{display:"flex",gap:8}}>
-<Btn v="s" full sx={{flex:1}}>{Z.doc} Exporter PDF</Btn>
-<Btn full sx={{flex:1}}>{Z.send} Transmettre</Btn>
-</div>
-</Scroll>;}
-
 // ── Success ──
 function Ok({go}){const[s,setS]=useState(false);useEffect(()=>{setTimeout(()=>setS(true),100)},[]);
 return <div style={{height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",background:C.bg,padding:"40px 28px"}}>
@@ -914,13 +609,6 @@ export default function App(){
       case "darkMode": return <DarkMode go={go}/>;
       case "referral": return <Referral go={go}/>;
       case "insurance": return <Insurance go={go}/>;
-      case "kycFull": return <KYCFull go={go}/>;
-      case "escrow": return <Escrow go={go}/>;
-      case "trustScore": return <TrustScore go={go}/>;
-      case "emergencyFund": return <EmergencyFund go={go}/>;
-      case "sanctions": return <Sanctions go={go}/>;
-      case "groupDashboard": return <GroupDashboard go={go}/>;
-      case "recoveryDossier": return <RecoveryDossier go={go}/>;
       case "ok": return <Ok go={go}/>;
       default: return <Home go={go}/>;
     }
